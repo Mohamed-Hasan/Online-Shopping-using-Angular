@@ -1,0 +1,16 @@
+img{
+    max-width: 100%;
+    max-height: 100%;
+    padding: 5px;
+    margin: auto;
+}
+
+button{
+    margin-bottom: 0px;
+}
+
+.product-container{
+    margin: 42px; 
+    border: solid 3px red; 
+    padding: 20px;
+}

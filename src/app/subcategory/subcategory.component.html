@@ -1,3 +1,30 @@
-<div class="home-wrap">
-    subcat works
+<div class="home-wrap" style="margin: auto">
+    <div class="section-title">
+            <h3 class="title">{{catName}} </h3> <!-- cat name -->
+    </div>
+    <div>
+        <h4 class="title">{{subcatName}}</h4> <!-- subcat name -->
+    </div>
+    <div *ngFor="let product of products" class="row product-container"> <!-- start of for loop -->
+        <div class="col-md-2">
+            <img routerLink="/product" src="../../assets/img/banner01.jpg" alt=""> <!-- prod img ==> src="data:image/png;base64,{{product.image}}" --> 
+        </div>
+        <div class="col-md-7">
+            <a routerLink="/product"><h3>{{product.name}}</h3></a> <!-- prod name -->
+            <div>
+                <rating [ngModel]="product.rating" [float]="true" [readonly]="true"></rating> <!-- prod rating -->
+            </div>
+                
+            <div style="overflow-wrap: break-word"> <!-- prod desc -->
+                {{product.desc}}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <!-- <span class="price text-center"><strong>$32.50</strong><br><del class="font-weak"><small>$40.00</small></del></span> -->
+            <h3 class="price primary-color">{{product.price}} $</h3><br> <!-- prod price -->
+            <h5 class="price">{{product.available}} available </h5><br> <!-- prod available -->
+            <button routerLink="/product" class="center price primary-btn add-to-cart">View Product</button> 
+        </div>      
+    </div>
+    
 </div>
