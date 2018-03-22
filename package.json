@@ -21,9 +21,12 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "angular-star-rating": "^3.0.8",
     "angular2-image-upload": "^1.0.0-rc.0",
     "angular4-carousel": "^3.1.8",
     "core-js": "^2.4.1",
+    "ngx-input-star-rating": "0.0.3",
+    "ngx-rating": "0.0.9",
     "ngx-slideshow": "^0.1.0",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
