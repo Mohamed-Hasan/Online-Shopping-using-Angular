@@ -1,22 +1,28 @@
 <div class="home-wrap">
-      <!-- home slick -->
-      <div id="home-slick" class="row">
-        <div class="col-sm-1" style="">
-          <button class="btn btn-warning btn-arrow-left" (click)="carousel.left()" style="margin-top:250px; position:relative; width:80px">left</button>
-        </div>
-        <div class="col-sm-10">
-          <ngx-slideshow #carousel>
-            <li><img src="./assets/img/banner01.jpg" height="500px"></li>
-            <li><img src="./assets/img/banner02.jpg" height="500px"></li>
-            <li><img src="./assets/img/banner03.jpg" height="500px"></li>
-            </ngx-slideshow>
-        </div>
-        <div class="col-sm-1">
-          <button class="btn btn-warning btn-arrow-right" (click)="carousel.right()" style="margin-top:250px; position:relative; width:80px">right</button>
-        </div>
-      </div>
+  <!-- home slick -->
+  <div id="home-slick" class="row">
+    <div class="col-sm-1" style="">
+      <button class="btn btn-warning btn-arrow-left" (click)="carousel.left()" style="margin-top:250px; position:relative; width:80px">left</button>
+    </div>
+    <div class="col-sm-10">
+      <ngx-slideshow #carousel>
+        <li>
+          <img src="./assets/img/banner01.jpg" height="500px">
+        </li>
+        <li>
+          <img src="./assets/img/banner02.jpg" height="500px">
+        </li>
+        <li>
+          <img src="./assets/img/banner03.jpg" height="500px">
+        </li>
+      </ngx-slideshow>
+    </div>
+    <div class="col-sm-1">
+      <button class="btn btn-warning btn-arrow-right" (click)="carousel.right()" style="margin-top:250px; position:relative; width:80px">right</button>
+    </div>
+  </div>
 </div>
-      <!-- /home slick -->
+<!-- /home slick -->
 
 <div class="section">
   <!-- container -->
@@ -32,28 +38,30 @@
       <!-- section title -->
 
       <!-- Product Single -->
-      <div class="col-md-3 col-sm-6 col-xs-6">
+      <div *ngFor="let product of products" class="col-md-3 col-sm-6 col-xs-6">
         <div class="product product-single">
           <div class="product-thumb">
-            <button routerLink="/product" class="main-btn quick-view"><i class="fa fa-search-plus"></i> View </button>
-            <!-- <img src="./assets/img/product01.jpg" alt=""> -->
-            <img src="data:image/png;base64,iVBORw0KGgoAAA
-ANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4
-//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU
-5ErkJggg==" alt="Red dot" />
+            <button routerLink="/product" class="main-btn quick-view"> <!-- "/product/prod.id" -->
+              <i class="fa fa-search-plus"></i> View </button> <!-- prod image -->
+            <img src="./assets/img/product01.jpg" alt=""> 
+            <!-- <img src="data:image/png;base64,iVBORw0KGgoAAA
+              ANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4
+              //8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU
+              5ErkJggg==" alt="Red dot" /> -->
           </div>
           <div class="product-body">
-            <h3 class="product-price">$32.50</h3>
-            <div class="product-rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-o empty"></i>
-            </div>
-            <h2 class="product-name"><a href="#">Bag</a></h2>
+              <h2 class="product-name">
+                  <h3 class="primary-color" href="/product">{{product.name}}</h3> <!-- "/product/prod.id" -->
+              </h2>
+                <!-- prod name -->
+            <h3 class="product-price">{{product.price}} $</h3> <!-- prod image -->
+            <!-- product price -->
+            <rating [(ngModel)]="product.rating" [float]="true" [readonly]="true"></rating>
+            <!-- product rating -->
+            
             <div class="product-btns">
-              <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+              <button class="primary-btn add-to-cart" (click)="addToCart()"> 
+                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
             </div>
           </div>
         </div>

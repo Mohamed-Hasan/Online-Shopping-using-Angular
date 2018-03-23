@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ImageUploadModule } from "angular2-image-upload";
 import {RatingModule} from "ngx-rating";
-
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { AppComponent } from './app.component';
 
 import { LoginComponent } from './login/login.component';
@@ -47,6 +47,7 @@ import { AllCategoriesComponent } from './all-categories/all-categories.componen
     FormsModule,
     ImageUploadModule.forRoot(),
     RatingModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

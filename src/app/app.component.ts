@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  show = false;
+  show = true;
+  logged = false;
   toggleClass() {
     this.show==false?this.show=true:this.show=false;
   }
