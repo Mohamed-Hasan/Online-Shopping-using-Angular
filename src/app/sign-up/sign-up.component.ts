@@ -6,34 +6,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  name: String;
-  email: String;
-  password: String;
-  repassword: String;
-  image: any;
-  showImage = false;
   
+  seller=false;
+
+  user ={
+    name: null,
+    email: null,
+    password: null,
+    repassword: null,
+    image: null,
+    NationaID: null,
+  }
   constructor() { }
 
   ngOnInit() {
 
   }
   submit() {
-    var user: object ={
-      name: this.name,
-      email: this.email,
-      password: this.password,
-      repassword: this.repassword,
-      picture: this.image,
+    console.log(this.user);
+    if(this.seller==true)
+    {
+      //should send seller data to service then to api
+      
+    }else{
+      //should send user data to service then to api
     }
-    console.log(user);
-    //should send user data to service then to api
   }
 
   _handleReaderLoaded(readerEvt) {
     const binaryString = readerEvt.target.result;
-    this.image = btoa(binaryString);
-    this.showImage = true;
+    this.user.image = btoa(binaryString);
   }
 
   onFileChange(event) {
@@ -43,8 +45,11 @@ export class SignUpComponent implements OnInit {
       }
 
   onRemoved(event) {
-    this.image = null;
-    this.showImage = false;
+    this.user.image = null;
+  }
+
+  sellerSignup(){
+    this.seller=true;
   }
 }
 

@@ -36,6 +36,6 @@
             
             <image-upload (removed)="onRemoved($event)" (uploadFinished)="onFileChange($event)" [max]="1" [extensions]="['jpg','png','gif']" [buttonCaption]="'Profile Picture'" [maxFileSize]="1048576" [fileTooLargeMessage]="'Image too large!'" [dropBoxMessage]="'Drop your image here!'"></image-upload>
         </fieldset>
-        <button type="submit" [disabled]="!addProdForm.form.valid">Add Product</button>      
+        <button type="submit" [disabled]="!addProdForm.form.valid">Add Product</button>  
     </form>
 </div>
