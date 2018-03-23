@@ -1,0 +1,11 @@
+<div>
+    <br><br><br>
+  Movie Name: <input type="text" [(ngModel)]="movieName"  #name><br>
+  Movie Rate: <input type="text" [(ngModel)]="movieRate" #rate><br>
+  Movie Director: <input type="text" [(ngModel)]="movieDirector" #director><br>
+  Movie Writer: <input type="text" [(ngModel)]="movieWriter" #writer><br>
+  Moview Actors: <input type="text" [(ngModel)]="movieActors" #actors><br>
+  Movie Image:<input type="file" [(ngModel)]="movieImage" #image><br><br>
+  <button (click)='sendMovie()'>Add Movie</button>
+
+</div>
