@@ -9,8 +9,9 @@ export class CartComponent implements OnInit {
 
   purchases;
   checked=false;
+  Sum;
   constructor() { }
-
+  quantity=0;
   ngOnInit() {
     let prod1 = {
       name: "iphone",
@@ -26,11 +27,12 @@ export class CartComponent implements OnInit {
       price: 1000,
       rating:4,
       image:null,
-      quantity:1,
+      quantity:3,
       available:4,
     }
     
     this.purchases=[prod1,prod2];
+    this.Sum=this.totalToPay();
   }
 
   cancelOrder(prodName)
@@ -42,13 +44,15 @@ export class CartComponent implements OnInit {
       }
       console.log(this.purchases);
     }
+    this.Sum=this.totalToPay();
   }
 
   totalToPay(){
     let sum=0;
     for (let i = 0; i < this.purchases.length; i++) {
-      sum += this.purchases[i].price;
+      sum += this.purchases[i].price*this.purchases[i].quantity;
     }
+    this.Sum=sum;
     return sum;
   }
 
