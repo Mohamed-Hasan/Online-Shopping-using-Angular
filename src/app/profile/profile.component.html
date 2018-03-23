@@ -1,3 +1,72 @@
-<div class="home-wrap">
-    profile works
+<div class="home-wrap" style="margin: auto">
+  <div id="breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb">
+        <li>
+          <a routerLink="">Home</a>
+        </li>
+        <li>
+          <a routerLink="/profile">Profile</a>
+        </li>
+      </ul>
     </div>
+  </div>
+  <div class="section-title">
+    <h3 class="title"> Welcome {{user?.name}} </h3>
+  </div>
+
+  <div class="row" style="margin-top: 50px">
+    <div class="col-md-3">
+      <img src="data:image/png;base64,{{user?.image}}" style="max-height: 100%; max-width: 100%" alt="">
+    </div>
+    <div class="col-md-9">
+      <table class="table table-bordered table-striped ">
+        <tr>
+          <th>User Name</th>
+          <td>
+            <input type="text" class="form-control" [disabled]="!editable" value="{{user?.name}}" [(ngModel)]=user.name>
+          </td>
+        </tr>
+        <tr>
+          <th>Phone</th>
+          <td>
+            <input type="text" class="form-control" [disabled]="!editable" (input)="onChange()" [(ngModel)]=user.phone>
+          </td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td>
+            <input type="text" class="form-control" [disabled]="!editable" value="{{user?.email}}" [(ngModel)]=user.email>
+          </td>
+        </tr>
+        <tr>
+          <th>Address</th>
+          <td>
+            <input type="text" class="form-control" [disabled]="!editable" value="{{user?.address}}" [(ngModel)]=user.address>
+          </td>
+        </tr>
+        <tr>
+          <th>Password</th>
+          <td>
+            <input type="password" class="form-control" [disabled]="!editable" value="{{user?.password}}" [(ngModel)]=user.password>
+          </td>
+        </tr>
+      </table>
+      <image-upload [hidden]="!editable" (removed)="onRemoved($event)" (uploadFinished)="onFileChange($event)" [max]="1" [extensions]="['jpg','png','gif']"
+        [buttonCaption]="'Profile Picture'" [maxFileSize]="1048576" [fileTooLargeMessage]="'Image too large!'" [dropBoxMessage]="'Drop your image here!'"></image-upload>
+    </div>
+  </div>
+
+  <div class="pull-right">
+    <div [hidden]="editable">
+      <button (click)="edit()" class="center price primary-btn add-to-cart">Edit</button>
+    </div>
+    <div [hidden]="!editable">
+      <button (click)="submit()" class="center price primary-btn add-to-cart">Submit</button>
+    </div>
+  </div>
+
+
+
+
+</div>

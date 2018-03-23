@@ -24,7 +24,7 @@ const routes = [
     {path : 'allCat', component : AllCategoriesComponent},
     {path : 'product', component : ProductComponent},
     {path : 'cart', component : CartComponent},
- // seller routes
+// seller routes
     {path : 'add', component : AddProductComponent},
     {path : 'edit', component : AddProductComponent},
     {path : 'order', component : OrderComponent},
