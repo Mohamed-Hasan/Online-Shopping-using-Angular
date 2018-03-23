@@ -1,12 +1,71 @@
-<div class="home-wrap">
-    <div id="breadcrumb">
-		<div class="container">
-			<ul class="breadcrumb">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">product</a></li>
-				<li><a href="#">Order</a></li>
-				<li class="active">Product Name Goes Here</li>
-			</ul>
-		</div>
-	</div>
+<div>
+  <div id="breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb">
+        <li>
+          <a routerLink="">Home</a>
+        </li>
+        <li>
+          <a routerLink="/sales">Sales</a>
+        </li>
+        <li>
+          <a href="/order">Order</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h3 class="title">{{order?.product?.name}}</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div id="product-main-view">
+        <div class="product-view">
+          <img src="../../assets/img/banner01.jpg" alt="">
+          <!-- prod image -->
+          <!-- prod img ==> src="data:image/png;base64,{{order.product.image}}" -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+        <h3 class="title text-center">Client Information</h3>
+      </div>
+      <div class="row" style="margin-top: 50px">
+        <table class="table table-bordered table-striped ">
+          <tr>
+            <th>Client Name</th>
+            <td>{{order?.client?.name}}</td>
+          </tr>
+          <tr>
+            <th>Client Phone</th>
+            <td>{{order?.client?.phone}}</td>
+          </tr>
+          <tr>
+            <th>Client Email</th>
+            <td>{{order?.client?.email}}</td>
+          </tr>
+          <tr>
+            <th>Client Address</th>
+            <td>{{order?.client?.address}}</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="col-md-2">
+      <h3 class="title text-center" >Order State</h3>
+      <div style="margin-top: 50px">
+		<select name="orderState" class="form-control" (change)="onChange($event)">
+			<option selected value="Ordered">Ordered</option>
+			<option  value="Recieved">Recieved</option>
+		</select>
+      </div>
+    </div>
+  </div>
+
+
 </div>
