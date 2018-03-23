@@ -1,0 +1,12 @@
+<div style="text-align:center">
+  <h1>
+    Welcome {{ title }}!
+  </h1>
+</div>
+<br><br>
+<ul *ngFor="let m of movieArr, let i=index">
+  <button (click)="movieIndex(m)" >{{m}}</button>
+</ul>
+<app-movies [showMovie]='currentMovie' ></app-movies>
+
+<app-add-movie (addMovie)="push($event)" ></app-add-movie>
