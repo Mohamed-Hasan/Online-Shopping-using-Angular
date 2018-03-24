@@ -32,7 +32,10 @@
       </div>
         <div class="col-md-4" style="margin-top: 100px">
           <h3>Total: {{Sum}} $</h3> <br><br>
-          <button class="center price primary-btn add-to-cart" (click)="checkout()">Checkout</button> 
+          <button class="center price primary-btn add-to-cart" (click)="checkout()">
+             <p *ngIf="logged" class="center primary-btn add-to-cart" >Checkout</p>
+             <p *ngIf="!logged" class="center primary-btn add-to-cart" >Login to checkout</p>
+            </button> 
         </div>
     </div>
 </div>

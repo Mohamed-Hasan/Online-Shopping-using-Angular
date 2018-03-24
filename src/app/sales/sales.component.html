@@ -28,7 +28,7 @@
             <h3 class="price primary-color">{{order.product.price}} $</h3><br> <!-- prod price -->
             <h5 class="price">{{order.product.available}} available </h5><br> <!-- prod available -->
             <h5 class="price">{{order.quantity}} piece </h5><br> <!-- order quantity -->
-            <button routerLink="/order" class="center price primary-btn add-to-cart">View Order Details</button> 
+            <button routerLink="/order/{{order.id}}" class="center price primary-btn add-to-cart">View Order Details</button> 
         </div>      
     </div>
     

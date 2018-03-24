@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from "./cart.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-cart',
@@ -6,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
-  purchases;
+  user; // global object of user containing his data
+  logged = false;  //global variable that check logged users
+  cart; //Global Array this should contain products' ids
+  purchases: any[];
   checked=false;
   Sum;
-  constructor() { }
+  constructor( private CartService: CartService, private router :Router) { }
   quantity=0;
   ngOnInit() {
     let prod1 = {
@@ -30,7 +34,13 @@ export class CartComponent implements OnInit {
       quantity:3,
       available:4,
     }
-    
+    /// got to api to get the details of every product
+    this.cart.forEach(productId => {
+      this.CartService.getProduct(productId).subscribe(res=>{
+        this.purchases.push(res);
+      })
+    });
+
     this.purchases=[prod1,prod2];
     this.Sum=this.totalToPay();
   }
@@ -58,7 +68,13 @@ export class CartComponent implements OnInit {
 
   checkout(){
     //send purchases to api to save in db then show thanks message
-    this.checked = true;
+    if (this.logged) {
+      this.CartService.checkout(this.user.id,this.purchases);
+      this.checked = true;
+    } else {
+      this.router.navigate(['login']);
+    }
+    
   }
 
 }

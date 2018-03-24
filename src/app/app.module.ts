@@ -8,9 +8,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ImageUploadModule } from "angular2-image-upload";
 import {RatingModule} from "ngx-rating";
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { HttpModule  } from "@angular/http";
+
+import { AddProductService } from "./add-product/add-product.service";
+import { AllCategoriesService } from "./all-categories/all-categories.service";
+import { CartService } from "./cart/cart.service";
+import { OrderService } from "./order/order.service";
+import { SalesService } from "./sales/sales.service";
+import { ShelfService } from "./shelf/shelf.service";
+
 
 import { AppComponent } from './app.component';
-
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -50,8 +59,20 @@ import { AllCategoriesComponent } from './all-categories/all-categories.componen
     FormsModule,
     ImageUploadModule.forRoot(),
     RatingModule,
+<<<<<<< HEAD
+=======
+    MatSidenavModule,
+    HttpModule,
+
   ],
-  providers: [],
+  providers: [
+    AddProductService,
+    AllCategoriesService,
+    CartService,
+    OrderService,
+    SalesService,
+>>>>>>> 8978120a6fa48fd7dd967ce8093edb5e411638f9
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -30,7 +30,7 @@ const routes = [
 // seller routes
     {path : 'add', component : AddProductComponent},
     {path : 'edit', component : AddProductComponent},
-    {path : 'order', component : OrderComponent},
+    {path : 'order/:id', component : OrderComponent},
     {path : 'sales', component : SalesComponent},
     {path : 'shelf', component : ShelfComponent},
 ];

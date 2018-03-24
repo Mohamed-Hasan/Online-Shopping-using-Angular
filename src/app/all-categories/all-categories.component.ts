@@ -24,6 +24,7 @@ export class AllCategoriesComponent implements OnInit {
     
   }
 
+  // API --> get all categories and subcategories
   getcategoriesList(){
      this.AllCategoriesService.getAllCategories().subscribe(res=>{
        console.log(res);
