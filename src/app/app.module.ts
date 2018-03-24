@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { OrderComponent } from './order/order.component';
 import { SalesComponent } from './sales/sales.component';
+import { SearchComponent } from './search/search.component';
 import { ShelfComponent } from './shelf/shelf.component';
 import { AllCategoriesComponent } from './all-categories/all-categories.component';
 
@@ -35,6 +36,7 @@ import { AllCategoriesComponent } from './all-categories/all-categories.componen
     AddProductComponent,
     OrderComponent,
     SalesComponent,
+    SearchComponent,
     ShelfComponent,
     AllCategoriesComponent,
   ],
