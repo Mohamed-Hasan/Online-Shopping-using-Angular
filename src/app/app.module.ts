@@ -6,8 +6,16 @@ import { FormsModule } from '@angular/forms';
 import { ImageUploadModule } from "angular2-image-upload";
 import {RatingModule} from "ngx-rating";
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { AppComponent } from './app.component';
+import { HttpModule  } from "@angular/http";
 
+import { AddProductService } from "./add-product/add-product.service";
+import { AllCategoriesService } from "./all-categories/all-categories.service";
+import { CartService } from "./cart/cart.service";
+import { OrderService } from "./order/order.service";
+import { SalesService } from "./sales/sales.service";
+
+
+import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -48,8 +56,16 @@ import { AllCategoriesComponent } from './all-categories/all-categories.componen
     ImageUploadModule.forRoot(),
     RatingModule,
     MatSidenavModule,
+    HttpModule,
+
   ],
-  providers: [],
+  providers: [
+    AddProductService,
+    AllCategoriesService,
+    CartService,
+    OrderService,
+    SalesService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
