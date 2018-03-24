@@ -42,12 +42,12 @@
 							</div>
 
 							<div class="product-btns">
-								<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+								<button (click)="addToCart()" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
 								
 							</div><br>
 							<div>
 									<h3><strong>Your Rating</strong></h3>
-								<rating [(ngModel)]="userRating" [float]="true" ></rating>
+								<rating (click)="rate()" [(ngModel)]="userRating" [float]="true" ></rating>
 							</div>
 							<div>
 								
