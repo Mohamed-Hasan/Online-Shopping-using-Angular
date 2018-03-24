@@ -32,8 +32,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  addToCart() {
-    
+  addToCart(pname) {
+    console.log(pname)
   }
 
 }

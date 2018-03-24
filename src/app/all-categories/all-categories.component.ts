@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AllCategoriesService } from "./all-categories.service";
 
 @Component({
   selector: 'app-all-categories',
@@ -17,10 +18,16 @@ export class AllCategoriesComponent implements OnInit {
     technology: ["Mobiles", "Tablets", "iPads"]
   };
 
-  constructor() { }
+  constructor(private AllCategoriesService : AllCategoriesService) { }
 
   ngOnInit() {
     
+  }
+
+  getcategoriesList(){
+     this.AllCategoriesService.getAllCategories().subscribe(res=>{
+       console.log(res);
+       this.CatArr = res;})
   }
 
 }

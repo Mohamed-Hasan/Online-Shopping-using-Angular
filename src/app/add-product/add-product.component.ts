@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AddProductService } from "./add-product.service";
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -14,7 +14,7 @@ export class AddProductComponent implements OnInit {
   description:null,
   image:null,
   };
-  constructor() { }
+  constructor( private AddProductService: AddProductService ) { }
 
   ngOnInit() {
 
@@ -30,6 +30,7 @@ export class AddProductComponent implements OnInit {
       image:null,
       };
     //send product to api 
+    this.AddProductService.addProduct(this.product).subscribe(res => console.log(res));
     this.added = true;
   }
 
