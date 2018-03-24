@@ -8,11 +8,11 @@ import { AddProductService } from "./add-product.service";
 export class AddProductComponent implements OnInit {
   added=false;
   product={
-  name:null,
-  price:0,
-  quantity:1,
-  description:null,
-  image:null,
+    name:null,
+    price:0,
+    quantity:1,
+    description:null,
+    image:null,
   };
   constructor( private AddProductService: AddProductService ) { }
 
@@ -43,7 +43,7 @@ export class AddProductComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = this._handleReaderLoaded.bind(this);
     reader.readAsBinaryString(event.file);
-      }
+  }
 
   onRemoved(event) {
     this.product.image = null;
