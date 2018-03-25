@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LoginService } from "../login.service";
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -9,7 +9,8 @@ export class CartComponent implements OnInit {
 
   purchases;
   checked=false;
-  constructor() { }
+  constructor(private login_service:LoginService) {console.log('home comp');
+  console.log('user from global login service',this.login_service.username); }
 
   ngOnInit() {
     let prod1 = {

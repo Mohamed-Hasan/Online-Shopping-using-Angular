@@ -22,6 +22,34 @@ import { ShelfComponent } from './shelf/shelf.component';
 import { AllCategoriesComponent } from './all-categories/all-categories.component';
 
 
+
+import { HttpClientModule } from '@angular/common/http';  // replaces previous Http service
+import { HttpModule } from '@angular/http';
+import { LoginService } from  './login.service' ;
+
+import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider,} from "angular5-social-login";
+import { ActivatedRoute} from '@angular/router';
+// import {  Router } from '@angular/router';
+
+// Configs 
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("1612080208881297")
+        },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("448503575381-ep149o1uol53j8s1krafdiaer6m02est.apps.googleusercontent.com")
+        },
+      ]
+  );
+  return config;
+}
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +65,7 @@ import { AllCategoriesComponent } from './all-categories/all-categories.componen
     SalesComponent,
     ShelfComponent,
     AllCategoriesComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -46,8 +75,16 @@ import { AllCategoriesComponent } from './all-categories/all-categories.componen
     ImageUploadModule.forRoot(),
     RatingModule,
     MatSidenavModule,
+    HttpModule,
+    HttpClientModule,
+    SocialLoginModule,
+    
+    
   ],
-  providers: [],
+  providers: [LoginService,{
+    provide: AuthServiceConfig,
+    useFactory: getAuthServiceConfigs
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
