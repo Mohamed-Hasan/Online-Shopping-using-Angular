@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxSlideshowModule } from 'ngx-slideshow';
 import { AppRoutingModule } from './app-routing.module';
+
+
+
 import { FormsModule } from '@angular/forms';
 import { ImageUploadModule } from "angular2-image-upload";
 import {RatingModule} from "ngx-rating";
@@ -15,6 +18,7 @@ import { OrderService } from "./order/order.service";
 import { SalesService } from "./sales/sales.service";
 import { ProductService } from "./product/product.service";
 import { SubcategoryService } from "./subcategory/subcategory.service";
+import { ShelfService } from "./shelf/shelf.service";
 
 
 import { AppComponent } from './app.component';
