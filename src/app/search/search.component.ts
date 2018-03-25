@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { SalesService } from "./sales.service";
-@Component({
-  selector: 'app-sales',
-  templateUrl: './sales.component.html',
-  styleUrls: ['./sales.component.css']
-})
-export class SalesComponent implements OnInit {
 
-  orders;
-  seller;  //should be set during seller login as a global variable
-  constructor(private salesService: SalesService) { }
+@Component({
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
+})
+export class SearchComponent implements OnInit {
+
+  orders:object[];
+
+  constructor() { }
 
   ngOnInit() {
     //send to api to get all orders of a certain seller... should be array of objects
@@ -54,13 +54,6 @@ export class SalesComponent implements OnInit {
       state: "delivered",
     }
     this.orders=[order1,order2];
-
-    // this.getMySales();
   }
 
-  getMySales(){
-    this.salesService.getMySales(this.seller.id).subscribe(res => {
-      this.orders = res;
-    });
-  }
 }

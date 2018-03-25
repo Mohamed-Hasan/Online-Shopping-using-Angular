@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShelfService } from "./shelf.service";
 
 @Component({
   selector: 'app-shelf',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shelf.component.css']
 })
 export class ShelfComponent implements OnInit {
-
+  seller;
   shelf:object[];
 
-  constructor() { }
+  constructor( private ShelfService: ShelfService) { }
 
   ngOnInit() {
     //send to api to get all orders of a certain seller... should be array of objects
@@ -36,4 +37,7 @@ export class ShelfComponent implements OnInit {
     this.shelf=[product1,product2];
   }
 
+  getShelf(){
+    this.ShelfService.getShelf(this.seller.id).subscribe(res=>{this.shelf=res})
+  }
 }

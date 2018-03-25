@@ -22,6 +22,12 @@ import { ShelfComponent } from './shelf/shelf.component';
 import { AllCategoriesComponent } from './all-categories/all-categories.component';
 
 
+import { AddProductService } from "./add-product/add-product.service";
+import { AllCategoriesService } from "./all-categories/all-categories.service";
+import { CartService } from "./cart/cart.service";
+import { OrderService } from "./order/order.service";
+import { SalesService } from "./sales/sales.service";
+import { ShelfService } from "./shelf/shelf.service";
 
 import { HttpClientModule } from '@angular/common/http';  // replaces previous Http service
 import { HttpModule } from '@angular/http';
@@ -29,7 +35,7 @@ import { LoginService } from  './login.service' ;
 
 import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider,} from "angular5-social-login";
 import { ActivatedRoute} from '@angular/router';
-// import {  Router } from '@angular/router';
+import {  Router } from '@angular/router';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -78,13 +84,19 @@ export function getAuthServiceConfigs() {
     HttpModule,
     HttpClientModule,
     SocialLoginModule,
-    
+    // Router,
     
   ],
   providers: [LoginService,{
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
-  }],
+  },
+    AddProductService,
+    AllCategoriesService,
+    CartService,
+    OrderService,
+    SalesService,
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

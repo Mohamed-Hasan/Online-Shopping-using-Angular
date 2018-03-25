@@ -26,13 +26,16 @@
             <div class="col-md-4">
                 <button class="pull-right main-btn icon-btn" (click)="cancelOrder(name.text)"><i class="fa fa-close"></i></button>
                 <h5 class="price">Quantity</h5><br> <!-- prod available -->
-                <span class="qty-input"><input min="1" max="{{product.available}}" style="border: solid 2px orangered; width: 50%" class="qty text-center" type="number" name="quantity" [(value)]="product.quantity"></span>
+                <span class="qty-input"><input min="1" max="{{product.available}}" (input)="totalToPay()" style="border: solid 2px orangered; width: 50%" class="qty text-center" type="number" name="quantity" [(ngModel)]="product.quantity"></span>
             </div>      
           </div>
       </div>
         <div class="col-md-4" style="margin-top: 100px">
-          <h3>Total: {{totalToPay()}} $</h3> <br><br>
-          <button class="center price primary-btn add-to-cart" (click)="checkout()">Checkout</button> 
+          <h3>Total: {{Sum}} $</h3> <br><br>
+          <button class="center price primary-btn add-to-cart" (click)="checkout()">
+             <p *ngIf="logged" class="center primary-btn add-to-cart" >Checkout</p>
+             <p *ngIf="!logged" class="center primary-btn add-to-cart" >Login to checkout</p>
+            </button> 
         </div>
     </div>
 </div>

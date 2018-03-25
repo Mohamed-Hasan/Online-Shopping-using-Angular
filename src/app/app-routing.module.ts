@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { OrderComponent } from './order/order.component';
 import { SalesComponent } from './sales/sales.component';
+import { SearchComponent } from './search/search.component';
 import { ShelfComponent } from './shelf/shelf.component';
 import { AllCategoriesComponent } from './all-categories/all-categories.component';
 
@@ -24,10 +25,12 @@ const routes = [
     {path : 'allCat', component : AllCategoriesComponent},
     {path : 'product', component : ProductComponent},
     {path : 'cart', component : CartComponent},
+    {path : 'search', component : SearchComponent},
+
 // seller routes
     {path : 'add', component : AddProductComponent},
     {path : 'edit', component : AddProductComponent},
-    {path : 'order', component : OrderComponent},
+    {path : 'order/:id', component : OrderComponent},
     {path : 'sales', component : SalesComponent},
     {path : 'shelf', component : ShelfComponent},
 ];

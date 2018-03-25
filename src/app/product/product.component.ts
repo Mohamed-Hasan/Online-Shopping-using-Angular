@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from "@angular/router";
+import { ProductService } from "./product.service";
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
+  cart;  //global
+  user;
+  id;
   product={
     name:null,
     price:null,
@@ -18,24 +22,35 @@ export class ProductComponent implements OnInit {
     desc:null,
     seller:null,
   }
-  dummyArray;
   userRating=0;
-  constructor() {  }
+  constructor(private route: ActivatedRoute, private productService: ProductService) {  }
 
   ngOnInit() {
+    this.route.params.subscribe(params => this.id = +params['id']);
+
+    this.productService.getProductDetails(this.id).subscribe(res => {
+      this.product = res;
+    })
     //go to api to get the product and fill the product object
-    this.product.rating=3.5;
+    // this.product.rating=3.5;
+
+
   }
 
-  getRating(){
-    this.dummyArray = [];
-    for(var i = 1; i <= 5; i++){
-      if(i<=this.product.rating) 
-        {this.dummyArray.push(1);}
-      else{
-        {this.dummyArray.push(0);}
-      }
+  addToCart(productId){
+    let exist = this.cart.indexOf(productId);
+    if(exist == -1)
+    {
+      this.cart.push(productId);
     }
-    return this.dummyArray;
   }
+/*
+  rate(){
+    this.productService.SendRating(this.id,this.user.id,this.userRating).subscribe(res => {
+      console.log(res);
+    })
+    this.productService.getProductDetails(this.id).subscribe(res => {
+      this.product = res;
+    })
+  }*/
 }
