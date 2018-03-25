@@ -13,6 +13,7 @@ import { AllCategoriesService } from "./all-categories/all-categories.service";
 import { CartService } from "./cart/cart.service";
 import { OrderService } from "./order/order.service";
 import { SalesService } from "./sales/sales.service";
+import { ProductService } from "./product/product.service";
 
 
 import { AppComponent } from './app.component';
@@ -65,6 +66,7 @@ import { AllCategoriesComponent } from './all-categories/all-categories.componen
     CartService,
     OrderService,
     SalesService,
+    ProductService,
   ],
   bootstrap: [AppComponent]
 })

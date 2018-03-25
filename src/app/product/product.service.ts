@@ -17,7 +17,7 @@ export class ProductService {
      return this.http.get(`http://127.0.0.1/order/${productId}`, {headers: this.headers}).map(res => res.json());
    }
 
-   SendRating(productId,rate){
-     return this.http.put(`http://127.0.0.1/order/${productId}`,{rate:rate}, {headers: this.headers}).map(res => res.json());
+   SendRating(productId,userId,rate){
+     return this.http.put(`http://127.0.0.1/order/${productId}`,{userId:userId, rate:rate}, {headers: this.headers}).map(res => res.json());
    }
 }
