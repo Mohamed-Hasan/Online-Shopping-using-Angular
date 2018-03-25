@@ -2,9 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxSlideshowModule } from 'ngx-slideshow';
 import { AppRoutingModule } from './app-routing.module';
-
-
-
 import { FormsModule } from '@angular/forms';
 import { ImageUploadModule } from "angular2-image-upload";
 import {RatingModule} from "ngx-rating";
@@ -21,6 +18,7 @@ import { SubcategoryService } from "./subcategory/subcategory.service";
 import { ShelfService } from "./shelf/shelf.service";
 
 
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -32,9 +30,34 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { OrderComponent } from './order/order.component';
 import { SalesComponent } from './sales/sales.component';
-import { SearchComponent } from './search/search.component';
 import { ShelfComponent } from './shelf/shelf.component';
 import { AllCategoriesComponent } from './all-categories/all-categories.component';
+import { SearchComponent } from './search/search.component';
+
+
+import { HttpClientModule } from '@angular/common/http';  // replaces previous Http service
+import { LoginService } from  './login.service' ;
+import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider,} from "angular5-social-login";
+import { ActivatedRoute} from '@angular/router';
+import {  Router } from '@angular/router';
+
+// Configs 
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("1612080208881297")
+        },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("448503575381-ep149o1uol53j8s1krafdiaer6m02est.apps.googleusercontent.com")
+        },
+      ]
+  );
+  return config;
+}
+
 
 
 @NgModule({
@@ -50,9 +73,10 @@ import { AllCategoriesComponent } from './all-categories/all-categories.componen
     AddProductComponent,
     OrderComponent,
     SalesComponent,
-    SearchComponent,
     ShelfComponent,
     AllCategoriesComponent,
+    SearchComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -63,9 +87,15 @@ import { AllCategoriesComponent } from './all-categories/all-categories.componen
     RatingModule,
     MatSidenavModule,
     HttpModule,
-
+    HttpClientModule,
+    SocialLoginModule,
+    // Router,
+    
   ],
-  providers: [
+  providers: [LoginService,{
+    provide: AuthServiceConfig,
+    useFactory: getAuthServiceConfigs
+  },
     AddProductService,
     AllCategoriesService,
     CartService,
@@ -73,7 +103,9 @@ import { AllCategoriesComponent } from './all-categories/all-categories.componen
     SalesService,
     ProductService,
     SubcategoryService,
-  ],
+
+],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

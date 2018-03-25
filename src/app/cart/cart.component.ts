@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from "../login.service";
 import { CartService } from "./cart.service";
 import { ActivatedRoute, Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-cart',
@@ -13,9 +15,17 @@ export class CartComponent implements OnInit {
   cart = [1,2,3,4]; //Global Array this should contain products' ids
   purchases: any[]; //shoudl be array of objects -- each object includes pid & quantity
   checked=false;
-  Sum;
-  constructor( private CartService: CartService, private router :Router) { }
+
   quantity=0;
+  Sum;
+  constructor(private login_service:LoginService, private CartService: CartService, private router :Router) {
+
+    console.log('home comp');
+  console.log('user from global login service',this.login_service.username);
+
+   }
+  
+
   ngOnInit() {
     let prod1 = {
       name: "iphone",
