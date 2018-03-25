@@ -1,11 +1,11 @@
 <div class="home-wrap" style="margin: auto">
     <div class="section-title">
-            <h3 class="title">{{catName}} </h3> <!-- cat name -->
+            <h3 class="title">{{subCat?.catName}} </h3> <!-- cat name -->
     </div>
     <div>
-        <h4 class="title">{{subcatName}}</h4> <!-- subcat name -->
+        <h4 class="title">{{subCat?.subcatName}}</h4> <!-- subcat name -->
     </div>
-    <div *ngFor="let product of products" class="row product-container"> <!-- start of for loop -->
+    <div *ngFor="let product of subCat.products" class="row product-container"> <!-- start of for loop -->
         <div class="col-md-2">
             <img routerLink="/product" src="../../assets/img/banner01.jpg" alt=""> <!-- prod img ==> src="data:image/png;base64,{{product.image}}" --> 
         </div>

@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
   user; // global object of user containing his data
   logged = false;  //global variable that check logged users
   cart; //Global Array this should contain products' ids
-  purchases: any[];
+  purchases: any[]; //shoudl be array of objects -- each object includes pid & quantity
   checked=false;
 
   quantity=0;

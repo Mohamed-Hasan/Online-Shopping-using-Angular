@@ -12,6 +12,6 @@ export class AllCategoriesService {
     }
 
     getAllCategories(){
-        return this.http.get('http://127.0.0.1:9090/allcat',{headers: this.headers}).map(res=>res.json());
+        return this.http.get('https://localhost:9010/categories',{headers: this.headers}).map(res=>res.json());
     }
 }

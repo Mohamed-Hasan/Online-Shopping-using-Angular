@@ -6,8 +6,20 @@ import { FormsModule } from '@angular/forms';
 import { ImageUploadModule } from "angular2-image-upload";
 import {RatingModule} from "ngx-rating";
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { AppComponent } from './app.component';
+import { HttpModule  } from "@angular/http";
 
+import { AddProductService } from "./add-product/add-product.service";
+import { AllCategoriesService } from "./all-categories/all-categories.service";
+import { CartService } from "./cart/cart.service";
+import { OrderService } from "./order/order.service";
+import { SalesService } from "./sales/sales.service";
+import { ProductService } from "./product/product.service";
+import { SubcategoryService } from "./subcategory/subcategory.service";
+import { ShelfService } from "./shelf/shelf.service";
+
+
+
+import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -20,19 +32,11 @@ import { OrderComponent } from './order/order.component';
 import { SalesComponent } from './sales/sales.component';
 import { ShelfComponent } from './shelf/shelf.component';
 import { AllCategoriesComponent } from './all-categories/all-categories.component';
+import { SearchComponent } from './search/search.component';
 
-
-import { AddProductService } from "./add-product/add-product.service";
-import { AllCategoriesService } from "./all-categories/all-categories.service";
-import { CartService } from "./cart/cart.service";
-import { OrderService } from "./order/order.service";
-import { SalesService } from "./sales/sales.service";
-import { ShelfService } from "./shelf/shelf.service";
 
 import { HttpClientModule } from '@angular/common/http';  // replaces previous Http service
-import { HttpModule } from '@angular/http';
 import { LoginService } from  './login.service' ;
-
 import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider,} from "angular5-social-login";
 import { ActivatedRoute} from '@angular/router';
 import {  Router } from '@angular/router';
@@ -71,6 +75,7 @@ export function getAuthServiceConfigs() {
     SalesComponent,
     ShelfComponent,
     AllCategoriesComponent,
+    SearchComponent
     
   ],
   imports: [
@@ -96,7 +101,11 @@ export function getAuthServiceConfigs() {
     CartService,
     OrderService,
     SalesService,
+    ProductService,
+    SubcategoryService,
+
 ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

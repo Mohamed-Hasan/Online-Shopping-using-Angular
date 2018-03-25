@@ -12,7 +12,7 @@ export class LoginService {
   public isLogged:boolean;
   public usermail:string;
   public userimage:string;
-  public chart=[];
+  public cart=[];
    
 
   constructor(private http:HttpClient) {

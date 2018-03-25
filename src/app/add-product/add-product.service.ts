@@ -14,6 +14,6 @@ export class AddProductService{
 
     addProduct(product){
         const prod = JSON.stringify(product)
-        return this.http.post('http://127.0.0.1:9090/user/addProduct', prod ,{headers: this.headers}).map((res)=>res.json())
+        return this.http.post('https://127.0.0.1:9010/products/add', prod ).map((res)=>res.json())
     }
 }
