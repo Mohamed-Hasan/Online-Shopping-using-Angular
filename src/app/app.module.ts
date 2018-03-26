@@ -110,7 +110,7 @@ export function getAuthServiceConfigs() {
     SubcategoryService,
     ProductService,
     SubcategoryService,
-   
+    ShelfService,
 ],
 
 
