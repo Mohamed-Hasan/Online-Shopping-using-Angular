@@ -8,10 +8,12 @@ import {RatingModule} from "ngx-rating";
 import { HttpModule  } from "@angular/http";
 
 import { AddProductService } from "./add-product/add-product.service";
+import { HomeService } from "./home/home.service";
 import { AllCategoriesService } from "./all-categories/all-categories.service";
 import { CartService } from "./cart/cart.service";
 import { OrderService } from "./order/order.service";
 import { SalesService } from "./sales/sales.service";
+import { AppService } from "./app.service";
 import { ProductService } from "./product/product.service";
 import { SubcategoryService } from "./subcategory/subcategory.service";
 import { ShelfService } from "./shelf/shelf.service";
@@ -40,6 +42,41 @@ import { LoginService } from  './login.service' ;
 import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider,} from "angular5-social-login";
 import { ActivatedRoute} from '@angular/router';
 import {  Router } from '@angular/router';
+
+import { MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+} from '@angular/material';
+
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -85,17 +122,13 @@ export function getAuthServiceConfigs() {
     FormsModule,
     ImageUploadModule.forRoot(),
     RatingModule,
-<<<<<<< HEAD
     HttpModule,
-    NoopAnimationsModule
-=======
+    NoopAnimationsModule,
     MatSidenavModule,
-    HttpModule,
     HttpClientModule,
     SocialLoginModule,
     // Router,
     
->>>>>>> c67221d1efbd7b4a894c0661f3c226271eacdf72
   ],
   providers: [LoginService,{
     provide: AuthServiceConfig,
@@ -106,15 +139,12 @@ export function getAuthServiceConfigs() {
     CartService,
     OrderService,
     SalesService,
-<<<<<<< HEAD
-  ],
-=======
     ProductService,
     SubcategoryService,
-
+    AppService,
+    HomeService
 ],
 
->>>>>>> c67221d1efbd7b4a894c0661f3c226271eacdf72
   bootstrap: [AppComponent]
 })
 export class AppModule { }

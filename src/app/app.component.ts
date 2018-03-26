@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import { AppService } from './app.service';
-import { LoginService } from  './login.service' ;
+import { LoginService } from  './login.service';
+import { Http } from "@angular/http";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
+// export class SidenavAutosizeExample {
+//   showFiller = false;
+// }
 export class AppComponent {
   CatArr;
 
-  constructor(private login_service:LoginService, private AppService : AppService) 
+  constructor(private login_service: LoginService, private AppService : AppService) 
   {
     this.login_service.username="AppComponent Global Service";
     console.log("app comp",this.login_service.username)
@@ -25,6 +29,8 @@ export class AppComponent {
   }
 
 
+  
+ 
 
   categories = 
   [

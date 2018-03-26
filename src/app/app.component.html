@@ -15,22 +15,7 @@
 </div> -->
 
 
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
-  </mat-drawer>
 
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
-    </button>
-  </div>
-
-</mat-drawer-container>
 
 
 
@@ -130,22 +115,21 @@
   <div class="container">
     <div id="responsive-nav">
       <!-- category nav -->
-      <div (click)="toggleClass()" [class.show-on-click]="show" class="category-nav ">
-        <span class="category-header">Categories
-          <i class="fa fa-list"></i>
-        </span>
-        <ul class="category-list">
-          <li *ngFor="let cat of categories" class="dropdown side-dropdown">
-            <a [routerLink]="subcat">{{cat.name}}</a>  <!-- subcat/id -->
-          </li>
-          <li>
-            <a routerLink="allCat">View All</a>
-          </li>
-        </ul>
+      <div>
+          <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="category-header">Categories
+              <i class="fa fa-list"></i>
+            </span>
+          <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <ul>
+                <li *ngFor="let cat of categories">{{cat.name}}</li>
+            </ul>  
+          </div>
       </div>
       <!-- /category nav -->
 
       <!-- menu nav -->
+   
       <div class="menu-nav">
         <span class="menu-header">Menu
           <i class="fa fa-bars"></i>
