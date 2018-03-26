@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ImageUploadModule } from "angular2-image-upload";
 import {RatingModule} from "ngx-rating";
-import {MatSidenavModule} from '@angular/material/sidenav';
 import { HttpModule  } from "@angular/http";
 
 import { AddProductService } from "./add-product/add-product.service";
@@ -33,6 +32,7 @@ import { SalesComponent } from './sales/sales.component';
 import { SearchComponent } from './search/search.component';
 import { ShelfComponent } from './shelf/shelf.component';
 import { AllCategoriesComponent } from './all-categories/all-categories.component';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -59,11 +59,8 @@ import { AllCategoriesComponent } from './all-categories/all-categories.componen
     FormsModule,
     ImageUploadModule.forRoot(),
     RatingModule,
-<<<<<<< HEAD
-=======
-    MatSidenavModule,
     HttpModule,
-
+    NoopAnimationsModule
   ],
   providers: [
     AddProductService,
@@ -71,7 +68,6 @@ import { AllCategoriesComponent } from './all-categories/all-categories.componen
     CartService,
     OrderService,
     SalesService,
->>>>>>> 8978120a6fa48fd7dd967ce8093edb5e411638f9
   ],
   bootstrap: [AppComponent]
 })

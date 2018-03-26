@@ -28,7 +28,7 @@ export class AddProductComponent implements OnInit {
       quantity:1,
       description:null,
       image:null,
-      };
+    };
     //send product to api 
     this.AddProductService.addProduct(this.product).subscribe(res => console.log(res));
     this.added = true;
