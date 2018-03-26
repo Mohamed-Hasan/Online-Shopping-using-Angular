@@ -3,6 +3,7 @@ import { Component, DoCheck } from '@angular/core';
 import { AppService } from './app.service';
 import { LoginService } from  './login.service' ;
 import { Subscription } from 'rxjs/Subscription';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent implements DoCheck {
 
   CatArr;
 
-  constructor(private login_service:LoginService, private AppService : AppService) 
+  constructor(private login_service:LoginService, private AppService : AppService,private route: Router) 
   {
         
       console.log("AppComponent Global Service");
@@ -82,6 +83,14 @@ export class AppComponent implements DoCheck {
   }
 
 
+  logout(){
+
+    //get token from loca storage
+    localStorage.removeItem('token');
+    this.logged=false;
+    this.login_service.setduserdata('');
+    this.route.navigate(['']);
+  }
 
 
 }

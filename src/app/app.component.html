@@ -73,6 +73,7 @@
             </div>
             <a *ngIf="!logged" routerLink="/login" class="text-uppercase">Login / </a>
             <a *ngIf="!logged" routerLink="/signup" class="text-uppercase">Join</a>
+            <a *ngIf="logged" (click)=" logout()" class="text-uppercase">LogOut</a>
 
             <ul *ngIf="logged" class="custom-menu">
               <li>
