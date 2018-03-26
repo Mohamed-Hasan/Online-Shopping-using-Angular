@@ -5,10 +5,10 @@
     </a>
     </p> -->
     
-    <div *ngFor="let c of CatArr" id="myDropdown" class="dropdown-content">
-        <button onclick="down()" class="dropbtn" >{{c.name}}</button><br>
+    <div *ngFor="let cat of CatArr" id="myDropdown" class="dropdown-content">
+        <button onclick="down()" class="dropbtn" >{{cat.categoryName}}</button><br>
         <div id="myDropdown" class="dropdown-content">
-            <a *ngFor="let s of c.values" href="http://localhost:4200/{{c.name}}/{{s}}" class="SubCat">{{s}}<br></a>
+            <a *ngFor="let sub of cat.subcategoryId" routerLink="subcat/{{sub._id}}" class="SubCat">{{sub.subcatName}}<br></a>
         </div>
     </div>
 

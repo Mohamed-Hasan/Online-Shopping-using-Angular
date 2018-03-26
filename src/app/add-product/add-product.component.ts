@@ -13,6 +13,7 @@ export class AddProductComponent implements OnInit {
     quantity:1,
     description:null,
     image:null,
+    sellerId:1,
   };
   constructor( private AddProductService: AddProductService ) { }
 
@@ -22,16 +23,10 @@ export class AddProductComponent implements OnInit {
 
   submit(){
     console.log(this.product);
-    // this.product={
-    //   name:null,
-    //   price:0,
-    //   quantity:1,
-    //   description:null,
-    //   image:null,
-    //   };
-    //send product to api 
-    this.AddProductService.addProduct(this.product).subscribe(res => console.log(res));
-    console.log("hi")
+    this.AddProductService.addProduct(this.product).subscribe((res) => {
+      console.log(res);
+      
+    });
     // this.added = true;
   }
 

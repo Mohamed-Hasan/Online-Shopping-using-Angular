@@ -32,8 +32,9 @@
             <div [hidden]="qty.valid || qty.pristine" class="alert alert-danger">Quantity can not be blank</div>
 
             <label for="description">Product Description:</label>
-            <textarea type="text" id="description" name="description" [(ngModel)]="product.description" #desc="ngModel"></textarea>
-            
+            <textarea type="text" id="description" name="description" [(ngModel)]="product.description" #desc="ngModel" required></textarea>
+            <div [hidden]="desc.valid || desc.pristine" class="alert alert-danger">description can not be blank</div>
+
             <image-upload (removed)="onRemoved($event)" (uploadFinished)="onFileChange($event)" [max]="1" [extensions]="['jpg','png','gif']" [buttonCaption]="'Profile Picture'" [maxFileSize]="1048576" [fileTooLargeMessage]="'Image too large!'" [dropBoxMessage]="'Drop your image here!'"></image-upload>
         </fieldset>
         <button type="submit" [disabled]="!addProdForm.form.valid">Add Product</button>  
