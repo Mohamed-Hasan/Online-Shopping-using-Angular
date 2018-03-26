@@ -16,4 +16,8 @@ export class AddProductService{
         const prod = JSON.stringify(product)
         return this.http.post('https://localhost:9010/products/add', prod , {headers:this.headers}).map((res)=>res.json())
     }
+
+    getSubCategories(subcatId){
+        return this.http.get(`https://localhost:9010/categories/${subcatId}`).map(res=>res.json());
+    }
 }

@@ -21,7 +21,7 @@ export class CartComponent implements OnInit {
   constructor(private login_service:LoginService, private CartService: CartService, private router :Router) {
 
     console.log('home comp');
-  console.log('user from global login service',this.login_service.username);
+  // console.log('user from global login service',this.login_service.username);
 
    }
   
@@ -85,7 +85,5 @@ export class CartComponent implements OnInit {
     } else {
       this.router.navigate(['login']);
     }
-    
   }
-
 }

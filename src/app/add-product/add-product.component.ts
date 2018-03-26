@@ -1,33 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { AddProductService } from "./add-product.service";
+import { AllCategoriesService } from "../all-categories/all-categories.service";
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
-  added=false;
-  product={
-    name:null,
-    price:0,
-    quantity:1,
-    description:null,
-    image:null,
-    sellerId:1,
+  added = false;
+  product = {
+    name: null,
+    price: 0,
+    amountAvailable: 1,
+    description: null,
+    image: null,
+    category:null,
+    subcategory:null,
   };
-  constructor( private AddProductService: AddProductService ) { }
+  CatArr;
+  subcatArr;
+  constructor(private AddProductService: AddProductService, private AllCategoriesService: AllCategoriesService) { }
 
   ngOnInit() {
-
+    this.getcategoriesList();
   }
 
-  submit(){
-    console.log(this.product);
-    this.AddProductService.addProduct(this.product).subscribe((res) => {
+  // API --> get all categories and subcategories
+  getcategoriesList() {
+    this.AllCategoriesService.getAllCategories().subscribe(res => {
       console.log(res);
-      
-    });
-    // this.added = true;
+      this.CatArr = res;
+    })
+  }
+
+
+  submit() {
+    console.log(this.product);
+    this.AddProductService.addProduct(this.product).subscribe(res => console.log(res));
+    console.log("hi")
+    this.added = true;
   }
 
   _handleReaderLoaded(readerEvt) {
@@ -43,5 +55,18 @@ export class AddProductComponent implements OnInit {
 
   onRemoved(event) {
     this.product.image = null;
+  }
+
+  onChange(event){
+    console.log(event.target.value)
+    // this.AddProductService.getSubCategories(event.target.value).subscribe(res=>{
+      // console.log(res)
+      // this.subcatArr = res.subcategoryId;
+      this.CatArr.forEach(cat => {
+        if (cat._id == event.target.value) {
+          this.subcatArr = cat.subcategoryId;
+        }
+      });
+    // })
   }
 }

@@ -1,42 +1,61 @@
 <div class="home-wrap">
-    <h1>Add New Product</h1>
-    <div class="jumbotron text-xs-center" [hidden]="!added">
-        <h1 class="display-3">Thank You!</h1>
-        <p class="lead"><strong>Your product has been submitted successfully and it is now available on Souq.com</strong></p>
-        <hr>
-        <p class="lead">
-          <button class="primary-btn add-to-cart" routerLink="">Continue to homepage</button>
-        </p>
-    </div>
-    <form (ngSubmit)="submit()" #addProdForm="ngForm" [hidden]="added">
-        <fieldset>
-            <label for="name">Product Name:</label>
-            <input type="text" id="name" name="name" [(ngModel)]="product.name" required #pname = "ngModel">
-            <div *ngIf="pname.invalid && (pname.dirty || pname.touched)" class="alert alert-danger">
-                <div *ngIf = "pname.errors?.required">
-                    Product Name field can't be blank
-                </div>
-            </div>
+  <h1>Add New Product</h1>
+  <div class="jumbotron text-xs-center" [hidden]="!added">
+    <h1 class="display-3">Thank You!</h1>
+    <p class="lead">
+      <strong>Your product has been submitted successfully and it is now available on Souq.com</strong>
+    </p>
+    <hr>
+    <p class="lead">
+      <button class="primary-btn add-to-cart" routerLink="">Continue to homepage</button>
+    </p>
+  </div>
+  <form (ngSubmit)="submit()" #addProdForm="ngForm" [hidden]="added">
+    <fieldset>
+      <label for="name">Product Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="product.name" required #pname="ngModel">
+      <div *ngIf="pname.invalid && (pname.dirty || pname.touched)" class="alert alert-danger">
+        <div *ngIf="pname.errors?.required">
+          Product Name field can't be blank
+        </div>
+      </div>
 
-            <label for="price">Product Price:</label>
-            <input min="1" type="number" id="price" name="price" #pprice = "ngModel" [(ngModel)]="product.price" required>
-            <!-- <div [hidden]="em.valid || em.pristine" class="alert alert-danger">Email is must be in the form a@b.cc</div> -->
-            <div *ngIf="pprice.invalid && (pprice.dirty || pprice.touched)" class="alert alert-danger">
-                <div *ngIf = "pprice.errors?.required">
-                    price field can't be blank
-                </div>
-            </div>
+      <label for="name">Product Category:</label>
+      <select id="category" name="category" [(ngModel)]="product.category" required #categ (change)="onChange($event)">
+        <option *ngFor="let cat of CatArr" value="{{cat._id}}">{{cat.categoryName}}</option>
+      </select>
+      <div *ngIf="categ.errors?.required">
+        Product Category field can't be blank
+      </div>
 
-            <label for="quantity">Available Quantity:</label>
-            <input type="number" id="qty" name="quantity"[(ngModel)]="product.quantity" min="1" #qty = "ngModel" value="1" required>
-            <div [hidden]="qty.valid || qty.pristine" class="alert alert-danger">Quantity can not be blank</div>
+      <label for="name">Product SubCategory:</label>
+      <select id="subcategory" name="subcategory" [(ngModel)]="product.subcategory" required #subcateg>
+        <option *ngFor="let subcat of subcatArr" value="{{subcat._id}}">{{subcat.subcatName}}</option>
+      </select>
+      <div *ngIf="subcateg.errors?.required">
+        Product SubCategory field can't be blank
+      </div>
 
-            <label for="description">Product Description:</label>
-            <textarea type="text" id="description" name="description" [(ngModel)]="product.description" #desc="ngModel" required></textarea>
-            <div [hidden]="desc.valid || desc.pristine" class="alert alert-danger">description can not be blank</div>
+      <label for="price">Product Price:</label>
+      <input min="1" type="number" id="price" name="price" #pprice="ngModel" [(ngModel)]="product.price" required>
+      <!-- <div [hidden]="em.valid || em.pristine" class="alert alert-danger">Email is must be in the form a@b.cc</div> -->
+      <div *ngIf="pprice.invalid && (pprice.dirty || pprice.touched)" class="alert alert-danger">
+        <div *ngIf="pprice.errors?.required">
+          price field can't be blank
+        </div>
+      </div>
 
-            <image-upload (removed)="onRemoved($event)" (uploadFinished)="onFileChange($event)" [max]="1" [extensions]="['jpg','png','gif']" [buttonCaption]="'Profile Picture'" [maxFileSize]="1048576" [fileTooLargeMessage]="'Image too large!'" [dropBoxMessage]="'Drop your image here!'"></image-upload>
-        </fieldset>
-        <button type="submit" [disabled]="!addProdForm.form.valid">Add Product</button>  
-    </form>
+      <label for="quantity">Available Quantity:</label>
+      <input type="number" id="qty" name="quantity" [(ngModel)]="product.amountAvailable" min="1" #qty="ngModel" value="1" required>
+      <div [hidden]="qty.valid || qty.pristine" class="alert alert-danger">Quantity can not be blank</div>
+
+      <label for="description">Product Description:</label>
+      <textarea type="text" id="description" name="description" [(ngModel)]="product.description" #desc="ngModel" required></textarea>
+      <div [hidden]="desc.valid || desc.pristine" class="alert alert-danger">description can not be blank</div>
+
+      <image-upload (removed)="onRemoved($event)" (uploadFinished)="onFileChange($event)" [max]="1" [extensions]="['jpg','png','gif']"
+        [buttonCaption]="'Profile Picture'" [maxFileSize]="1048576" [fileTooLargeMessage]="'Image too large!'" [dropBoxMessage]="'Drop your image here!'"></image-upload>
+    </fieldset>
+    <button type="submit" [disabled]="!addProdForm.form.valid">Add Product</button>
+  </form>
 </div>
