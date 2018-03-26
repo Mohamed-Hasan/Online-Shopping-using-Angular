@@ -11,15 +11,21 @@ import { LoginService } from  '../login.service' ;
   styleUrls: ['./home.component.css'],
  
 })
-export class HomeComponent implements OnInit, DoCheck {
-
+export class HomeComponent implements OnInit {
+  
+  product = {
+    id: 2,
+    name: "iphone",
+    price: 800,
+    rating: 3.5,
+    image: null,
+    available: 5,
+    desc: "afefwfregergegegregergergergergergergergergergrregregregergregergergergergergergergergergre",
+  }
 
   constructor(private login_service:LoginService, private HomeService: HomeService) { 
      console.log('home comp');
-      console.log('user user',this.login_service.username);
-      console.log('user Logged',this.login_service.isLogged);
-      console.log('user email',this.login_service.usermail);
-      console.log('user image',this.login_service.userimage);
+   
     
   }
 
@@ -55,15 +61,27 @@ export class HomeComponent implements OnInit, DoCheck {
  
 
 
+
   ngOnInit() {
   }
 
 
-  ngDoCheck() { console.log('user from global login service',this.login_service.username); }
+  //  ngDoCheck() { console.log('user from global login service',this.login_service.username);  }
 
-  addToCart(pname) {
-    console.log(pname)
+  addToCart(proid) {
+    var utoken=localStorage.getItem('token');
+    console.log('product name',proid);
+    this.HomeService.addproducttocart(utoken,proid).subscribe(res=>{
+      if(!res.err)
+      {
+           //product didnt add to db
+      }else
+      {
+        //product  add to db
+      }
+        
+    });
+
   }
-
 
 }

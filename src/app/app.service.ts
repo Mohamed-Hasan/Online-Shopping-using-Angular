@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AppService{
+
     headers;
     constructor( private http: Http ){
         this.headers = new Headers();
@@ -14,5 +15,4 @@ export class AppService{
     getAllCategories(){
         return this.http.get('http://127.0.0.1:9090/allcat',{headers: this.headers}).map(res=>res.json());
     }
-    
 }

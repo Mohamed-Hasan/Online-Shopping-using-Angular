@@ -9,11 +9,15 @@ export class AddProductService{
     constructor(private http: Http){
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
-        this.headers.append('x_access_token', localStorage.getItem('token'));
+        // this.headers.append('X-ACCESS_TOKEN', localStorage.getItem('token'));
     };
 
     addProduct(product){
         const prod = JSON.stringify(product)
-        return this.http.post('https://127.0.0.1:9010/products/add', prod ).map((res)=>res.json())
+        return this.http.post('https://localhost:9010/products/add', prod , {headers:this.headers}).map((res)=>res.json())
+    }
+
+    getSubCategories(subcatId){
+        return this.http.get(`https://localhost:9010/categories/${subcatId}`).map(res=>res.json());
     }
 }

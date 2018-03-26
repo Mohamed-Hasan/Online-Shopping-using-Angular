@@ -8,16 +8,15 @@ import {RatingModule} from "ngx-rating";
 import { HttpModule  } from "@angular/http";
 
 import { AddProductService } from "./add-product/add-product.service";
-import { HomeService } from "./home/home.service";
 import { AllCategoriesService } from "./all-categories/all-categories.service";
 import { CartService } from "./cart/cart.service";
 import { OrderService } from "./order/order.service";
 import { SalesService } from "./sales/sales.service";
-import { AppService } from "./app.service";
 import { ProductService } from "./product/product.service";
 import { SubcategoryService } from "./subcategory/subcategory.service";
 import { ShelfService } from "./shelf/shelf.service";
-
+import { AppService } from "./app.service";
+import { HomeService } from "./home/home.service";
 
 
 import { AppComponent } from './app.component';
@@ -42,40 +41,6 @@ import { LoginService } from  './login.service' ;
 import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider,} from "angular5-social-login";
 import { ActivatedRoute} from '@angular/router';
 import {  Router } from '@angular/router';
-
-import { MatAutocompleteModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatDividerModule,
-  MatExpansionModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatStepperModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule,
-} from '@angular/material';
 
 
 // Configs 
@@ -124,13 +89,15 @@ export function getAuthServiceConfigs() {
     RatingModule,
     HttpModule,
     NoopAnimationsModule,
-    MatSidenavModule,
+    // MatSidenavModule,
     HttpClientModule,
     SocialLoginModule,
+   
     // Router,
     
+
   ],
-  providers: [LoginService,{
+  providers: [LoginService, AppService,HomeService,{
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
   },
@@ -142,8 +109,11 @@ export function getAuthServiceConfigs() {
     ProductService,
     SubcategoryService,
     AppService,
-    HomeService
+    HomeService,
+    ProductService,
+    SubcategoryService,
 ],
+
 
   bootstrap: [AppComponent]
 })

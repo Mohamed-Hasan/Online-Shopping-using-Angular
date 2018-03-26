@@ -11,6 +11,7 @@ export class ProductComponent implements OnInit {
   user;
   id;
   product={
+    id:0,
     name:null,
     price:null,
     image:null,
@@ -38,12 +39,29 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(productId){
-    let exist = this.cart.indexOf(productId);
-    if(exist == -1)
-    {
-      this.cart.push(productId);
-    }
+  
+    // let exist = this.cart.indexOf(productId);
+    // if(exist == -1)
+    // {
+    //   this.cart.push(productId);
+    // }
+
+      var utoken=localStorage.getItem('token');
+      console.log('product name from product comp',productId);
+      this.productService.addproducttocart(utoken,productId).subscribe(res=>{
+        if(!res.err)
+        {
+             //product didnt add to db
+        }else
+        {
+          //product  add to db
+        }
+          
+      });
+      
+
   }
+
 /*
   rate(){
     this.productService.SendRating(this.id,this.user.id,this.userRating).subscribe(res => {

@@ -11,7 +11,7 @@ export class CartService {
     this.headers.append('x_access_token',localStorage.getItem('token')); 
    }
 
-  getProduct(id){
+  getProduct(id){                                                         
     return this.http.get(`https://127.0.0.1:9010/products/${id}`,{headers: this.headers}).map(res=>{
       console.log(res);
       res.json();

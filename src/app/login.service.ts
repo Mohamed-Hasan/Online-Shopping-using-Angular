@@ -3,21 +3,43 @@ import { Http ,Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';///Observable
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class LoginService {
+  
 
-  public username:string;
-  public isLogged:boolean;
-  public usermail:string;
-  public userimage:string;
-  public cart=[];
-   
+  public user=new BehaviorSubject<Object>({});
+  currentuser=this.user.asObservable();
+  
+  public cart =new BehaviorSubject<Array<string>>([]);
+ 
+  currentcart =this.cart.asObservable();
 
   constructor(private http:HttpClient) {
 
+
    }
+
+
+
+setduserdata(name) {
+  console.log('sss',this.user.value);
+  this.user.next(name);
+  console.log('sss',this.user.value);
+}
+
+
+// addproducttocart(productid) {
+
+//   console.log('cart data from service',this.cart.value);
+//   this.cart.next(productid);
+//   console.log('cart data from service',this.cart.value);
+
+// }
+
+
 
 
    sociallogin(id,name,email,image,token):Observable<any>
@@ -31,7 +53,7 @@ export class LoginService {
   login(email,pass):Observable<any>
   {
     var body={email:email,password:pass};
-    return this.http.post<any>('https://localhost:9010/login/',body);//.map((res)=>res.json());
+     return this.http.post<any>('https://localhost:9010/login/',body);//.map((res)=>res.json());
  
   }
   

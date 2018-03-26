@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 import { SubcategoryService } from './subcategory.service';
 @Component({
   selector: 'app-subcategory',
@@ -9,19 +10,19 @@ export class SubcategoryComponent implements OnInit {
   catName;
   subcatName;
   products;
-  subCat /*= {
-    
-    subCatId:null,
-    catName: null,
-    subCatName: null,
-    products:this.products,  [] prod{name/price/rating/image/available/desc}
-  };*/
-
-  constructor( private subcategoryService: SubcategoryService) { }
-
+  subCat
+  subCatId;
+  constructor( private subcategoryService: SubcategoryService, private route: ActivatedRoute) { 
+    this.route.paramMap.subscribe(params => {
+    this.subCatId = params.get('id');
+    console.log(this.subCatId)
+  }) 
+}
   ngOnInit() {
     //send to api to get all products of a certain subcategory... should be array of objects
     //subcat id to be sent to server
+    ;
+    
     let prod1 = {
       name: "iphone",
       price: 800,
@@ -44,7 +45,7 @@ export class SubcategoryComponent implements OnInit {
     this.catName="electronics";
     this.subcatName="mobiles";
 
-    this.subcategoryService.getSubCatProducts(this.subCat.subCatId).subscribe((res)=>{
+    this.subcategoryService.getSubCatProducts(this.subCatId).subscribe((res)=>{
         console.log(res);
         this.subCat=res;
     })

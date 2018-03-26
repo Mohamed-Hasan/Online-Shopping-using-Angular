@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class CartComponent implements OnInit {
   user; // global object of user containing his data
   logged = false;  //global variable that check logged users
-  cart; //Global Array this should contain products' ids
+  cart = [1,2,3,4]; //Global Array this should contain products' ids
   purchases: any[]; //shoudl be array of objects -- each object includes pid & quantity
   checked=false;
 
@@ -21,7 +21,7 @@ export class CartComponent implements OnInit {
   constructor(private login_service:LoginService, private CartService: CartService, private router :Router) {
 
     console.log('home comp');
-  console.log('user from global login service',this.login_service.username);
+  // console.log('user from global login service',this.login_service.username);
 
    }
   
@@ -47,6 +47,7 @@ export class CartComponent implements OnInit {
     /// got to api to get the details of every product
     this.cart.forEach(productId => {
       this.CartService.getProduct(productId).subscribe(res=>{
+        console.log(res)
         this.purchases.push(res);
       })
     });
