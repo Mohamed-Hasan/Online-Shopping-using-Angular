@@ -1,4 +1,6 @@
+
 import { Component, DoCheck } from '@angular/core';
+import { AppService } from './app.service';
 import { LoginService } from  './login.service' ;
 import { Subscription } from 'rxjs/Subscription';
 
@@ -7,17 +9,18 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
+
 export class AppComponent implements DoCheck {
 
   show;
   logged;
   user={name:''};
 
+  CatArr;
 
-  constructor(private login_service:LoginService) 
+  constructor(private login_service:LoginService, private AppService : AppService) 
   {
-    
-    
+        
       console.log("AppComponent Global Service");
       console.log('cart from home',this.login_service.currentuser.subscribe(userrrr=>{
       console.log(userrrr);
@@ -36,6 +39,16 @@ export class AppComponent implements DoCheck {
     }));
     
    
+
+  }
+  
+  
+  getAllCategories(){
+    this.AppService.getAllCategories().subscribe(res =>{
+      console.log(res);
+      this.CatArr = res;
+    })
+
   }
 
 
@@ -61,11 +74,15 @@ export class AppComponent implements DoCheck {
     this.show==false?this.show=true:this.show=false;
   }
 
+
   ngDoCheck(){
 
 
     
   }
+
+
+
 
 }
 

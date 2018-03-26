@@ -1,9 +1,4 @@
 <div class="home-wrap" class="dropdown">
-    <!-- <p>
-    <a *ngFor="let c of CatArr, let i=index" href="http://localhost:4200/{{c.name}}}">{{c.name}}<br>
-    <a *ngFor="let s of c.values, let i=index" href="http://localhost:4200/cat/{{s}}" class="SubCat">{{s}}<br></a>
-    </a>
-    </p> -->
     
     <div *ngFor="let c of CatArr" id="myDropdown" class="dropdown-content">
         <button onclick="down()" class="dropbtn" >{{c.name}}</button><br>

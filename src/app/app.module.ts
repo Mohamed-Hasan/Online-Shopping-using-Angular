@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ImageUploadModule } from "angular2-image-upload";
 import {RatingModule} from "ngx-rating";
-import {MatSidenavModule} from '@angular/material/sidenav';
 import { HttpModule  } from "@angular/http";
 
 import { AddProductService } from "./add-product/add-product.service";
@@ -16,7 +15,8 @@ import { SalesService } from "./sales/sales.service";
 import { ProductService } from "./product/product.service";
 import { SubcategoryService } from "./subcategory/subcategory.service";
 import { ShelfService } from "./shelf/shelf.service";
-
+import { AppService } from "./app.service";
+import { HomeService } from "./home/home.service";
 
 
 import { AppComponent } from './app.component';
@@ -32,6 +32,7 @@ import { OrderComponent } from './order/order.component';
 import { SalesComponent } from './sales/sales.component';
 import { ShelfComponent } from './shelf/shelf.component';
 import { AllCategoriesComponent } from './all-categories/all-categories.component';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { SearchComponent } from './search/search.component';
 
 
@@ -86,15 +87,17 @@ export function getAuthServiceConfigs() {
     FormsModule,
     ImageUploadModule.forRoot(),
     RatingModule,
-    MatSidenavModule,
     HttpModule,
+    NoopAnimationsModule,
+    // MatSidenavModule,
     HttpClientModule,
     SocialLoginModule,
    
     // Router,
     
+
   ],
-  providers: [LoginService,{
+  providers: [LoginService, AppService,HomeService,{
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
   },
@@ -105,8 +108,11 @@ export function getAuthServiceConfigs() {
     SalesService,
     ProductService,
     SubcategoryService,
-
+    ProductService,
+    SubcategoryService,
+   
 ],
+
 
   bootstrap: [AppComponent]
 })

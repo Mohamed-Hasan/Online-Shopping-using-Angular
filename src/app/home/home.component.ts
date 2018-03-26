@@ -1,3 +1,4 @@
+import { HomeService } from './home.service';
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { LoginService } from  '../login.service' ;
 
@@ -13,7 +14,10 @@ import { LoginService } from  '../login.service' ;
 export class HomeComponent implements OnInit {
   
 
-  constructor(private login_service:LoginService) { 
+
+  constructor(private login_service:LoginService, private HomeService: HomeService) { 
+     console.log('home comp');
+   
     
   }
 
@@ -38,6 +42,14 @@ export class HomeComponent implements OnInit {
     desc: "afefwfregergegegregergergergergergergergergergrregregregergregergergergergergergergergergre",
   }
   products = [this.product1, this.product2];
+
+  getProducts(){
+    this.HomeService.getProducts().subscribe(res=>{
+      console.log(res);
+      this.products = res;
+    })
+  }
+    
  
 
 
