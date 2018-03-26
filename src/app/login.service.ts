@@ -9,27 +9,14 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 @Injectable()
 export class LoginService {
   
-  /*public username:string;
-  public isLogged:boolean=false ;
-  public usermail:string;
-  public userimage:string;
-  public isuser:string;
-  public isseller:string;
-  public cart =[];//Observable <Array<string>>;
-*/
+
   public user=new BehaviorSubject<Object>({});
-
   currentuser=this.user.asObservable();
-
-  public isLogged:Observable<boolean>;
-  public usermail:Observable <string>;
-  public userimage:Observable<string>;
-  public isuser:Observable <string>;
-  public isseller:Observable <string>;
-  public cart :Observable <Array<string []>>;
- 
   
-   
+  public cart =new BehaviorSubject<Array<string>>([]);
+ 
+  currentcart =this.cart.asObservable();
+
   constructor(private http:HttpClient) {
 
 
@@ -44,14 +31,13 @@ setduserdata(name) {
 }
 
 
+// addproducttocart(productid) {
 
-getusername() {
-  console.log('return uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
-    // return this.username;
-    
-}
+//   console.log('cart data from service',this.cart.value);
+//   this.cart.next(productid);
+//   console.log('cart data from service',this.cart.value);
 
-
+// }
 
 
 

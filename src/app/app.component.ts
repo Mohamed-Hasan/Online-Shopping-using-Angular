@@ -22,7 +22,7 @@ export class AppComponent implements DoCheck {
   {
         
       console.log("AppComponent Global Service");
-      console.log('cart from home',this.login_service.currentuser.subscribe(userrrr=>{
+      console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
       console.log(userrrr);
       var userdata=JSON.stringify(userrrr);
       console.log('user string',userdata);

@@ -13,7 +13,15 @@ import { LoginService } from  '../login.service' ;
 })
 export class HomeComponent implements OnInit {
   
-
+  product = {
+    id: 2,
+    name: "iphone",
+    price: 800,
+    rating: 3.5,
+    image: null,
+    available: 5,
+    desc: "afefwfregergegegregergergergergergergergergergrregregregergregergergergergergergergergergre",
+  }
 
   constructor(private login_service:LoginService, private HomeService: HomeService) { 
      console.log('home comp');
@@ -53,15 +61,27 @@ export class HomeComponent implements OnInit {
  
 
 
+
   ngOnInit() {
   }
 
 
   //  ngDoCheck() { console.log('user from global login service',this.login_service.username);  }
 
-  addToCart(pname) {
-    console.log(pname)
-  }
+  addToCart(proid) {
+    var utoken=localStorage.getItem('token');
+    console.log('product name',proid);
+    this.HomeService.addproducttocart(utoken,proid).subscribe(res=>{
+      if(!res.err)
+      {
+           //product didnt add to db
+      }else
+      {
+        //product  add to db
+      }
+        
+    });
 
+  }
 
 }
