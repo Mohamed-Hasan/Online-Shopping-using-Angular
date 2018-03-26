@@ -10,15 +10,10 @@ import { LoginService } from  '../login.service' ;
   styleUrls: ['./home.component.css'],
  
 })
-export class HomeComponent implements OnInit, DoCheck {
-
+export class HomeComponent implements OnInit {
+  
 
   constructor(private login_service:LoginService) { 
-     console.log('home comp');
-      console.log('user user',this.login_service.username);
-      console.log('user Logged',this.login_service.isLogged);
-      console.log('user email',this.login_service.usermail);
-      console.log('user image',this.login_service.userimage);
     
   }
 
@@ -50,7 +45,7 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
 
-  ngDoCheck() { console.log('user from global login service',this.login_service.username); }
+  //  ngDoCheck() { console.log('user from global login service',this.login_service.username);  }
 
   addToCart(pname) {
     console.log(pname)

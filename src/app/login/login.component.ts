@@ -4,7 +4,7 @@ import { LoginService } from  '../login.service' ;
 import { DomSanitizer } from '@angular/platform-browser';
 import {AuthService,FacebookLoginProvider,GoogleLoginProvider} from 'angular5-social-login';
 import {Router} from '@angular/router';
-
+import {Observable} from 'rxjs/Observable';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(private login_service:LoginService,private socialAuthService: AuthService, private route: Router) 
   {
     console.log("login comp")
-    console.log('testlogincom',this.login_service.username);
+    // console.log('testlogincom',this.login_service.username);
     //testing send token
     // var utoken=localStorage.getItem('token');
     // // var t=JSON.parse(utoken);
@@ -61,32 +61,16 @@ export class LoginComponent implements OnInit {
             if(!res.err)
             {
               console.log("Set Token  in Local Storage")
-              localStorage.setItem('token',res.token);
-              // localStorage.setItem('user',JSON.stringify( res.user));
-            
               console.log("User Data",res.user);
               console.log("User Email",res.user.email);
-              //Add user data to login service
-              this.login_service.username=res.user.name;
-              this.login_service.usermail=res.user.email;
-              this.login_service.userimage=res.user.image;
-              this.login_service.isLogged=true;
 
+              localStorage.setItem('token',res.token);
+
+              //set user data in login service user
+              this.login_service.setduserdata(res.user);
               this.route.navigate(['']);
 
-              /*
-              var ruser=localStorage.getItem('user');
-              if(ruser != 'undefined')
-              {
-                var t=JSON.parse(ruser);       
-                console.log(t.id);
-                console.log(t.name);
-                console.log(t.email);
-                console.log(t.image);
-                 this.route.navigate(['']);
-
-              }
-             */
+             
             }else{
               //show error message 
               console.log("err",res);
@@ -112,18 +96,16 @@ export class LoginComponent implements OnInit {
     //should send user to service then api
       this.login_service.login(this.email,this.password).subscribe((res)=>{
         console.log("login result",res);
+
         if(!res.err)
         {
+          //set user data in login service user
+          this.login_service.setduserdata(res.user);
+          //set token in local storage
           localStorage.setItem('token',res.token);
-          // localStorage.setItem('user',JSON.stringify( res.user));
-
+          
           console.log("User Loggend data",res.user);
-           //Add user data to login service
-           this.login_service.username=res.user.name;
-           this.login_service.usermail=res.user.email;
-           this.login_service.userimage=res.user.image;
-           this.login_service.isLogged=true;
-
+     
            this.route.navigate(['']);
         
 

@@ -41,6 +41,7 @@ import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginPro
 import { ActivatedRoute} from '@angular/router';
 import {  Router } from '@angular/router';
 
+
 // Configs 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
@@ -89,6 +90,7 @@ export function getAuthServiceConfigs() {
     HttpModule,
     HttpClientModule,
     SocialLoginModule,
+   
     // Router,
     
   ],
