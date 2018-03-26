@@ -1,0 +1,3 @@
+logged: boolean;
+seller: boolean;
+user: object;

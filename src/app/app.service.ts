@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AppService{
+<<<<<<< HEAD
     headers;
     constructor( private http: Http ){
         this.headers = new Headers();
@@ -15,4 +16,9 @@ export class AppService{
         return this.http.get('http://127.0.0.1:9090/allcat',{headers: this.headers}).map(res=>res.json());
     }
     
+=======
+    user
+    constructor(){};
+
+>>>>>>> c67221d1efbd7b4a894c0661f3c226271eacdf72
 }

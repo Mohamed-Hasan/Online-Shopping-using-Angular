@@ -3,7 +3,7 @@ import { Http, Headers, } from "@angular/http";
 import "rxjs/add/operator/map";
 
 @Injectable()
-export class ProductService {
+export class SubcategoryService {
 
   headers: Headers;
   constructor(private http: Http) {
@@ -12,12 +12,14 @@ export class ProductService {
     this.headers.append('x_access_token',localStorage.getItem('token')); 
    }
 
-   getProductDetails(productId)
-   {
-     return this.http.get(`http://127.0.0.1/order/${productId}`, {headers: this.headers}).map(res => res.json());
+   getSubCatProducts(subCatId){
+     return this.http.get(`http://127.0.0.1:9090/subCatProducts/${subCatId}`,{headers:this.headers}).map((res)=>{
+       console.log(res);
+       res.json();
+     })
    }
 
-   SendRating(productId,userId,rate){
-     return this.http.put(`http://127.0.0.1/order/${productId}`,{userId:userId, rate:rate}, {headers: this.headers}).map(res => res.json());
-   }
+
+
+
 }

@@ -65,16 +65,16 @@
           <li class="header-account dropdown default-dropdown">
             <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
               <div class="header-btns-icon">
-                <i class="fa fa-user-o"></i>
+                <i *ngIf="!logged" class="fa fa-user-o"></i>
+                <img *ngIf="logged" src="./assets/images/logo.png" style="max-width: 100%; max-height: 100%" alt="" routerLink="/profile"> <!-- user.image -->
+
               </div>
-              <strong class="text-uppercase">My Account
-                <i class="fa fa-caret-down"></i>
-              </strong>
+              <strong *ngIf="logged" routerLink="/profile" class="text-uppercase">{{user.name}}</strong>
             </div>
             <a *ngIf="!logged" routerLink="/login" class="text-uppercase">Login / </a>
             <a *ngIf="!logged" routerLink="/signup" class="text-uppercase">Join</a>
 
-            <ul class="custom-menu">
+            <ul *ngIf="logged" class="custom-menu">
               <li>
                 <a routerLink="/profile">
                   <i class="fa fa-user-o"></i> My Account</a>
@@ -130,48 +130,13 @@
   <div class="container">
     <div id="responsive-nav">
       <!-- category nav -->
-      <!-- [class.show-on-click]="show" -->
       <div (click)="toggleClass()" [class.show-on-click]="show" class="category-nav ">
         <span class="category-header">Categories
           <i class="fa fa-list"></i>
         </span>
         <ul class="category-list">
-          <li class="dropdown side-dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Women’s Clothing
-              <i class="fa fa-angle-right"></i>
-            </a>
-            <div class="custom-menu">
-              <div class="row">
-                <div class="col-md-3">
-                  <ul class="list-links">
-                    <li>
-                      <h3 class="list-links-title">Sub Categories</h3>
-                    </li>
-                    <li>
-                      <a routerLink="/subcat">Women’s Clothing</a>
-                    </li>
-                    <li>
-                      <a routerLink="/subcat">Men’s Clothing</a>
-                    </li>
-                    <li>
-                      <a routerLink="/subcat">Phones & Accessories</a>
-                    </li>
-                    <li>
-                      <a routerLink="/subcat">Jewelry & Watches</a>
-                    </li>
-                    <li>
-                      <a routerLink="/subcat">Bags & Shoes</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <a href="#">Bags & Shoes</a>
-          </li>
-          <li>
-            <a href="#">Bags & Shoes</a>
+          <li *ngFor="let cat of categories" class="dropdown side-dropdown">
+            <a [routerLink]="subcat">{{cat.name}}</a>  <!-- subcat/id -->
           </li>
           <li>
             <a routerLink="allCat">View All</a>
@@ -190,10 +155,19 @@
             <a routerLink="">Home</a>
           </li>
           <li>
+            <a routerLink="/profile">profile</a>
+          </li>
+          <li *ngIf="seller">
+            <a routerLink="/sales">Sales</a>
+          </li>
+          <li *ngIf="seller">
+            <a routerLink="/shelf">shelf</a>
+          </li>
+          <li>
             <a routerLink="allCat">All Categories</a>
           </li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown">Women
+          <li *ngFor="let cat of categories" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">{{cat.name}}
               <i class="fa fa-caret-down"></i>
             </a>
             <div class="custom-menu">
@@ -203,47 +177,16 @@
                     <li>
                       <h3 class="list-links-title">Sub Categories</h3>
                     </li>
-                    <li>
-                      <a href="#">Women’s Clothing</a>
-                    </li>
-                    <li>
-                      <a href="#">Men’s Clothing</a>
-                    </li>
-                    <li>
-                      <a href="#">Phones & Accessories</a>
-                    </li>
-                    <li>
-                      <a href="#">Jewelry & Watches</a>
-                    </li>
-                    <li>
-                      <a href="#">Bags & Shoes</a>
+                    <li *ngFor="let subcat of cat.subcat">
+                      <a href="#">{{subcat}}</a>
                     </li>
                   </ul>
                 </div>
               </div>
-              <div class="row hidden-sm hidden-xs">
-                <div class="col-md-12">
-                  <hr>
-                  <a class="banner banner-1" href="#">
-                    <img src="./img/banner05.jpg" alt="">
-                    <div class="banner-caption text-center">
-                      <h2 class="white-color">NEW COLLECTION</h2>
-                      <h3 class="white-color font-weak">HOT DEAL</h3>
-                    </div>
-                  </a>
-                </div>
-              </div>
             </div>
           </li>
-          <li>
-            <a routerLink="/sales">Sales</a>
-          </li>
-          <li>
-            <a routerLink="/shelf">shelf</a>
-          </li>
-          <li>
-            <a routerLink="/profile">profile</a>
-          </li>
+          
+          
         </ul>
       </div>
       <!-- menu nav -->
@@ -271,8 +214,8 @@
         <div class="footer">
           <!-- footer logo -->
           <div class="footer-logo">
-            <a class="logo" href="#">
-              <img src="../assets/img/logo.png" alt="">
+            <a class="logo" routerLink="">
+              <img src="./assets/images/logo.png" alt="">
             </a>
           </div>
           <!-- /footer logo -->
@@ -325,7 +268,7 @@
               <a routerLink="/cart">Checkout</a>
             </li>
             <li>
-              <a href="#">Login</a>
+              <a routerLink="/login">Login</a>
             </li>
           </ul>
         </div>

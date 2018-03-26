@@ -12,13 +12,13 @@ export class CartService {
    }
 
   getProduct(id){
-    return this.http.get(`http://127.0.0.1:9090/product/${id}`,{headers: this.headers}).map(res=>{
+    return this.http.get(`https://127.0.0.1:9010/products/${id}`,{headers: this.headers}).map(res=>{
       console.log(res);
       res.json();
     });
   }
   checkout(id,purchases){
-    return this.http.post('http://127.0.0.1/checkout',{id: id, purchases: purchases},{headers: this.headers}).
+    return this.http.post('https://127.0.0.1:9010/checkout',{id: id, purchases: purchases},{headers: this.headers}).
       map(res=>{
         res.json();
         console.log(res);

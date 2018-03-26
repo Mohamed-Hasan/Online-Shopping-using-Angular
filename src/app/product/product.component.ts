@@ -44,7 +44,7 @@ export class ProductComponent implements OnInit {
       this.cart.push(productId);
     }
   }
-
+/*
   rate(){
     this.productService.SendRating(this.id,this.user.id,this.userRating).subscribe(res => {
       console.log(res);
@@ -52,5 +52,5 @@ export class ProductComponent implements OnInit {
     this.productService.getProductDetails(this.id).subscribe(res => {
       this.product = res;
     })
-  }
+  }*/
 }

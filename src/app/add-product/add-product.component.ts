@@ -29,9 +29,17 @@ export class AddProductComponent implements OnInit {
       description:null,
       image:null,
     };
+    // this.product={
+    //   name:null,
+    //   price:0,
+    //   quantity:1,
+    //   description:null,
+    //   image:null,
+    //   };
     //send product to api 
     this.AddProductService.addProduct(this.product).subscribe(res => console.log(res));
-    this.added = true;
+    console.log("hi")
+    // this.added = true;
   }
 
   _handleReaderLoaded(readerEvt) {
