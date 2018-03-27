@@ -67,6 +67,7 @@ export class AddProductComponent implements OnInit {
     }
     else{
       console.log("submit")
+      console.log(this.product)
       this.AddProductService.addProduct(this.product).subscribe(res => console.log(res));
       this.submitted = true;
     }
@@ -90,6 +91,7 @@ export class AddProductComponent implements OnInit {
 
   onChange(event){
     console.log(event.target.value)
+    this.product.category=event.target.value;
     // this.AddProductService.getSubCategories(event.target.value).subscribe(res=>{
       // console.log(res)
       // this.subcatArr = res.subcategoryId;
@@ -101,6 +103,7 @@ export class AddProductComponent implements OnInit {
     // })
   }
 
-  update(){
+  onChangesub(event){
+    this.product.subcategory=event.target.value;
   }
 }

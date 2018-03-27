@@ -21,10 +21,10 @@ const routes = [
     {path : 'signup', component : SignUpComponent},
     {path : '', component : HomeComponent},
     {path : 'profile', component : ProfileComponent},
-    {path : 'subcat/:id', component : SubcategoryComponent},
+    {path : 'subcat/:subcat/:id', component : SubcategoryComponent},
     {path : 'allCat/subcat/:id', component : SubcategoryComponent},
     {path : 'allCat', component : AllCategoriesComponent},
-    {path : 'product', component : ProductComponent},
+    {path : 'product/:id', component : ProductComponent},
     {path : 'cart', component : CartComponent},
     {path : 'search', component : SearchComponent},
 
