@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {SignupService } from  '../signup.service' ;
+import {Router} from '@angular/router';
+
+
+
+
 
 @Component({
   selector: 'app-sign-up',
@@ -8,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
 export class SignUpComponent implements OnInit {
   
   seller=false;
+  msg;
 
   user ={
     name: null,
@@ -17,19 +24,48 @@ export class SignUpComponent implements OnInit {
     image: null,
     NationaID: null,
   }
-  constructor() { }
+  constructor(private signup_service:SignupService,private route: Router) { }
 
   ngOnInit() {
 
   }
   submit() {
     console.log(this.user);
+ 
     if(this.seller==true)
     {
       //should send seller data to service then to api
+      this.signup_service.signupseller(this.user.name,this.user.password,this.user.email,this.user.image,this.user.NationaID).subscribe(
+        (res)=>{
+          if(!res.err)
+          {
+             //go to login
+             this.route.navigate(['/login']);
+          }else
+          {
+              //duplicated email
+               this.msg="Invalid User Data ";
+          }
+          
+        }); 
+     
       
     }else{
       //should send user data to service then to api
+      this.signup_service.signupuser(this.user.name,this.user.password,this.user.email,this.user.image).subscribe(
+        (res)=>{
+          if(!res.err)
+          {
+             //go to login
+             this.route.navigate(['/login']);
+          }else
+          {
+              //duplicated email
+               this.msg="Invalid User Data ";
+          }
+          
+        }); 
+     
     }
   }
 

@@ -44,6 +44,7 @@
         [buttonCaption]="'Profile Picture'" [maxFileSize]="1048576" [fileTooLargeMessage]="'Image too large!'" [dropBoxMessage]="'Drop your image here!'"></image-upload>
     </fieldset>
     <button type="submit" [disabled]="!signupForm.form.valid">Sign Up</button>
+    <label>{{msg}}</label>
     <div>
       <p style="font-size: 20px">Want to be a seller?
         <a style="color: blue;font-size: 20px" (click)="sellerSignup()">Sell with us now</a>
