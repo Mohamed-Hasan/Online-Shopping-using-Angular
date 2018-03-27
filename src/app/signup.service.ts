@@ -11,18 +11,18 @@ export class SignupService {
   }
 
 
-  signupuser(name,pass,email,image):Observable<any>
+  signupuser(name,pass,email,image,add):Observable<any>
   {
-    var body={email:email,password:pass,name:name,image:image};
+    var body={email:email,password:pass,name:name,image:image,address:add};
      return this.http.post<any>('https://localhost:9010/users/add',body);//.map((res)=>res.json());
  
   }
 
 
 
-  signupseller(name,pass,email,image,natid):Observable<any>
+  signupseller(name,pass,email,image,natid,add):Observable<any>
   {
-    var body={email:email,password:pass,name:name,image:image,NationalId:natid};
+    var body={email:email,password:pass,name:name,image:image,nationalId:natid,address:add};
      return this.http.post<any>('https://localhost:9010/users/add_seller',body);//.map((res)=>res.json());
  
   }

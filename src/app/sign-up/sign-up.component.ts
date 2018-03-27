@@ -36,15 +36,17 @@ export class SignUpComponent implements OnInit {
     if(this.seller==true)
     {
       //should send seller data to service then to api
-      this.signup_service.signupseller(this.user.name,this.user.password,this.user.email,this.user.image,this.user.NationaID).subscribe(
+      this.signup_service.signupseller(this.user.name,this.user.password,this.user.email,this.user.image,this.user.NationaID,this.user.address).subscribe(
         (res)=>{
+          console.log('sellerrrrrrrrrrrrr',res);
           if(!res.err)
           {
              //go to login
-             console.log("Seller added");
+             
              this.route.navigate(['/login']);
           }else
           {
+            console.log("Seller  not added",res.err);
               //duplicated email
               console.log("Seller Dont added");
                this.msg="Invalid User Data ";
@@ -55,15 +57,18 @@ export class SignUpComponent implements OnInit {
       
     }else{
       //should send user data to service then to api
-      this.signup_service.signupuser(this.user.name,this.user.password,this.user.email,this.user.image).subscribe(
+      this.signup_service.signupuser(this.user.name,this.user.password,this.user.email,this.user.image,this.user.address).subscribe(
         (res)=>{
+          console.log('userrrrrrrrrrrrrrrrr',res);
           if(!res.err)
           {
+            // console.log("Seller added",res.err);
              //go to login
              console.log("User added");
              this.route.navigate(['/login']);
           }else
           {
+            console.log("Test user not  added",res.err);
               //duplicated email
               console.log("User dont added");
                this.msg="Invalid User Data ";
