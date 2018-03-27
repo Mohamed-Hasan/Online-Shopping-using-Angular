@@ -23,7 +23,7 @@ export class SignupService {
   signupseller(name,pass,email,image,natid):Observable<any>
   {
     var body={email:email,password:pass,name:name,image:image,NationalId:natid};
-     return this.http.post<any>('https://localhost:9010/seller/',body);//.map((res)=>res.json());
+     return this.http.post<any>('https://localhost:9010/users/add_seller',body);//.map((res)=>res.json());
  
   }
 

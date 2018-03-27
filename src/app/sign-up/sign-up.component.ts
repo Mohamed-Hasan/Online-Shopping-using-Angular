@@ -41,10 +41,12 @@ export class SignUpComponent implements OnInit {
           if(!res.err)
           {
              //go to login
+             console.log("Seller added");
              this.route.navigate(['/login']);
           }else
           {
               //duplicated email
+              console.log("Seller Dont added");
                this.msg="Invalid User Data ";
           }
           
@@ -58,10 +60,12 @@ export class SignUpComponent implements OnInit {
           if(!res.err)
           {
              //go to login
+             console.log("User added");
              this.route.navigate(['/login']);
           }else
           {
               //duplicated email
+              console.log("User dont added");
                this.msg="Invalid User Data ";
           }
           
