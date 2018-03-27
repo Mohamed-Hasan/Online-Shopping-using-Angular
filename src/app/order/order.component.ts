@@ -29,7 +29,7 @@ export class OrderComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.route.params.subscribe(params => this.order.id = +params['id']);
+    this.route.params.subscribe(params => this.order.id = params['id']);
     console.log(this.order.id);
 
     this.orderService.getOrderDetails(this.order.id).subscribe(res => {

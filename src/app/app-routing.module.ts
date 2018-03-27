@@ -21,7 +21,8 @@ const routes = [
     {path : 'signup', component : SignUpComponent},
     {path : '', component : HomeComponent},
     {path : 'profile', component : ProfileComponent},
-    {path : 'subcat', component : SubcategoryComponent},
+    {path : 'subcat/:id', component : SubcategoryComponent},
+    {path : 'allCat/subcat/:id', component : SubcategoryComponent},
     {path : 'allCat', component : AllCategoriesComponent},
     {path : 'product', component : ProductComponent},
     {path : 'cart', component : CartComponent},
@@ -29,7 +30,7 @@ const routes = [
 
 // seller routes
     {path : 'add', component : AddProductComponent},
-    {path : 'edit', component : AddProductComponent},
+    {path : 'edit/:id', component : AddProductComponent},
     {path : 'order/:id', component : OrderComponent},
     {path : 'sales', component : SalesComponent},
     {path : 'shelf', component : ShelfComponent},

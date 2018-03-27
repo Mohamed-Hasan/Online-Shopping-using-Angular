@@ -10,7 +10,6 @@ export class HomeService {
   constructor( private http: Http,private htttpclient:HttpClient ) {
     this.headers  = new Headers();
     this.headers.append('Content-Type', 'application/json')
-    this.headers.append('x_access_token', localStorage.getItem('token'))
   }
 
   getProducts(){
@@ -25,7 +24,7 @@ export class HomeService {
       productId:pid
     };
 
-    return this.htttpclient.post<any>('https://localhost:9010/user/addtochart',body);
+    return this.htttpclient.post<any>('https://localhost:9010/user/addtocart',body);
 
   }
 

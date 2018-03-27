@@ -33,6 +33,11 @@
       <input type="password" id="repassword" name="user_repassword" [(ngModel)]="user.repassword" minlength="8" #repass="ngModel" required>
       <div [hidden]="repass.valid && pass.value == repass.value || repass.pristine" class="alert alert-danger">Password Mismatch</div>
 
+      <label for="Address">Address:</label>
+        <input type="text" id="Address" name="Address" [(ngModel)]="user.address" #ADDR="ngModel"
+          required>
+        <div [hidden]="ADDR.valid || ADDR.pristine" class="alert alert-danger">Address Can not be blank</div>
+
       <div *ngIf="seller">
         <label for="NationaID">National ID:</label>
         <input type="text" id="NationaID" name="NationaID" pattern="[0-9]{14}" [(ngModel)]="user.NationaID" minlength="14" maxlength="14" #NID="ngModel"
@@ -43,8 +48,10 @@
       <image-upload (removed)="onRemoved($event)" (uploadFinished)="onFileChange($event)" [max]="1" [extensions]="['jpg','png','gif']"
         [buttonCaption]="'Profile Picture'" [maxFileSize]="1048576" [fileTooLargeMessage]="'Image too large!'" [dropBoxMessage]="'Drop your image here!'"></image-upload>
     </fieldset>
+
     <button type="submit" [disabled]="!signupForm.form.valid">Sign Up</button>
     <label>{{msg}}</label>
+
     <div>
       <p style="font-size: 20px">Want to be a seller?
         <a style="color: blue;font-size: 20px" (click)="sellerSignup()">Sell with us now</a>

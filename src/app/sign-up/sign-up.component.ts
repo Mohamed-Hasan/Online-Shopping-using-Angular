@@ -23,6 +23,7 @@ export class SignUpComponent implements OnInit {
     repassword: null,
     image: null,
     NationaID: null,
+    address:null,
   }
   constructor(private signup_service:SignupService,private route: Router) { }
 

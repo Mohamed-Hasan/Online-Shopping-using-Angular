@@ -1,18 +1,18 @@
 <div class="home-wrap" style="margin: auto">
         <div class="section-title">
-                <h3 class="title"> My Shelf </h3>
+                <h3 class="title"> My Stock </h3>
         </div>
         <div id="breadcrumb">
             <div class="container">
                 <ul class="breadcrumb">
                     <li><a routerLink="">Home</a></li>
-                    <li><a routerLink="/shelf">Shelf</a></li>
+                    <li><a routerLink="/shelf">Stock</a></li>
                 </ul>
             </div>
         </div>
         <div *ngFor="let product of shelf" class="row product-container"> <!-- start of for loop -->
             <div class="col-md-2">
-                <img src="../../assets/img/banner01.jpg" alt=""> <!-- prod img ==> src="data:image/png;base64,{{product.image}}" --> 
+                <img src="data:image/png;base64,{{product.image}}" alt=""> <!-- prod img ==> src="data:image/png;base64,{{product.image}}" --> 
             </div>
             <div class="col-md-7">
                 <a><h3>{{product.name}}</h3></a> <!-- prod name -->
@@ -21,13 +21,13 @@
                 </div>
                     
                 <div style="overflow-wrap: break-word"> <!-- prod desc -->
-                    {{product.desc}}
+                    {{product.description}}
                 </div>
             </div>
             <div class="col-md-3">
                 <h3 class="price primary-color">{{product.price}} $</h3><br> <!-- prod price -->
-                <h5 class="price">{{product.available}} available </h5><br> <!-- prod available -->
-                <button routerLink="/edit" class="center price primary-btn add-to-cart">Edit Product</button>  <!-- prod id -->
+                <h5 class="price">{{product.amountAvailable}} available </h5><br> <!-- prod available -->
+                <button routerLink="/edit/{{product._id}}" class="center price primary-btn add-to-cart">Edit Product</button>  <!-- prod id -->
             </div>      
         </div>
         
