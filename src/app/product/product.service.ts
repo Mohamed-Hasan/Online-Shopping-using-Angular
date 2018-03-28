@@ -26,6 +26,7 @@ export class ProductService {
      return this.http.post(`https://localhost:9010/products/rate/${productId}`,{ rate:rate}).map(res => res.json());
    }
 
+  
 
    addproducttocart(utoken,pid){
     console.log('Product Service',utoken,pid);
@@ -33,8 +34,12 @@ export class ProductService {
       usertoken:utoken,
       productId:pid
     };
-    return this.htttpclient.post<any>('https://localhost:9010/user/addtochart',body);
+    console.log('Product service');
+    return this.htttpclient.put<any>(`https://localhost:9010/user/addtocart/${pid}`,body);
   }
+
+
+
   
 
 

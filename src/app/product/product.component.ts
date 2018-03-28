@@ -40,12 +40,19 @@ export class ProductComponent implements OnInit {
     })
     }
 
+
+  // ngOnInit() {
+  //   console.log("init")
+  //   console.log("id in init",this.id)
+
+  // }
+
   ngOnInit() {
     
    }
 
+
   addToCart(productId){
-  
     // let exist = this.cart.indexOf(productId);
     // if(exist == -1)
     // {
@@ -85,8 +92,6 @@ export class ProductComponent implements OnInit {
       
     }));
 
-     
-
   }
 
 
@@ -99,4 +104,5 @@ export class ProductComponent implements OnInit {
       this.product = res;
     })
   }
+
 }
