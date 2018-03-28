@@ -66,7 +66,7 @@
             <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
               <div class="header-btns-icon">
                 <i *ngIf="!logged" class="fa fa-user-o"></i>
-                <img *ngIf="logged" src="./assets/images/logo.png" style="max-width: 100%; max-height: 100%" alt="" routerLink="/profile"> <!-- user.image -->
+                <img *ngIf="logged" src="data:image/png;base64,{{user?.image}}" style="max-width: 100%; max-height: 100%" alt="" routerLink="/profile"> <!-- user.image -->
 
               </div>
               <strong *ngIf="logged" routerLink="/profile" class="text-uppercase">{{user.name}}</strong>
