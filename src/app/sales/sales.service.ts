@@ -8,15 +8,13 @@ export class SalesService {
 
   headers: Headers;
   constructor(private http: Http) {
-    this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/json');
-    this.headers.append('x_access_token',localStorage.getItem('token')); 
    }
 
    getMySales(sellerId){
-     return this.http.get(`http://127.0.0.1/sales/${sellerId}`,{headers: this.headers}).map(res=>{
+     console.log("in getMySales fn")
+     return this.http.get(`https://localhost:9010/orders/sellerorders/${sellerId}`).map(res=>{
        console.log(res);
-       res.json();
+       return res.json();
      })
    }
 

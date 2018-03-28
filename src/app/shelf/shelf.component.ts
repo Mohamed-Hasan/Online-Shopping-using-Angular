@@ -20,6 +20,7 @@ export class ShelfComponent implements OnInit {
   }
 
   getShelf(){
+    console.log("in getshelf")
     this.ShelfService.getShelf("5ab95e2bda28ff74357c2f03").subscribe(res=>{console.log(res);this.shelf=res})
   }
 }

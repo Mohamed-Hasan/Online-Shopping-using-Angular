@@ -8,7 +8,7 @@ import { SalesService } from "./sales.service";
 export class SalesComponent implements OnInit {
 
   orders;
-  seller;  //should be set during seller login as a global variable
+  seller={id:1};  //should be set during seller login as a global variable
   constructor(private salesService: SalesService) { }
 
   ngOnInit() {
@@ -53,9 +53,9 @@ export class SalesComponent implements OnInit {
       quantity: 5,
       state: "delivered",
     }
-    this.orders=[order1,order2];
+    // this.orders=[order1,order2];
 
-    // this.getMySales();
+    this.getMySales();
   }
 
   getMySales(){

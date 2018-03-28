@@ -10,6 +10,8 @@
                 </ul>
             </div>
         </div>
+
+        <button routerLink="/add" class="center price primary-btn add-to-cart pull-right" >Add New Product</button> <br><br>
         <div *ngFor="let product of shelf" class="row product-container"> <!-- start of for loop -->
             <div class="col-md-2">
                 <img src="data:image/png;base64,{{product.image}}" alt=""> <!-- prod img ==> src="data:image/png;base64,{{product.image}}" --> 
