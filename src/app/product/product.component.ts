@@ -34,19 +34,13 @@ export class ProductComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.route.params.subscribe(params => this.id = +params['id']);
+    this.route.params.subscribe(params => this.id = params['id']);
 
     this.productService.getProductDetails(this.id).subscribe(res => {
       this.product = res;
       console.log("in my constructor",this.product)
     })
    }
-
-  ngOnInit() {
-    console.log("init")
-    console.log("id in init",this.id)
-
-  }
 
   addToCart(productId){
   
