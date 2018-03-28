@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from './search.service'
 
 @Component({
   selector: 'app-search',
@@ -8,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class SearchComponent implements OnInit {
 
   orders:object[];
+  searchItem;
+  searchResult;
 
-  constructor() { }
+  constructor( private SearchService: SearchService) { }
 
   ngOnInit() {
     //send to api to get all orders of a certain seller... should be array of objects
@@ -54,6 +57,12 @@ export class SearchComponent implements OnInit {
       state: "delivered",
     }
     this.orders=[order1,order2];
+  }
+
+  getSearchResults(){
+    this.SearchService.getSearchResults(this.searchItem).subscribe(res=>{
+      this.searchResult = res;
+    })
   }
 
 }

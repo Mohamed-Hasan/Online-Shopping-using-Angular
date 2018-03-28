@@ -1,6 +1,7 @@
 
 import { Component, DoCheck } from '@angular/core';
 import { AppService } from './app.service';
+import { Http } from "@angular/http";
 import { LoginService } from  './login.service' ;
 import { Subscription } from 'rxjs/Subscription';
 import {Router} from '@angular/router';
@@ -12,8 +13,14 @@ import {Router} from '@angular/router';
 })
 
 export class AppComponent implements DoCheck {
+<<<<<<< HEAD
   seller=true;
+=======
+  panelOpenState: boolean = false;
+
+>>>>>>> aab98920a933ea82d94b505a68cdad8c8b189250
   show;
+  open = false;
   logged;
   user={name:''};
 
@@ -51,8 +58,6 @@ export class AppComponent implements DoCheck {
     })
 
   }
-
-
 
   categories = 
   [
