@@ -23,7 +23,7 @@ export class ProductService {
    SendRating(productId,rate){
      console.log("rating",rate)
      console.log("prodId",productId)
-     return this.http.post(`http://localhost:9010/products/rate/${productId}`,{ ratings:rate}).map(res => res.json());
+     return this.http.post(`https://localhost:9010/products/rate/${productId}`,{ rate:rate}).map(res => res.json());
    }
 
 

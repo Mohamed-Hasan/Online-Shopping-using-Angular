@@ -29,9 +29,9 @@
 							<h3 class="product-price">{{product?.price}} $</h3> <!-- prod price -->
 							<div>
 								<div class="product-rating">  <!-- prod Rating -->
-									<rating [(ngModel)]="product.rating" [float]="true" [readonly]="true"></rating>
+									<rating [(ngModel)]="product.sumOfRates/product.ratesCounter" [float]="true" [readonly]="true"></rating>
 								</div>
-								<span>{{product?.reviews}} Review(s)</span>
+								<span>{{product?.ratesCounter}} Review(s)</span>
 							</div>
 							<p><strong>Seller: </strong> {{product?.sellerId}}</p>
 							<p><strong>Brand: </strong> {{product?.brand}}</p>

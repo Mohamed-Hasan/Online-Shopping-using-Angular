@@ -12,8 +12,8 @@ export class SubcategoryService {
     // this.headers.append('x_access_token',localStorage.getItem('token')); 
    }
 
-   getSubCatProducts(subCatId){
-     return this.http.get(`https://localhost:9010/categories/subcat/${subCatId}`).map((res)=>res.json())
+   getSubCatProducts(subCatId,page){
+     return this.http.get(`https://localhost:9010/categories/subcat/${subCatId}/${page}`).map((res)=>res.json())
    }
 
   //  return this.http.get('http://localhost:9090/home', {headers: this.headers}).map(res=>res.json());

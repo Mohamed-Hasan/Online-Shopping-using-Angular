@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 
 export class AppComponent implements DoCheck {
-
+  seller=true;
   show;
   logged;
   user={name:''};
@@ -78,8 +78,6 @@ export class AppComponent implements DoCheck {
 
   ngDoCheck(){
 
-
-    
   }
 
 
