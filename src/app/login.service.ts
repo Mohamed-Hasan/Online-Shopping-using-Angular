@@ -13,9 +13,8 @@ export class LoginService {
   public user=new BehaviorSubject<Object>({});
   currentuser=this.user.asObservable();
   
-  public cart =new BehaviorSubject<Array<string>>([]);
- 
-  currentcart =this.cart.asObservable();
+  // public cart =new BehaviorSubject<Array<string>>([]);
+  // currentcart =this.cart.asObservable();
 
   constructor(private http:HttpClient) {
 
@@ -30,14 +29,6 @@ setduserdata(name) {
   console.log('sss',this.user.value);
 }
 
-
-// addproducttocart(productid) {
-
-//   console.log('cart data from service',this.cart.value);
-//   this.cart.next(productid);
-//   console.log('cart data from service',this.cart.value);
-
-// }
 
 
 

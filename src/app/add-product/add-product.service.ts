@@ -20,4 +20,13 @@ export class AddProductService{
     getSubCategories(subcatId){
         return this.http.get(`https://localhost:9010/categories/${subcatId}`).map(res=>res.json());
     }
+
+    getProduct(prodId){
+        return this.http.get(`https://localhost:9010/products/${prodId}`).map(res=>res.json());
+    }
+
+    editProduct(prodId, product){
+        // const prod = JSON.stringify(product)
+        return this.http.post(`https://localhost:9010/products/edit/${prodId}`,product).map(res=>res.json());
+    }
 }

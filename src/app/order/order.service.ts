@@ -8,13 +8,15 @@ export class OrderService {
   headers: Headers;
   constructor(private http: Http) {
     this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/json');
+    // this.headers.append('Content-Type', 'application/json');
     // this.headers.append('x_access_token',localStorage.getItem('token')); 
    }
 
    getOrderDetails(orderId)
    {
-     return this.http.get(`http://localhost:9010/order/${orderId}`, {headers: this.headers}).map(res => res.json());
+    console.log("in getOrderDetails")
+    console.log(orderId)
+    return this.http.get(`https://localhost:9010/orders/${orderId}`).map(res =>res.json());
    }
 
    deliverOrder(orderId){

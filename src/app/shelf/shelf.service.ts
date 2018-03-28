@@ -8,10 +8,10 @@ header;
   constructor(private http: Http) { 
     this.header = new Headers();
     this.header.append('Content-Type', 'application/json');
-    this.header.append('x_access_token',localStorage.getItem('token'))
+    // this.header.append('x_access_token',localStorage.getItem('token'))
   }
   
   getShelf(sellerId){
-    return this.http.get(`http://127.0.0.1/shelf/${sellerId}`, {headers: this.header}).map(res=>res.json());
+    return this.http.get(`https://localhost:9010/products/stock/${sellerId}`, {headers: this.header}).map(res=>res.json());
   }
 }

@@ -11,17 +11,18 @@ export class ProductService {
   headers: Headers;
   constructor(private http: Http,private htttpclient:HttpClient) {
     this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/json');
-    this.headers.append('x_access_token',localStorage.getItem('token')); 
+    // this.headers.append('Content-Type', 'application/json');
    }
 
    getProductDetails(productId)
    {
-     return this.http.get(`http://localhost:9010/order/${productId}`, {headers: this.headers}).map(res => res.json());
+     return this.http.get(`https://localhost:9010/products/${productId}`).map(res => {console.log("in service new ",res); return res.json()});
    }
 
-   SendRating(productId,userId,rate){
-     return this.http.put(`http://localhost:9010/order/${productId}`,{userId:userId, rate:rate}, {headers: this.headers}).map(res => res.json());
+   SendRating(productId,rate){
+     console.log("rating",rate)
+     console.log("prodId",productId)
+     return this.http.post(`http://localhost:9010/products/rate/${productId}`,{ ratings:rate}).map(res => res.json());
    }
 
 
@@ -31,7 +32,6 @@ export class ProductService {
       usertoken:utoken,
       productId:pid
     };
-
     return this.htttpclient.post<any>('https://localhost:9010/user/addtochart',body);
   }
   
