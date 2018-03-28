@@ -35,10 +35,12 @@
 
         <!-- Search -->
         <div class="header-search">
-            <input class="input search-input" type="text" placeholder="Enter your keyword" [(ngModel)]="query">
+          <form>
+            <input name="query" class="input search-input" type="text" placeholder="Enter your keyword" [(ngModel)]="query">
             <button routerLink="/search/{{query}}" class="search-btn">
               <i class="fa fa-search"></i>
             </button>
+          </form>
         </div>
         <!-- /Search -->
       </div>

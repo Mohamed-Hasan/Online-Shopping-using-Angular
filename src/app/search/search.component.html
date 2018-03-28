@@ -1,35 +1,41 @@
 <div class="home-wrap" style="margin: auto">
     <div class="section-title">
-            <h3 class="title">Search Results</h3>
+            <h3 class="title"> Search Results </h3>
     </div>
     <div id="breadcrumb">
-		<div class="container">
-			<ul class="breadcrumb">
-				<li><a routerLink="">Home</a></li>
-				<li><a routerLink="/search">Search</a></li>
-			</ul>
-		</div>
-	</div>
-    <div *ngFor="let order of orders" class="row product-container"> <!-- start of for loop -->
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a routerLink="">Home</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div *ngFor="let product of searchResult" class="row product-container"> <!-- start of for loop -->
         <div class="col-md-2">
-            <img src="../../assets/img/banner01.jpg" alt=""> <!-- prod img ==> src="data:image/png;base64,{{product.image}}" --> 
+            <img src="data:image/png;base64,{{product.image}}" alt="">
         </div>
         <div class="col-md-7">
-            <a><h3>{{order.product.name}}</h3></a> <!-- prod name -->
+            <a><h3>{{product.name}}</h3></a> <!-- prod name -->
             <div>
-                <rating [ngModel]="order.product.rating" [float]="true" [readonly]="true"></rating> <!-- prod rating -->
+                <rating [ngModel]="product.sumOfRates/product.ratesCounter" [float]="true" [readonly]="true"></rating> <!-- prod rating -->
             </div>
                 
             <div style="overflow-wrap: break-word"> <!-- prod desc -->
-                {{order.product.desc}}
+                {{product.description}}
             </div>
         </div>
         <div class="col-md-3">
-            <h3 class="price primary-color">{{order.product.price}} $</h3><br> <!-- prod price -->
-            <h5 class="price">{{order.product.available}} available </h5><br> <!-- prod available -->
-            <h5 class="price">{{order.quantity}} piece </h5><br> <!-- order quantity -->
-            <button routerLink="/order" class="center price primary-btn add-to-cart">View Order Details</button> 
+            <h3 class="price primary-color">{{product.price}} $</h3><br> <!-- prod price -->
+            <h5 class="price">{{product.amountAvailable}} available </h5><br> <!-- prod available -->
         </div>      
+    </div>
+    
+    <div id="pagination">
+        <ul class="store-pages" (click)="paginate($event)">
+            <li value=-1>&laquo;</li>
+            <li value=1 class="active">{{currentPage}}</li>
+            <li value=0>&raquo;</li>
+        </ul>
     </div>
     
 </div>
