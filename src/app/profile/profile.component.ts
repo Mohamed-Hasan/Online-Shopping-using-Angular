@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from  '../login.service' ;
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,25 @@ export class ProfileComponent implements OnInit {
   };
 
   editable = false;
-  constructor() { }
+  constructor(private login_service:LoginService){
+
+    console.log("AppComponent Global Service");
+      console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
+      console.log(userrrr);
+      var userdata=JSON.stringify(userrrr);
+      console.log('user string',userdata);
+      var x=JSON.parse(userdata);
+      if(x.name !=undefined)
+      {
+        // this.show=false;
+        // this.logged=true;
+        this.user=x;
+        console.log('nameeeeeeeeee from app',this.user.name);
+      }
+    }));
+
+
+   }
 
   ngOnInit() {
   }

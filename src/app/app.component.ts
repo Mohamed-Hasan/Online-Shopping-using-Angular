@@ -28,7 +28,6 @@ export class AppComponent implements DoCheck {
       var userdata=JSON.stringify(userrrr);
       console.log('user string',userdata);
       var x=JSON.parse(userdata);
-    
       if(x.name !=undefined)
       {
         this.show=false;
@@ -36,7 +35,6 @@ export class AppComponent implements DoCheck {
         this.user=x;
         console.log('nameeeeeeeeee from app',this.user.name);
       }
-      
     }));
     
    

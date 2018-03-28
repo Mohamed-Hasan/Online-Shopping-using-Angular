@@ -42,11 +42,11 @@ export class ProductComponent implements OnInit {
     })
    }
 
-  ngOnInit() {
-    console.log("init")
-    console.log("id in init",this.id)
+  // ngOnInit() {
+  //   console.log("init")
+  //   console.log("id in init",this.id)
 
-  }
+  // }
 
   addToCart(productId){
   
