@@ -42,15 +42,12 @@ import { LoginService } from  './login.service' ;
 import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider,} from "angular5-social-login";
 import { ActivatedRoute} from '@angular/router';
 import {  Router } from '@angular/router';
-<<<<<<< HEAD
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 import {MatExpansionModule} from '@angular/material/expansion';
 
-=======
 import { SignupService } from './signup.service';
->>>>>>> a5fc555abaf32383d95bb8f316ca9d1a94bfe12a
 
 
 // Configs 
@@ -129,13 +126,9 @@ export function getAuthServiceConfigs() {
     HomeService,
     ProductService,
     SubcategoryService,
-<<<<<<< HEAD
-    SearchService
-=======
+    SearchService,
     SignupService,
     ShelfService,
-
->>>>>>> a5fc555abaf32383d95bb8f316ca9d1a94bfe12a
 ],
 
 

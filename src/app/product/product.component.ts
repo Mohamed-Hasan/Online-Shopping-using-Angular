@@ -34,6 +34,8 @@ export class ProductComponent implements OnInit {
     }
 
   ngOnInit() {
+    console.log("init")
+    console.log("id in init",this.id)
     this.route.params.subscribe(params => this.id = +params['id']);
 
     this.productService.getProductDetails(this.id).subscribe(res => {
@@ -42,11 +44,6 @@ export class ProductComponent implements OnInit {
     })
    }
 
-  ngOnInit() {
-    console.log("init")
-    console.log("id in init",this.id)
-
-  }
 
   addToCart(productId){
   
