@@ -15,38 +15,16 @@ export class SubcategoryComponent implements OnInit {
   constructor( private subcategoryService: SubcategoryService, private route: ActivatedRoute) { 
     this.route.paramMap.subscribe(params => {
     this.subCatId = params.get('id');
+    this.subcatName = params.get('subcat');
     console.log(this.subCatId)
   }) 
 }
   ngOnInit() {
     //send to api to get all products of a certain subcategory... should be array of objects
     //subcat id to be sent to server
-    ;
-    
-    let prod1 = {
-      name: "iphone",
-      price: 800,
-      rating:3.5,
-      image:null,
-      available:5,
-      desc:"afefwfregergegegregergergergergergergergergergrregregregergregergergergergergergergergergre"
-    }
-
-    let prod2 = {
-      name: "iphone s6",
-      price: 1000,
-      rating:4,
-      image:null,
-      available:5,
-      desc:"afefwfregergegegregergergergergergergergergergrregregregergregergergergergergergergergergre"
-    }
-    
-    this.products=[prod1,prod2];
-    this.catName="electronics";
-    this.subcatName="mobiles";
-
-    this.subcategoryService.getSubCatProducts(this.subCatId).subscribe((res)=>{
-        console.log(res);
+    console.log("in my init")
+    this.subcategoryService.getSubCatProducts(this.subCatId).subscribe(res=>{
+        console.log("in subsc",res);
         this.subCat=res;
     })
   }

@@ -13,32 +13,38 @@ export class ProductComponent implements OnInit {
   cart;  //global
   user;
   id;
-  product={
-    id:0,
-    name:null,
-    price:null,
-    image:null,
-    rating:0,
-    reviewCount:null,
-    category:null,
-    subcategory:null,
-    brand:null,
-    desc:null,
-    seller:null,
-  }
+  // product={
+  //   name:null,
+  //   price:null,
+  //   image:null,
+  //   rating:null,
+  //   amountAvailable:null,
+  //   description:null,
+  //   sumRating:null,
+  //   counter:null,
+  //   sellerId:null,
+  // };
+  product = null;
   userRating=0;
+
   msg;
-  constructor(private route: ActivatedRoute, private productService: ProductService,private proute: Router,private login_service:LoginService) {  }
+  constructor(private route: ActivatedRoute, private productService: ProductService,private proute: Router,private login_service:LoginService) {
+    this.route.params.subscribe(params => {this.id = params['id']; console.log(this.id)});
+    console.log("id in const",this.id)
+    }
 
   ngOnInit() {
     this.route.params.subscribe(params => this.id = +params['id']);
 
     this.productService.getProductDetails(this.id).subscribe(res => {
       this.product = res;
+      console.log("in my constructor",this.product)
     })
-    //go to api to get the product and fill the product object
-    // this.product.rating=3.5;
+   }
 
+  ngOnInit() {
+    console.log("init")
+    console.log("id in init",this.id)
 
   }
 
@@ -87,13 +93,13 @@ export class ProductComponent implements OnInit {
 
   }
 
-/*
+
   rate(){
-    this.productService.SendRating(this.id,this.user.id,this.userRating).subscribe(res => {
+    this.productService.SendRating(this.product._id,this.userRating).subscribe(res => {
       console.log(res);
     })
     this.productService.getProductDetails(this.id).subscribe(res => {
       this.product = res;
     })
-  }*/
+  }
 }

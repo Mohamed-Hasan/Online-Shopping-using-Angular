@@ -1,35 +1,60 @@
 <div class="home-wrap" style="margin: auto">
-    <div class="section-title">
-            <h3 class="title"> My Dashboard </h3>
+  <div class="section-title">
+    <h3 class="title"> My Dashboard </h3>
+  </div>
+  <div id="breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb">
+        <li>
+          <a routerLink="">Home</a>
+        </li>
+        <li>
+          <a routerLink="/sales">Sales</a>
+        </li>
+      </ul>
     </div>
-    <div id="breadcrumb">
-		<div class="container">
-			<ul class="breadcrumb">
-				<li><a routerLink="">Home</a></li>
-				<li><a routerLink="/sales">Sales</a></li>
-			</ul>
-		</div>
-	</div>
-    <div *ngFor="let order of orders" class="row product-container"> <!-- start of for loop -->
-        <div class="col-md-2">
-            <img src="../../assets/img/banner01.jpg" alt=""> <!-- prod img ==> src="data:image/png;base64,{{product.image}}" --> 
-        </div>
-        <div class="col-md-7">
-            <a><h3>{{order.product.name}}</h3></a> <!-- prod name -->
-            <div>
-                <rating [ngModel]="order.product.rating" [float]="true" [readonly]="true"></rating> <!-- prod rating -->
-            </div>
-                
-            <div style="overflow-wrap: break-word"> <!-- prod desc -->
-                {{order.product.desc}}
-            </div>
-        </div>
-        <div class="col-md-3">
-            <h3 class="price primary-color">{{order.product.price}} $</h3><br> <!-- prod price -->
-            <h5 class="price">{{order.product.available}} available </h5><br> <!-- prod available -->
-            <h5 class="price">{{order.quantity}} piece </h5><br> <!-- order quantity -->
-            <button routerLink="/order/{{order.id}}" class="center price primary-btn add-to-cart">View Order Details</button> 
-        </div>      
+  </div>
+  <div *ngFor="let order of orders" class="row product-container">
+    <!-- start of for loop -->
+    <div class="col-md-2">
+      <img src="data:image/png;base64,{{order.productId.image}}" alt="">
     </div>
-    
+    <div class="col-md-4" style="overflow-wrap: break-word">
+      <a>
+        <h3>{{order.productId.name}}</h3>
+      </a>
+      <div>
+        <rating [ngModel]="order.productId?.rating" [float]="true" [readonly]="true"></rating>
+        <!-- prod rating -->
+      </div>
+
+      <div style="overflow-wrap: break-word">
+        <!-- prod desc -->
+        {{order.productId.description}}
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="row">
+        <h4 style="align-content: center;">{{order.orderDate | date}}</h4>
+        <br>
+        <br>
+      </div>
+      <div class="row">
+        <h4>{{order.state}}</h4>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <h3 class="price primary-color">{{order.productId.price*order.amount}} $</h3>
+      <br>
+      <!-- prod price -->
+      <h5 class="price">{{order.productId.amountAvailable}} available </h5>
+      <br>
+      <!-- prod available -->
+      <h5 class="price">{{order.amount}} piece </h5>
+      <br>
+      <!-- order quantity -->
+      <button routerLink="/order/{{order._id}}" class="center price primary-btn add-to-cart">View Order Details</button>
+    </div>
+  </div>
+
 </div>

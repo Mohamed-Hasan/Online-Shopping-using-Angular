@@ -16,14 +16,14 @@
   </div>
 
   <div class="section-title">
-    <h3 class="title">{{order?.product?.name}}</h3>
+    <h3 class="title">{{order?.productId?.name}}</h3>
   </div>
 
   <div class="row">
     <div class="col-md-6">
       <div id="product-main-view">
         <div class="product-view">
-          <img src="../../assets/img/banner01.jpg" alt="">
+          <img src="data:image/png;base64,{{order?.productId?.image}}" alt="">
           <!-- prod image -->
           <!-- prod img ==> src="data:image/png;base64,{{order.product.image}}" -->
         </div>
@@ -57,14 +57,26 @@
     </div>
 
     <div class="col-md-2">
-      <h3 class="title text-center" >Order State</h3>
+      <h4 class="title text-center" >Order State</h4>
       <div style="margin-top: 50px">
 		<select name="orderState" class="form-control" (change)="onChange($event)">
-			<option selected value="Ordered">Ordered</option>
-			<option  value="Recieved">Recieved</option>
+			<option [selected]="order?.state=='ordered'" value="ordered">Ordered</option>
+			<option [selected]="order?.state=='delivered'" value="delivered">Delivered</option>
 		</select>
       </div>
-    </div>
+    </div><br>
+    <div class="col-md-2">
+        <h4 class="title" >Order Amount</h4>
+        <div style="margin-top: 10px">
+            <h4 class="title" >{{order?.amount}} pieces</h4>
+        </div>
+      </div><br><br><br>
+      <div class="col-md-2">
+          <h4 class="title" >Total</h4>
+          <div style="margin-top: 10px">
+              <h4 class="title" >{{order?.amount*order.productId?.price}} $</h4>
+          </div>
+        </div>
   </div>
 
 

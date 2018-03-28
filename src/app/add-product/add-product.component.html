@@ -23,7 +23,7 @@
       </div>
 
       <label for="name">Product Category:</label>
-      <select id="category" name="category" [(ngModel)]="product.category" required #categ (change)="onChange($event)">
+      <select id="category" name="category" required #categ (change)="onChange($event)">
         <option *ngFor="let cat of CatArr" value="{{cat._id}}">{{cat.categoryName}}</option>
       </select>
       <div *ngIf="categ.errors?.required">
@@ -31,7 +31,7 @@
       </div>
 
       <label for="name">Product SubCategory:</label>
-      <select id="subcategory" name="subcategory" [(ngModel)]="product.subcategory" required #subcateg>
+      <select id="subcategory" name="subcategory" [(ngModel)]="product.subcategory" (change)="onChangesub($event)" required #subcateg>
         <option *ngFor="let subcat of subcatArr" value="{{subcat._id}}">{{subcat.subcatName}}</option>
       </select>
       <div *ngIf="subcateg.errors?.required">
@@ -59,6 +59,6 @@
         [buttonCaption]="'Profile Picture'" [maxFileSize]="1048576" [fileTooLargeMessage]="'Image too large!'" [dropBoxMessage]="'Drop your image here!'"></image-upload>
     </fieldset>
     <button *ngIf="!editable" type="submit" [disabled]="!addProdForm.form.valid" value="submit">Add Product</button>
-    <button *ngIf="editable" (click)="update()" [disabled]="!addProdForm.form.valid" value="edit">Edit Product</button>
+    <button *ngIf="editable" type="submit" [disabled]="!addProdForm.form.valid" value="edit">Edit Product</button>
   </form>
 </div>
