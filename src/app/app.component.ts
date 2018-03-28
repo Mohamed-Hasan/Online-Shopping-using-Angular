@@ -13,12 +13,9 @@ import {Router} from '@angular/router';
 })
 
 export class AppComponent implements DoCheck {
-<<<<<<< HEAD
   seller=true;
-=======
   panelOpenState: boolean = false;
 
->>>>>>> aab98920a933ea82d94b505a68cdad8c8b189250
   show;
   open = false;
   logged;
