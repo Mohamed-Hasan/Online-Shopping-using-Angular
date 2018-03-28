@@ -15,7 +15,7 @@ import {Router} from '@angular/router';
 export class AppComponent implements DoCheck {
   seller=true;
   panelOpenState: boolean = false;
-
+  query;
   show;
   open = false;
   logged;
