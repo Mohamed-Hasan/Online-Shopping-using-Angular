@@ -13,34 +13,33 @@ export class ProductComponent implements OnInit {
   cart;  //global
   user;
   id;
-  // product={
-  //   name:null,
-  //   price:null,
-  //   image:null,
-  //   rating:null,
-  //   amountAvailable:null,
-  //   description:null,
-  //   sumRating:null,
-  //   counter:null,
-  //   sellerId:null,
-  // };
-  product = null;
+  product={
+    _id:null,
+    name:null,
+    price:null,
+    image:null,
+    rating:null,
+    amountAvailable:null,
+    description:null,
+    sumRating:null,
+    counter:null,
+    sellerId:null,
+  };
+  // product = null;
   userRating=0;
 
   msg;
   constructor(private route: ActivatedRoute, private productService: ProductService,private proute: Router,private login_service:LoginService) {
     this.route.params.subscribe(params => {this.id = params['id']; console.log(this.id)});
     console.log("id in const",this.id)
-    }
-
-  ngOnInit() {
-    this.route.params.subscribe(params => this.id = +params['id']);
+    this.route.params.subscribe(params => this.id = params['id']);
 
     this.productService.getProductDetails(this.id).subscribe(res => {
       this.product = res;
       console.log("in my constructor",this.product)
     })
-   }
+    }
+
 
   // ngOnInit() {
   //   console.log("init")
@@ -48,8 +47,12 @@ export class ProductComponent implements OnInit {
 
   // }
 
+  ngOnInit() {
+    
+   }
+
+
   addToCart(productId){
-  
     // let exist = this.cart.indexOf(productId);
     // if(exist == -1)
     // {
@@ -89,12 +92,11 @@ export class ProductComponent implements OnInit {
       
     }));
 
-     
-
   }
 
 
   rate(){
+    console.log("hello",this.product._id)
     this.productService.SendRating(this.product._id,this.userRating).subscribe(res => {
       console.log(res);
     })
@@ -102,4 +104,5 @@ export class ProductComponent implements OnInit {
       this.product = res;
     })
   }
+
 }

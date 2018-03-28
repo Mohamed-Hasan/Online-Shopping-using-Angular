@@ -1,6 +1,7 @@
 
 import { Component, DoCheck } from '@angular/core';
 import { AppService } from './app.service';
+import { Http } from "@angular/http";
 import { LoginService } from  './login.service' ;
 import { Subscription } from 'rxjs/Subscription';
 import {Router} from '@angular/router';
@@ -12,16 +13,17 @@ import {Router} from '@angular/router';
 })
 
 export class AppComponent implements DoCheck {
+  seller=true;
+  panelOpenState: boolean = false;
 
   show;
+  open = false;
   logged;
   user={name:''};
-
   CatArr;
 
   constructor(private login_service:LoginService, private AppService : AppService,private route: Router) 
   {
-        
       console.log("AppComponent Global Service");
       console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
       console.log(userrrr);
@@ -30,9 +32,17 @@ export class AppComponent implements DoCheck {
       var x=JSON.parse(userdata);
       if(x.name !=undefined)
       {
+        
         this.show=false;
         this.logged=true;
         this.user=x;
+        // console.log('xu',this.user.isseller);
+        console.log('user from app',this.user);
+        console.log(this.seller);
+        if(this.user.isseller)
+        {
+           this.seller=true;
+        }
         console.log('nameeeeeeeeee from app',this.user.name);
       }
     }));
@@ -49,8 +59,6 @@ export class AppComponent implements DoCheck {
     })
 
   }
-
-
 
   categories = 
   [
@@ -76,8 +84,6 @@ export class AppComponent implements DoCheck {
 
   ngDoCheck(){
 
-
-    
   }
 
 

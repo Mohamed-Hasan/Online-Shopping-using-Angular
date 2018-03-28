@@ -33,4 +33,12 @@
             </div>      
         </div>
         
+        <div id="pagination">
+            <ul class="store-pages" (click)="paginate($event)">
+                <li value=-1>&laquo;</li>
+                <li value=1 class="active">{{currentPage}}</li>
+                <li value=0>&raquo;</li>
+            </ul>
+        </div>
+        
     </div>

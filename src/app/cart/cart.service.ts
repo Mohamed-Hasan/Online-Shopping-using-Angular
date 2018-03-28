@@ -17,6 +17,7 @@ export class CartService {
       res.json();
     });
   }
+  
   checkout(id,purchases){
     return this.http.post('https://127.0.0.1:9010/checkout',{id: id, purchases: purchases},{headers: this.headers}).
       map(res=>{

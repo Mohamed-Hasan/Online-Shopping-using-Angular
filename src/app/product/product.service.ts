@@ -16,13 +16,14 @@ export class ProductService {
 
    getProductDetails(productId)
    {
-     return this.http.get(`https://localhost:9010/products/${productId}`).map(res => {console.log("in service new ",res); return res.json()});
+    console.log(productId) 
+    return this.http.get(`https://localhost:9010/products/${productId}`).map(res =>res.json());
    }
 
    SendRating(productId,rate){
      console.log("rating",rate)
      console.log("prodId",productId)
-     return this.http.post(`http://localhost:9010/products/rate/${productId}`,{ ratings:rate}).map(res => res.json());
+     return this.http.post(`https://localhost:9010/products/rate/${productId}`,{ rate:rate}).map(res => res.json());
    }
 
   

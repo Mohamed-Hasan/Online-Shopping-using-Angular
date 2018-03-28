@@ -11,7 +11,7 @@ header;
     // this.header.append('x_access_token',localStorage.getItem('token'))
   }
   
-  getShelf(sellerId){
-    return this.http.get(`https://localhost:9010/products/stock/${sellerId}`, {headers: this.header}).map(res=>res.json());
+  getShelf(sellerId,page){
+    return this.http.get(`https://localhost:9010/products/stock/${sellerId}/${page}`, {headers: this.header}).map(res=>res.json());
   }
 }

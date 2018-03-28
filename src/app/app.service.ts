@@ -15,6 +15,4 @@ export class AppService{
     getAllCategories(){
         return this.http.get('http://127.0.0.1:9090/allcat',{headers: this.headers}).map(res=>res.json());
     }
-    
-
 }
