@@ -1,7 +1,7 @@
 import { HomeService } from './home.service';
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { LoginService } from  '../login.service' ;
-
+import {Router} from '@angular/router';
 
 
 
@@ -23,7 +23,11 @@ export class HomeComponent implements OnInit {
     desc: "afefwfregergegegregergergergergergergergergergrregregregergregergergergergergergergergergre",
   }
 
-  constructor(private login_service:LoginService, private HomeService: HomeService) { 
+
+ 
+  msg;
+
+  constructor(private login_service:LoginService, private HomeService: HomeService,private route: Router) { 
      console.log('home comp');
    
     
@@ -69,19 +73,43 @@ export class HomeComponent implements OnInit {
   //  ngDoCheck() { console.log('user from global login service',this.login_service.username);  }
 
   addToCart(proid) {
-    var utoken=localStorage.getItem('token');
-    console.log('product name',proid);
-    this.HomeService.addproducttocart(utoken,proid).subscribe(res=>{
-      if(!res.err)
+
+    console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
+      console.log(userrrr);
+      var userdata=JSON.stringify(userrrr);
+      console.log('user string',userdata);
+      var x=JSON.parse(userdata);
+    
+      if(x.name !=undefined)
       {
-           //product didnt add to db
+        
+        var utoken=localStorage.getItem('token');
+        console.log('product name',proid);
+        this.HomeService.addproducttocart(utoken,proid).subscribe(res=>{
+          if(!res.err)
+          {
+            console.log('Product added to db');
+            this.msg="Product added To Your Cart";
+              //product didnt add to db
+          }else
+          {
+            this.msg="Product didnot addedd To Your Cart";
+            //product  add to db
+          }
+            
+        });
+        
       }else
       {
-        //product  add to db
+        this.route.navigate(['/login']);
       }
-        
-    });
+      
+    }));
+
 
   }
+
+
+
 
 }

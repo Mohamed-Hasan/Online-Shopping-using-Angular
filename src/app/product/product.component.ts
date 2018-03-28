@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { ProductService } from "./product.service";
+import {Router} from '@angular/router';
+import { LoginService } from  '../login.service' ;
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -23,10 +26,16 @@ export class ProductComponent implements OnInit {
   // };
   product = null;
   userRating=0;
-  
-  constructor(private route: ActivatedRoute, private productService: ProductService) { 
+
+  msg;
+  constructor(private route: ActivatedRoute, private productService: ProductService,private proute: Router,private login_service:LoginService) {
     this.route.params.subscribe(params => {this.id = params['id']; console.log(this.id)});
     console.log("id in const",this.id)
+    }
+
+  ngOnInit() {
+    this.route.params.subscribe(params => this.id = +params['id']);
+
     this.productService.getProductDetails(this.id).subscribe(res => {
       this.product = res;
       console.log("in my constructor",this.product)
@@ -47,19 +56,40 @@ export class ProductComponent implements OnInit {
     //   this.cart.push(productId);
     // }
 
-      var utoken=localStorage.getItem('token');
-      console.log('product name from product comp',productId);
-      this.productService.addproducttocart(utoken,productId).subscribe(res=>{
-        if(!res.err)
-        {
-             //product didnt add to db
-        }else
-        {
-          //product  add to db
-        }
-          
-      });
+    console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
+      console.log(userrrr);
+      var userdata=JSON.stringify(userrrr);
+      console.log('user string',userdata);
+      var x=JSON.parse(userdata);
+    
+      if(x.name !=undefined)
+      {
+            var utoken=localStorage.getItem('token');
+            console.log('product name from product comp',productId);
+            this.productService.addproducttocart(utoken,productId).subscribe(res=>{
+              if(!res.err)
+              {
+                console.log('Product added to db');
+                this.msg="Product added To Your Cart";
+                  //product didnt add to db
+                 
+              }else
+              {
+                this.msg="Product didnot addedd To Your Cart";
+                //product  add to db
+              }
+                
+            });
+            
+      }else
+      {
+        //redirect to login 
+        this.proute.navigate(['/login']);
+      }
       
+    }));
+
+     
 
   }
 

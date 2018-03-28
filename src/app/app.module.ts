@@ -41,6 +41,7 @@ import { LoginService } from  './login.service' ;
 import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider,} from "angular5-social-login";
 import { ActivatedRoute} from '@angular/router';
 import {  Router } from '@angular/router';
+import { SignupService } from './signup.service';
 
 
 // Configs 
@@ -110,7 +111,9 @@ export function getAuthServiceConfigs() {
     SubcategoryService,
     ProductService,
     SubcategoryService,
+    SignupService,
     ShelfService,
+
 ],
 
 
