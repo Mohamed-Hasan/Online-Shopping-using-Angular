@@ -3,7 +3,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-<<<<<<< HEAD
 import 'hammerjs';
 import { MatAutocompleteModule,
   MatButtonModule,
@@ -38,9 +37,6 @@ import { MatAutocompleteModule,
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
-=======
-// import 'hammerjs';
->>>>>>> abd6addda7673b624bcd801e68bf20d1109cd580
 
 if (environment.production) {
   enableProdMode();

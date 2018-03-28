@@ -7,31 +7,35 @@ body {
 }
 
 .sidenav {
-    height: 100%;
-    margin-left: 116px;
-    margin-top: 196px;
-    width: 0;
-    position: fixed;
+    height: 500px;
+    margin-left: 100px;
+    margin-top: 108px;
+    width: 200px;
+    display: none;
+    position: absolute;
     z-index: 1;
-    top: 0;
-    left: 0;
+    top: -108%;
+    left: -8%;
     background-color: #111;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
+    -webkit-transition: 0.5s;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 20px;
 }
+
 
 .menus {
     position: fixed;
     z-index: 1;
 }
 
-.sidenav li {
-    padding: 8px 8px 8px 32px;
+#cat {
+    padding: inherit;
+    display: block;
+    width: 200px;
     text-decoration: none;
     font-size: 25px;
     color: white;
-    display: block;
     transition: 0.3s;
 }
 
@@ -46,7 +50,9 @@ body {
     font-size: 36px;
     margin-left: 50px;
 }
-
+.category-header{
+    color: red;
+}
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
@@ -57,3 +63,65 @@ body {
     margin-left: 200px; /* Same as the width of the sidenav */
   }
   
+
+.accordion {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    
+    padding: inherit;
+    display: block;
+    width: 200px;
+    text-decoration: none;
+    font-size: 25px;
+    /* color: white; */
+}
+
+.active, .accordion:hover {
+    background-color: #ccc; 
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    /* background-color: white; */
+    overflow: hidden;
+}
+
+.mat-expansion-panel-header-title {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    padding: inherit;
+    display: block;
+    width: 200px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    font-size: 25px;
+    /* background-color: #111 !important; */
+}
+
+
+
+.subcat{
+    /* background-color: grey; */
+    align-content: center;
+    /* color: whitesmoke; */
+    font-size: 25px;
+}
+
+.mat-expansion-panel-body {
+    /* background-color: darkgrey !important; */
+    color: whitesmoke; 
+    align-content: center;
+    padding: 0 0 0 !important;
+} 
+/* .mat-expansion-panel-content{
+    background-color: darkgrey !important;
+} */
+.mat-expansion-indicator{
+    color: white !important;
+}

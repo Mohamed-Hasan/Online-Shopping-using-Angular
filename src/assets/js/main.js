@@ -147,9 +147,50 @@
 })(jQuery);
 
 function openNav() {
-  document.getElementById("mySidenav").style.width = "200px";
+  if( document.getElementsByClassName("sidenav")[0].style.display != "block"){
+    document.getElementsByClassName("sidenav")[0].style.display = "block"
+  }
+  else{
+    document.getElementsByClassName("sidenav")[0].style.display = "none"
+  }
 }
 
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
+
+var acc = document.getElementsByClassName("accordion");
+var pan = document.getElementsByClassName("panel");
+// var i;
+
+// for (var i = 0; i < acc.length; i++) {
+//   console.log(i)
+//   document.getElementsByClassName("accordion").addEventListener("click", function() {
+//       console.log("Clicked")
+//       this.classList.toggle("active");
+//       var panel = this.nextElementSibling;
+//       if (panel.style.display === "block") {
+//           panel.style.display = "none";
+//       } else {
+//           panel.style.display = "block";
+//       }
+//   });
+// }
+
+
+function openSubCat() {
+  console.log('1')
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+      acc.addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (this.panel.style.display == "block") {
+            console.log('2')
+            this.panel.style.display = "none";
+          } else {
+            console.log('3')
+            this.panel.style.display = "block";
+          }
+      });
+  }
 }

@@ -1,40 +1,28 @@
 
 import { Component, DoCheck } from '@angular/core';
 import { AppService } from './app.service';
-<<<<<<< HEAD
-import { LoginService } from  './login.service';
 import { Http } from "@angular/http";
-=======
 import { LoginService } from  './login.service' ;
 import { Subscription } from 'rxjs/Subscription';
 import {Router} from '@angular/router';
->>>>>>> abd6addda7673b624bcd801e68bf20d1109cd580
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-<<<<<<< HEAD
-// export class SidenavAutosizeExample {
-//   showFiller = false;
-// }
-export class AppComponent {
-  CatArr;
-
-  constructor(private login_service: LoginService, private AppService : AppService) 
-=======
 
 export class AppComponent implements DoCheck {
+  panelOpenState: boolean = false;
 
   show;
+  open = false;
   logged;
   user={name:''};
 
   CatArr;
 
   constructor(private login_service:LoginService, private AppService : AppService,private route: Router) 
->>>>>>> abd6addda7673b624bcd801e68bf20d1109cd580
   {
         
       console.log("AppComponent Global Service");
@@ -66,10 +54,6 @@ export class AppComponent implements DoCheck {
     })
 
   }
-
-
-  
- 
 
   categories = 
   [

@@ -15,26 +15,7 @@
 </div> -->
 
 
-<<<<<<< HEAD
 
-=======
-<!-- <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
-  </mat-drawer>
-
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
-    </button>
-  </div>
-
-</mat-drawer-container> -->
->>>>>>> abd6addda7673b624bcd801e68bf20d1109cd580
 
 
 
@@ -77,7 +58,6 @@
             </div>
             <a *ngIf="!logged" routerLink="/login" class="text-uppercase">Login / </a>
             <a *ngIf="!logged" routerLink="/signup" class="text-uppercase">Join</a>
-            <a *ngIf="logged" (click)=" logout()" class="text-uppercase">LogOut</a>
 
             <ul *ngIf="logged" class="custom-menu">
               <li>
@@ -134,18 +114,11 @@
   <!-- container -->
   <div class="container">
     <div id="responsive-nav">
-      <!-- category nav -->
-      <div>
-          <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="category-header">Categories
-              <i class="fa fa-list"></i>
-            </span>
-          <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <ul>
-                <li *ngFor="let cat of categories">{{cat.name}}</li>
-            </ul>  
-          </div>
-      </div>
+      <!-- category n av -->
+      
+
+
+
       <!-- /category nav -->
 
       <!-- menu nav -->
@@ -155,6 +128,29 @@
           <i class="fa fa-bars"></i>
         </span>
         <ul class="menu-list">
+          <li>
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="category-header">Categories
+                <i class="fa fa-list"></i>
+            </span>
+            <div> 
+              <div id="mySidenav" class="sidenav">
+                <mat-accordion>
+                    <mat-expansion-panel *ngFor="let cat of categories" style="background-color: white;">
+                      <mat-expansion-panel-header style="background-color: #111;" >
+                        <mat-panel-title >
+                            {{cat.name}}
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                  
+                      <mat-form-field *ngFor="let subcat of cat.subcat" style="background-color: white;" >
+                          <p class="subcat">{{subcat}}</p>
+                      </mat-form-field>
+                    </mat-expansion-panel>
+                </mat-accordion>
+              </div>
+            </div>
+            
+          </li>
           <li>
             <a routerLink="">Home</a>
           </li>

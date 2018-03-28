@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgxSlideshowModule } from 'ngx-slideshow';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +17,7 @@ import { SubcategoryService } from "./subcategory/subcategory.service";
 import { ShelfService } from "./shelf/shelf.service";
 import { AppService } from "./app.service";
 import { HomeService } from "./home/home.service";
+import { SearchService } from "./search/search.service";
 
 
 import { AppComponent } from './app.component';
@@ -41,6 +42,11 @@ import { LoginService } from  './login.service' ;
 import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider,} from "angular5-social-login";
 import { ActivatedRoute} from '@angular/router';
 import {  Router } from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 
 // Configs 
@@ -78,24 +84,31 @@ export function getAuthServiceConfigs() {
     ShelfComponent,
     AllCategoriesComponent,
     SearchComponent
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatButtonModule, 
+    MatCheckboxModule,
     NgxSlideshowModule.forRoot(),
     FormsModule,
     ImageUploadModule.forRoot(),
     RatingModule,
     HttpModule,
-    NoopAnimationsModule,
     // MatSidenavModule,
     HttpClientModule,
     SocialLoginModule,
-   
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MatExpansionModule
     // Router,
     
 
+  ],
+  exports: [MatExpansionModule]
+  ,
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [LoginService, AppService,HomeService,{
     provide: AuthServiceConfig,
@@ -112,6 +125,7 @@ export function getAuthServiceConfigs() {
     HomeService,
     ProductService,
     SubcategoryService,
+    SearchService
 ],
 
 
