@@ -125,3 +125,35 @@ body {
 .mat-expansion-indicator{
     color: white !important;
 }
+
+/* .search-input {
+    padding: 0 0 0px !important;
+} */
+
+.menu-open > .dropdown-menu {
+    visibility: visible !important;
+    display: block !important;
+}
+
+.btn-group {
+    width: 400px !important;
+}
+
+.search-group {
+    display: inline-block;
+}
+
+
+
+.fa-search:before {
+    content: "\f002";
+    z-index: 1;
+    position: absolute;
+    top: 30px;
+    right: 125px;
+}
+
+.searchBy {
+    right: 40px;
+    position: relative;
+}

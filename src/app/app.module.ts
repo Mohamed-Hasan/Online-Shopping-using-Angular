@@ -44,8 +44,9 @@ import { ActivatedRoute} from '@angular/router';
 import {  Router } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
-
+import { Ng2DropdownModule } from 'ng2-material-dropdown';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 import { SignupService } from './signup.service';
 
@@ -96,12 +97,14 @@ export function getAuthServiceConfigs() {
     ImageUploadModule.forRoot(),
     RatingModule,
     HttpModule,
-    // MatSidenavModule,
+    Ng2DropdownModule,
     HttpClientModule,
     SocialLoginModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    BsDropdownModule.forRoot(),
+
     // Router,
     
 

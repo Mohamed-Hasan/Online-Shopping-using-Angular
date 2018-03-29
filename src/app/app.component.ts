@@ -1,4 +1,3 @@
-
 import { Component, DoCheck } from '@angular/core';
 import { AppService } from './app.service';
 import { Http } from "@angular/http";
@@ -13,41 +12,34 @@ import {Router} from '@angular/router';
 })
 
 export class AppComponent implements DoCheck {
-<<<<<<< HEAD
   seller=true;
-=======
   panelOpenState: boolean = false;
 
->>>>>>> aab98920a933ea82d94b505a68cdad8c8b189250
   show;
   open = false;
   logged;
   user={name:''};
 
   CatArr;
+  searchArr = ["Any", "Category", "Subcategory", "price"];
 
   constructor(private login_service:LoginService, private AppService : AppService,private route: Router) 
-  {
-        
-      console.log("AppComponent Global Service");
-      console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
-      console.log(userrrr);
-      var userdata=JSON.stringify(userrrr);
-      console.log('user string',userdata);
-      var x=JSON.parse(userdata);
-    
-      if(x.name !=undefined)
-      {
-        this.show=false;
-        this.logged=true;
-        this.user=x;
-        console.log('nameeeeeeeeee from app',this.user.name);
-      }
-      
+  {   
+    console.log("AppComponent Global Service");
+    console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
+    console.log(userrrr);
+    var userdata=JSON.stringify(userrrr);
+    console.log('user string',userdata);
+    var x=JSON.parse(userdata);
+  
+    if(x.name !=undefined)
+    {
+      this.show=false;
+      this.logged=true;
+      this.user=x;
+      console.log('nameeeeeeeeee from app',this.user.name);
+    }   
     }));
-    
-   
-
   }
   
   
