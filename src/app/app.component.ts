@@ -16,14 +16,16 @@ export class AppComponent implements DoCheck {
  
   panelOpenState: boolean = false;
   seller;
+  query;
   show;
   open = false;
   logged;
-  user={name:''};
+  user;//{name:''}
   CatArr;
 
   constructor(private login_service:LoginService, private AppService : AppService,private route: Router) 
   {
+    console.log('sellerrrrrr',this.seller);
       console.log("AppComponent Global Service");
       console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
       console.log(userrrr);
@@ -38,8 +40,8 @@ export class AppComponent implements DoCheck {
         this.user=x;
         // console.log('xu',this.user.isseller);
         console.log('user from app',this.user);
-        console.log(this.seller);
-        if(this.user.isseller)
+        console.log('seelllllllllllllllllll',this.seller);
+        if(this.user.isseller !=undefined)
         {
            this.seller=true;
         }

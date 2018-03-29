@@ -36,8 +36,8 @@
         <!-- Search -->
         <div class="header-search">
           <form>
-            <input class="input search-input" type="text" placeholder="Enter your keyword">
-            <button class="search-btn">
+            <input name="query" class="input search-input" type="text" placeholder="Enter your keyword" [(ngModel)]="query">
+            <button routerLink="/search/{{query}}" class="search-btn">
               <i class="fa fa-search"></i>
             </button>
           </form>

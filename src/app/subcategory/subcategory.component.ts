@@ -38,7 +38,7 @@ export class SubcategoryComponent implements OnInit {
         this.currentPage>1?this.currentPage -=1 : this.currentPage;
       break;
       default:
-        this.currentPage = e.target.value;
+        break;
     }
     console.log(this.currentPage)
     if (prevPage != this.currentPage) {

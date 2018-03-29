@@ -14,3 +14,9 @@ button{
     border: solid 3px red; 
     padding: 20px;
 }
+#pagination{
+    font-size: 30px; 
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+}

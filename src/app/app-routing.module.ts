@@ -26,6 +26,7 @@ const routes = [
     {path : 'allCat', component : AllCategoriesComponent},
     {path : 'product/:id', component : ProductComponent},
     {path : 'cart', component : CartComponent},
+    {path : 'search/:query', component : SearchComponent},
     {path : 'search', component : SearchComponent},
 
 // seller routes
