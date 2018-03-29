@@ -1,4 +1,3 @@
-
 import { Component, DoCheck } from '@angular/core';
 import { AppService } from './app.service';
 import { Http } from "@angular/http";
@@ -22,6 +21,7 @@ export class AppComponent implements DoCheck {
   logged;
   user;//{name:''}
   CatArr;
+  searchArr = ["Any", "Category", "Subcategory", "price"];
 
   constructor(private login_service:LoginService, private AppService : AppService,private route: Router) 
   {
@@ -48,9 +48,6 @@ export class AppComponent implements DoCheck {
         console.log('nameeeeeeeeee from app',this.user.name);
       }
     }));
-    
-   
-
   }
   
   
