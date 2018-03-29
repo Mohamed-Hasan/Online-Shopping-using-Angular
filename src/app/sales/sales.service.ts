@@ -10,9 +10,9 @@ export class SalesService {
   constructor(private http: Http) {
    }
 
-   getMySales(sellerId){
+   getMySales(sellerId,page){
      console.log("in getMySales fn")
-     return this.http.get(`https://localhost:9010/orders/sellerorders/${sellerId}`).map(res=>{
+     return this.http.get(`https://localhost:9010/orders/sellerorders/${sellerId}/${page}`).map(res=>{
        console.log(res);
        return res.json();
      })

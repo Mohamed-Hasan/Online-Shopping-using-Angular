@@ -23,8 +23,8 @@ export class HomeService {
       usertoken:utoken,
       productId:pid
     };
-
-    return this.htttpclient.post<any>('https://localhost:9010/user/addtocart',body);
+    console.log('Home service');
+    return this.htttpclient.put<any>(`https://localhost:9010/user/addtocart/${pid}`,body);
 
   }
 

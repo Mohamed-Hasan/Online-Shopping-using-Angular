@@ -19,7 +19,7 @@
             <div class="col-md-7">
                 <a><h3>{{product.name}}</h3></a> <!-- prod name -->
                 <div>
-                    <rating [ngModel]="product.rating" [float]="true" [readonly]="true"></rating> <!-- prod rating -->
+                    <rating [ngModel]="product.sumOfRates/product.ratesCounter" [float]="true" [readonly]="true"></rating> <!-- prod rating -->
                 </div>
                     
                 <div style="overflow-wrap: break-word"> <!-- prod desc -->
@@ -31,6 +31,14 @@
                 <h5 class="price">{{product.amountAvailable}} available </h5><br> <!-- prod available -->
                 <button routerLink="/edit/{{product._id}}" class="center price primary-btn add-to-cart">Edit Product</button>  <!-- prod id -->
             </div>      
+        </div>
+        
+        <div id="pagination">
+            <ul class="store-pages" (click)="paginate($event)">
+                <li value=-1>&laquo;</li>
+                <li value=1 class="active">{{currentPage}}</li>
+                <li value=0>&raquo;</li>
+            </ul>
         </div>
         
     </div>

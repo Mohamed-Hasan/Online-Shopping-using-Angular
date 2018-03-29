@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 import { SearchService } from './search.service'
 
 @Component({
@@ -11,58 +12,43 @@ export class SearchComponent implements OnInit {
   orders:object[];
   searchItem;
   searchResult;
-
-  constructor( private SearchService: SearchService) { }
+  currentPage=1;
+  pages;
+  constructor( private SearchService: SearchService, private route: ActivatedRoute ) {
+    this.route.paramMap.subscribe(params=>{
+      this.searchItem = params.get('query')
+      console.log(this.searchItem);
+      this.getSearchResults()      
+      
+   })
+  }
 
   ngOnInit() {
     //send to api to get all orders of a certain seller... should be array of objects
     //subcat name to be sent to server
-    let order1={
-      id: 1,
-      product:{
-        name: "iphone",
-        price: 800,
-        rating:3.5,
-        image:null,
-        available:5,
-        desc:"afefwfregergegegregergergergergergergergergergrregregregergregergergergergergergergergergre"
-      },
-      client: {
-        id: 1,
-        name: "Mohamed Hassan",
-        phone: "01097905343",
-        email: "mohamed.hassan.pet@gmail.com"
-      },
-      quantity: 5,
-      state: "delivered",
-    }
-
-    let order2={
-      id: 2,
-      product:{
-        name: "iphone s6",
-        price: 1000,
-        rating:4,
-        image:null,
-        available:5,
-        desc:"afefwfregergegegregergergergergergergergergergrregregregergregergergergergergergergergergre"
-      },
-      client: {
-        id: 1,
-        name: "Ahmed Hassan",
-        phone: "01097905343",
-        email: "ahmed.hassan.pet@gmail.com"
-      },
-      quantity: 5,
-      state: "delivered",
-    }
-    this.orders=[order1,order2];
   }
-
   getSearchResults(){
-    this.SearchService.getSearchResults(this.searchItem).subscribe(res=>{
-      this.searchResult = res;
+    this.SearchService.getSearchResults(this.searchItem,this.currentPage).subscribe(res=>{
+      this.searchResult = res.products;
+      this.pages = res.pages;
     })
   }
-
+  paginate(e){
+    let prevPage = this.currentPage
+    switch (e.target.value) {
+      case 0:
+      this.currentPage<this.pages?this.currentPage +=1 : this.currentPage;
+        break;
+      case -1:
+        this.currentPage>1?this.currentPage -=1 : this.currentPage;
+      break;
+      default:
+        break;
+    }
+    console.log(this.currentPage)
+    if (prevPage != this.currentPage) {
+      this.getSearchResults();
+    }
+    
+  }
 }

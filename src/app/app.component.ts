@@ -12,33 +12,41 @@ import {Router} from '@angular/router';
 })
 
 export class AppComponent implements DoCheck {
-  seller=true;
+ 
   panelOpenState: boolean = false;
-
+  seller;
+  query;
   show;
   open = false;
   logged;
-  user={name:''};
-
+  user;//{name:''}
   CatArr;
   searchArr = ["Any", "Category", "Subcategory", "price"];
 
   constructor(private login_service:LoginService, private AppService : AppService,private route: Router) 
-  {   
-    console.log("AppComponent Global Service");
-    console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
-    console.log(userrrr);
-    var userdata=JSON.stringify(userrrr);
-    console.log('user string',userdata);
-    var x=JSON.parse(userdata);
-  
-    if(x.name !=undefined)
-    {
-      this.show=false;
-      this.logged=true;
-      this.user=x;
-      console.log('nameeeeeeeeee from app',this.user.name);
-    }   
+  {
+    console.log('sellerrrrrr',this.seller);
+      console.log("AppComponent Global Service");
+      console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
+      console.log(userrrr);
+      var userdata=JSON.stringify(userrrr);
+      console.log('user string',userdata);
+      var x=JSON.parse(userdata);
+      if(x.name !=undefined)
+      {
+        
+        this.show=false;
+        this.logged=true;
+        this.user=x;
+        // console.log('xu',this.user.isseller);
+        console.log('user from app',this.user);
+        console.log('seelllllllllllllllllll',this.seller);
+        if(this.user.isseller !=undefined)
+        {
+           this.seller=true;
+        }
+        console.log('nameeeeeeeeee from app',this.user.name);
+      }
     }));
   }
   

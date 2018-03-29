@@ -10,7 +10,7 @@ export class SearchService {
        this.headers.append('Content-Type', 'application/json');
     }
 
-    getSearchResults(searchItem){
-        return this.http.get(`https://localhost:9010/search/${searchItem}`,{headers: this.headers}).map(res=>res.json());
+    getSearchResults(searchItem,page){
+        return this.http.get(`https://localhost:9010/products/search/${searchItem}/${page}`).map(res=>res.json());
     }
 }

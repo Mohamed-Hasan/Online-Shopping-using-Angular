@@ -24,7 +24,7 @@
                 <h3 class="price primary-color">{{product.price}} $</h3><br> <!-- prod price -->
             </div>
             <div class="col-md-4">
-                <button class="pull-right main-btn icon-btn" (click)="cancelOrder(name.text)"><i class="fa fa-close"></i></button>
+                <button class="pull-right main-btn icon-btn" (click)="removeproducet(product.id)"><i class="fa fa-close"></i></button>
                 <h5 class="price">Quantity</h5><br> <!-- prod available -->
                 <span class="qty-input"><input min="1" max="{{product.available}}" (input)="totalToPay()" style="border: solid 2px orangered; width: 50%" class="qty text-center" type="number" name="quantity" [(ngModel)]="product.quantity"></span>
             </div>      

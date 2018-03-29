@@ -34,12 +34,13 @@
         <!-- /Logo -->
 
         <!-- Search -->
+<<<<<<< HEAD
           <form class="search-group">
               <div class="header-search btn-group" dropdown>
 
-              <input class="input search-input" type="text" placeholder="Enter your keyword">
+              <input name="query" class="input search-input" type="text" placeholder="Enter your keyword" [(ngModel)]="query">
 
-              <button class="search-btn">
+              <button routerLink="/search/{{query}}" class="search-btn">
                   <i class="fa fa-search"></i>
                 </button>
 
@@ -59,6 +60,12 @@
             
           </div>
 
+=======
+        <div class="header-search">
+          <form>
+            <input name="query" class="input search-input" type="text" placeholder="Enter your keyword" [(ngModel)]="query">
+            
+>>>>>>> 8855f008b40d1cade8e8f012f136789708f2c558
           </form>
         <!-- /Search -->
       </div>
@@ -76,6 +83,7 @@
             </div>
             <a *ngIf="!logged" routerLink="/login" class="text-uppercase">Login / </a>
             <a *ngIf="!logged" routerLink="/signup" class="text-uppercase">Join</a>
+            <a *ngIf="logged" routerLink="/" (click)=" logout()" class="text-uppercase">LogOut</a>
 
             <ul *ngIf="logged" class="custom-menu">
               <li>
