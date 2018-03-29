@@ -24,7 +24,7 @@ export class HomeService {
       productId:pid
     };
     console.log('Home service');
-    return this.htttpclient.put<any>(`https://localhost:9010/user/addtocart/${pid}`,body);
+    return this.htttpclient.put<any>(`https://localhost:9010/users/addtocart/${pid}`,body);
 
   }
 

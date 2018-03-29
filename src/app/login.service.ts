@@ -9,7 +9,7 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 @Injectable()
 export class LoginService {
   
- 
+
   public user=new BehaviorSubject<Object>({});
   currentuser=this.user.asObservable();
   

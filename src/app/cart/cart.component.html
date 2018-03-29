@@ -12,9 +12,9 @@
     </div>
     <div class="row" [hidden]="checked">
       <div class="col-md-8" >
-          <div *ngFor="let product of purchases" class="row product-container"> <!-- start of for loop -->
+          <div *ngFor="let product of cart" class="row product-container"> <!-- start of for loop -->
             <div class="col-md-4">
-                <img routerLink="/product" src="../../assets/img/banner01.jpg" alt=""> <!-- prod img ==> src="data:image/png;base64,{{product.image}}" --> 
+                <img routerLink="/product" src="data:image/png;base64,{{product?.image}}" alt=""> <!-- prod img ==> src="data:image/png;base64,{{product.image}}" --> 
             </div>
             <div class="col-md-4">
                 <a routerLink="/product" #name><h3>{{product.name}}</h3></a> <!-- prod name -->
@@ -24,9 +24,9 @@
                 <h3 class="price primary-color">{{product.price}} $</h3><br> <!-- prod price -->
             </div>
             <div class="col-md-4">
-                <button class="pull-right main-btn icon-btn" (click)="removeproducet(product.id)"><i class="fa fa-close"></i></button>
+                <button class="pull-right main-btn icon-btn" (click)="removeproducet(product._id)"><i class="fa fa-close"></i></button>
                 <h5 class="price">Quantity</h5><br> <!-- prod available -->
-                <span class="qty-input"><input min="1" max="{{product.available}}" (input)="totalToPay()" style="border: solid 2px orangered; width: 50%" class="qty text-center" type="number" name="quantity" [(ngModel)]="product.quantity"></span>
+                <span class="qty-input"><input min="1" max={{product.amountAvailable}} (input)="totalToPay($event)" style="border: solid 2px orangered; width: 50%" class="qty text-center" type="number" name="quantity" value="1"></span>
             </div>      
           </div>
       </div>

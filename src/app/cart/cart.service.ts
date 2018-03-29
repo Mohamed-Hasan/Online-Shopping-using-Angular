@@ -31,25 +31,34 @@ export class CartService {
 
  makeorder(usertoken)
  {
+
   var body={
     usertoken:usertoken
   };
+ 
    return this.chttp.post('https://localhost:9010/orders/add',body);
- } 
+ 
+  } 
 
 
  showcart(utoken)
  {
+
   var body={
     usertoken:utoken
   };
-  return this.chttp.post('https://localhost:9010/users/showcart',body);
+  return this.chttp.post('https://localhost:9010/users/showcart', body);
  }
 
  
 removeproductfrommycart(productid)
 {
-  return this.chttp.delete(`https://localhost/users/removefromcart/${productid}`);
+  console.log('p id remove cart',productid);
+  var utoken=localStorage.getItem('token');
+  var body={
+    usertoken:utoken
+  };
+  return this.chttp.post(`https://localhost:9010/users/removefromcart/${productid}`,body);
 }  
 
 
