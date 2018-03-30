@@ -1,41 +1,100 @@
 <div class="home-wrap" style="margin: auto">
-    <div class="section-title">
-            <h3 class="title"> Search Results </h3>
+  <div id="breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb">
+        <li>
+          <a routerLink="">Home</a>
+        </li>
+      </ul>
     </div>
-    <div id="breadcrumb">
-        <div class="container">
-            <ul class="breadcrumb">
-                <li><a routerLink="">Home</a></li>
-            </ul>
+  </div>
+  <div class="row">
+    <div id="aside" class="home-wrap" class="col-md-3">
+      <!-- aside widget -->
+      <div class="aside">
+        <h3 class="aside-title">Shop by:</h3>
+        <!-- aside widget -->
+        <div class="aside">
+          <h3 class="aside-title">Filter by Category</h3>
+          <div>
+            <select id="category" name="category" required #categ (change)="onChange($event)">
+              <option *ngFor="let cat of CatArr" value="{{cat._id}}">{{cat.categoryName}}</option>
+            </select>
+
+          </div>
+          <h3 class="aside-title">Filter by SubCategory</h3>
+          <div *ngFor="let sub of subCatArr">
+            <input type="checkbox" name="{{sub?.subcatName}}" value="{{sub?._id}}" (click)="filterSubCat($event)" id="">
+            <span>
+              <label style="font-size: 16px; margin-left: 20px;" for="{{sub?.subcatName}}">{{sub?.subcatName}}</label>
+            </span>
+          </div>
+
         </div>
+        <div class="aside">
+          <h3 class="aside-title">Filter by Price</h3>
+          <div id="price-slider">
+            <label for="min" style="font-size: 16px; display: block;">From</label>
+            <input type="number" name="min" min="1" [(ngModel)]="filters.min" class="pull-right" style=" border: solid 2px orangered; font-size: 18px"
+              class="qty text-center" #mini>
+          </div>
+          <div>
+            <label for="max" style="font-size: 16px">To</label>
+            <input type="number" name="max" min="{{mini.value}}" [(ngModel)]="filters.max" style="border: solid 2px orangered;display: block; font-size: 18px"
+              class="qty text-center">
+          </div>
+
+        </div>
+        <button type="submit" (click)=getSearchResults() style="font-size: 16px" class="pull-right center price primary-btn add-to-cart">Search</button>
+        <!-- aside widget -->
+
+      </div>
+      <!-- /aside widget -->
     </div>
 
-    <div *ngFor="let product of searchResult" class="row product-container"> <!-- start of for loop -->
+    <div class="col-md-9">
+      <div class="section-title">
+        <h3 class="title"> Search Results </h3>
+      </div>
+
+      <div *ngFor="let product of searchResult" class="row product-container">
+        <!-- start of for loop -->
         <div class="col-md-2">
-            <img src="data:image/png;base64,{{product.image}}" alt="">
+          <img src="data:image/png;base64,{{product.image}}" alt="">
         </div>
         <div class="col-md-7">
-            <a><h3>{{product.name}}</h3></a> <!-- prod name -->
-            <div>
-                <rating [ngModel]="product.sumOfRates/product.ratesCounter" [float]="true" [readonly]="true"></rating> <!-- prod rating -->
-            </div>
-                
-            <div style="overflow-wrap: break-word"> <!-- prod desc -->
-                {{product.description}}
-            </div>
+          <a>
+            <h3>{{product.name}}</h3>
+          </a>
+          <!-- prod name -->
+          <div>
+            <rating [ngModel]="product.sumOfRates/product.ratesCounter" [float]="true" [readonly]="true"></rating>
+            <!-- prod rating -->
+          </div>
+
+          <div style="overflow-wrap: break-word">
+            <!-- prod desc -->
+            {{product.description}}
+          </div>
         </div>
         <div class="col-md-3">
-            <h3 class="price primary-color">{{product.price}} $</h3><br> <!-- prod price -->
-            <h5 class="price">{{product.amountAvailable}} available </h5><br> <!-- prod available -->
-        </div>      
-    </div>
-    
-    <div id="pagination">
+          <h3 class="price primary-color">{{product.price}} $</h3>
+          <br>
+          <!-- prod price -->
+          <h5 class="price">{{product.amountAvailable}} available </h5>
+          <br>
+          <!-- prod available -->
+        </div>
+      </div>
+
+      <div id="pagination">
         <ul class="store-pages" (click)="paginate($event)">
-            <li value=-1>&laquo;</li>
-            <li value=1 class="active">{{currentPage}}</li>
-            <li value=0>&raquo;</li>
+          <li value=-1>&laquo;</li>
+          <li value=1 class="active">{{currentPage}}</li>
+          <li value=0>&raquo;</li>
         </ul>
+      </div>
     </div>
-    
+
+  </div>
 </div>

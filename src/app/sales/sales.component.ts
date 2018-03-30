@@ -1,19 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SalesService } from "./sales.service";
+import { LoginService } from "../login.service"
 @Component({
   selector: 'app-sales',
   templateUrl: './sales.component.html',
   styleUrls: ['./sales.component.css']
 })
 export class SalesComponent implements OnInit {
-
+  // @Input() seller;
   orders;
   seller={id:1};  //should be set during seller login as a global variable
   currentPage=1;
   pages;
-  constructor(private salesService: SalesService) { }
+  constructor(private salesService: SalesService) { 
+
+   }
 
   ngOnInit() {
+    // if (condition) {
+      
+    // }
     this.getMySales();
   }
 

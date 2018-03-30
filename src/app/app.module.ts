@@ -87,7 +87,7 @@ export function getAuthServiceConfigs() {
     ShelfComponent,
     AllCategoriesComponent,
     SearchComponent,
-    ForgetpasswordComponent
+    ForgetpasswordComponent,
   ],
   imports: [
     BrowserModule,
