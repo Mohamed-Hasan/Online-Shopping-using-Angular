@@ -1,28 +1,7 @@
-<!-- <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-  <button class="dropdown-btn">Dropdown
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-</div> -->
-
-
-
-
-
-
 <!-- HEADER -->
 <header>
   <!-- header -->
-  <div id="header">
+  <div >
     <div class="container">
       <div class="pull-left">
         <!-- Logo -->
@@ -34,39 +13,16 @@
         <!-- /Logo -->
 
         <!-- Search -->
-          <form class="search-group">
-              <div class="header-search btn-group" dropdown>
+        <form class="search-group">
+          <div class="header-search btn-group" dropdown>
 
-              <input name="query" class="input search-input" type="text" placeholder="Enter your keyword" [(ngModel)]="query">
-
-              <button routerLink="/search/{{query}}" class="search-btn">
-                  <i class="fa fa-search"></i>
-                </button>
-
-                  <!-- <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle"><span>
-                    Search by ... </span>
-                  </button> -->
-
-                  <select >
-                    <option *ngFor="let search of searchArr" role="menuitem" value={{search}}>{{search}}</option>
-                  </select>
-                  
-
-                  <!-- <ul *dropdownMenu class="dropdown-menu" role="menu">
-                    <li *ngFor="let search of searchArr" role="menuitem"><a>{{search}}</a></li>
-                  </ul> -->
-            
-            
-          </div>
-
-<!--
-        <div class="header-search">
-          <form>
             <input name="query" class="input search-input" type="text" placeholder="Enter your keyword" [(ngModel)]="query">
-          </form>
-        <!-- /Search -->
 
-      </form>
+            <button routerLink="/search/{{query}}" class="search-btn">
+              <i class="pull-right fa fa-search"></i>
+            </button>
+          </div>
+        </form>
       </div>
       <div class="pull-right">
         <ul class="header-btns">
@@ -75,10 +31,10 @@
             <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
               <div class="header-btns-icon">
                 <i *ngIf="!logged" class="fa fa-user-o"></i>
-                <img *ngIf="logged" src="data:image/png;base64,{{user?.image}}" style="max-width: 100%; max-height: 100%" alt="" routerLink="/profile"> <!-- user.image -->
-
+                <img *ngIf="logged" src="data:image/png;base64,{{user?.image}}" style="max-width: 100%; max-height: 100%" alt="" routerLink="/profile">
+                <!-- user.image -->
               </div>
-              <strong *ngIf="logged" routerLink="/profile" class="text-uppercase">{{user.name}}</strong>
+              <strong *ngIf="logged" routerLink="/profile" class="text-uppercase" style="font-size: 16px">{{user.name}}</strong>
             </div>
             <a *ngIf="!logged" routerLink="/login" class="text-uppercase">Login / </a>
             <a *ngIf="!logged" routerLink="/signup" class="text-uppercase">Join</a>
@@ -87,26 +43,18 @@
             <ul *ngIf="logged" class="custom-menu">
               <li>
                 <a routerLink="/profile">
-                  <i class="fa fa-user-o"></i> My Account</a>
+                  <i *ngIf="logged" class="fa fa-user-o"></i> My Account</a>
               </li>
               <li>
                 <a routerLink="/cart">
                   <i class="fa fa-check"></i> Checkout</a>
-              </li>
-              <li *ngIf="!logged">
-                <a routerLink="/login">
-                  <i class="fa fa-unlock-alt"></i> Login</a>
-              </li>
-              <li *ngIf="!logged">
-                <a routerLink="/signup">
-                  <i class="fa fa-user-plus"></i> Create An Account</a>
               </li>
             </ul>
           </li>
           <!-- /Account -->
 
           <!-- Card -->
-          <li class="header-Card dropdown default-dropdown">
+          <li *ngIf="logged" class="header-Card dropdown default-dropdown">
             <a routerLink="/cart" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
               <div class="header-btns-icon">
                 <i class="fa fa-shopping-cart"></i>
@@ -140,41 +88,35 @@
   <div class="container">
     <div id="responsive-nav">
       <!-- category n av -->
-      
-
-
-
       <!-- /category nav -->
-
       <!-- menu nav -->
-   
+
       <div class="menu-nav">
         <span class="menu-header">Menu
           <i class="fa fa-bars"></i>
         </span>
         <ul class="menu-list">
           <li>
-            <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="category-header">Categories
-                <i class="fa fa-list"></i>
+            <span style="font-size:20px;" onclick="openNav()" class="center price primary-btn add-to-cart">Categories
+              <i class="fa fa-list"></i>
             </span>
-            <div> 
+            <div>
               <div id="mySidenav" class="sidenav">
                 <mat-accordion>
-                    <mat-expansion-panel *ngFor="let cat of categories" style="background-color: white;">
-                      <mat-expansion-panel-header style="background-color: #111;" >
-                        <mat-panel-title >
-                            {{cat.name}}
-                        </mat-panel-title>
-                      </mat-expansion-panel-header>
-                  
-                      <mat-form-field *ngFor="let subcat of cat.subcat" style="background-color: white;" >
-                          <p class="subcat">{{subcat}}</p>
-                      </mat-form-field>
-                    </mat-expansion-panel>
+                  <mat-expansion-panel *ngFor="let cat of catArr" style="background-color: white">
+                    <mat-expansion-panel-header style="background-color:gainsboro; font-size: 15px">
+                      <mat-panel-title>
+                        {{cat.categoryName}}
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-form-field *ngFor="let subcat of cat.subcategoryId" style="background-color: orange;">
+                      <p class="subcat" routerLink="/subcat/{{subcat.subcatName}}/{{subcat._id}}">{{subcat.subcatName}}</p>
+                    </mat-form-field>
+                  </mat-expansion-panel>
                 </mat-accordion>
               </div>
             </div>
-            
+
           </li>
           <li>
             <a routerLink="">Home</a>
@@ -191,8 +133,8 @@
           <li>
             <a routerLink="allCat">All Categories</a>
           </li>
-          <li *ngFor="let cat of categories" class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown">{{cat.name}}
+          <li *ngFor="let cat of catArr" class="dropdown">
+            <a class="dropdown-toggle price add-to-cart" data-toggle="dropdown">{{cat.categoryName}}
               <i class="fa fa-caret-down"></i>
             </a>
             <div class="custom-menu">
@@ -202,16 +144,16 @@
                     <li>
                       <h3 class="list-links-title">Sub Categories</h3>
                     </li>
-                    <li *ngFor="let subcat of cat.subcat">
-                      <a href="#">{{subcat}}</a>
+                    <li *ngFor="let subcat of cat.subcategoryId">
+                      <a routerLink="/subcat/{{subcat.subcatName}}/{{subcat._id}}">{{subcat.subcatName}}</a>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           </li>
-          
-          
+
+
         </ul>
       </div>
       <!-- menu nav -->
@@ -246,7 +188,8 @@
           <!-- /footer logo -->
 
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna</p>
+            magna
+          </p>
 
           <!-- footer social -->
           <ul class="footer-social">

@@ -1,9 +1,10 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { AppService } from './app.service';
 import { Http } from "@angular/http";
 import { LoginService } from  './login.service' ;
 import { Subscription } from 'rxjs/Subscription';
 import {Router} from '@angular/router';
+import { AllCategoriesService } from "./all-categories/all-categories.service";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 
-export class AppComponent implements DoCheck {
+export class AppComponent implements OnInit {
  
   panelOpenState: boolean = false;
   seller;
@@ -19,70 +20,43 @@ export class AppComponent implements DoCheck {
   show;
   open = false;
   logged;
-  user;//{name:''}
-  CatArr;
+  user;
+  catArr;
   searchArr = ["Any", "Category", "Subcategory", "price"];
 
-  constructor(private login_service:LoginService, private AppService : AppService,private route: Router) 
+  constructor(private login_service:LoginService, private AppService : AppService,private route: Router, private AllCategoriesService:AllCategoriesService) 
   {
-    console.log('sellerrrrrr',this.seller);
-      console.log("AppComponent Global Service");
-      console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
-      console.log(userrrr);
+    this.getcategoriesList();  
+    console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
       var userdata=JSON.stringify(userrrr);
-      console.log('user string',userdata);
       var x=JSON.parse(userdata);
       if(x.name)
       {
         this.show=false;
         this.logged=true;
         this.user=x;
-        // console.log('xu',this.user.isseller);
-        console.log('user from app',this.user);
-        console.log('seelllllllllllllllllll',this.seller);
         if(this.user.isseller !=undefined)
         {
            this.seller=true;
         }
-        console.log('nameeeeeeeeee from app',this.user.name);
       }
     }));
   }
   
-  
-  getAllCategories(){
-    this.AppService.getAllCategories().subscribe(res =>{
-      console.log(res);
-      this.CatArr = res;
-    })
-
+  ngOnInit(){
+    this.getcategoriesList();    
   }
-
-  categories = 
-  [
-    {
-      name:"women",
-      subcat:["sub1", "sub2", "sub3"],
-    }, 
-    {
-      name:"men",
-      subcat:["sub11", "sub22", "sub33"],
-    }, 
-    {
-      name:"children",
-      subcat:["sub111", "sub222", "sub333"],
-    }
-  ]; 
-
+  getcategoriesList(){
+    this.AllCategoriesService.getAllCategories().subscribe(res=>{
+      console.log(res);
+      this.catArr = res;
+    })
+  }
   
   toggleClass() {
     this.show==false?this.show=true:this.show=false;
   }
 
-
-  ngDoCheck(){
-
-  }
 
 
   logout(){

@@ -17,9 +17,17 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
   loginerr:string;
+  userData;
   constructor(private login_service:LoginService,private socialAuthService: AuthService, private route: Router) 
   {
     console.log("login comp")
+    this.login_service.currentuser.subscribe(user=>{
+      this.userData=JSON.parse(JSON.stringify(user));
+      console.log("const",this.userData.name)
+    })
+    if (this.userData.name) {
+      this.route.navigate([''])
+    }
     // console.log('testlogincom',this.login_service.username);
     //testing send token
     // var utoken=localStorage.getItem('token');

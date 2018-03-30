@@ -1,8 +1,8 @@
-<div class="home-wrap" class="dropdown">
-    <div *ngFor="let cat of CatArr" id="myDropdown" class="dropdown-content">
-        <button onclick="down()" class="dropbtn" >{{cat.categoryName}}</button><br>
+<div class="row" style="margin: auto;">
+    <div *ngFor="let cat of CatArr" id="myDropdown" class="dropdown-content col-md-5" style="padding: 20px; margin: 20px;font-size: 20px">
+        <button onclick="down()" class="center price primary-btn dropbtn" >{{cat.categoryName}}</button><br>
         <div id="myDropdown" class="dropdown-content">
-            <a *ngFor="let sub of cat.subcategoryId" routerLink="/subcat/{{sub.subcatName}}/{{sub._id}}" class="SubCat">{{sub.name}}<br></a>
+            <a *ngFor="let sub of cat.subcategoryId" routerLink="/subcat/{{sub.subcatName}}/{{sub._id}}" class="SubCat" style="font-size: 20px">{{sub.subcatName}}<br></a>
         </div>
     </div>
 </div>

@@ -16,19 +16,18 @@ export class HomeComponent implements OnInit {
   newArr;
   constructor(private login_service:LoginService, private HomeService: HomeService,private route: Router) { 
      console.log('home comp');
-      
+    this.getProducts();
   }
 
   getProducts(){
     this.HomeService.getProducts().subscribe(res=>{
-      console.log(res.result);
+      console.log(res);
       this.products = res.result;
       this.newArr = res.result
     })
   }
   
   ngOnInit() {
-    this.getProducts();
   }
 
   addToCart(e) {

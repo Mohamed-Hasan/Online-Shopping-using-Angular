@@ -1,26 +1,33 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SalesService } from "./sales.service";
 import { LoginService } from "../login.service"
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-sales',
   templateUrl: './sales.component.html',
   styleUrls: ['./sales.component.css']
 })
 export class SalesComponent implements OnInit {
-  // @Input() seller;
+
   orders;
   seller={id:1};  //should be set during seller login as a global variable
   currentPage=1;
   pages;
-  constructor(private salesService: SalesService) { 
-
+  userData;
+  constructor(private salesService: SalesService, private login_service:LoginService, private router: Router) { 
+    this.login_service.currentuser.subscribe(user=>{
+      this.userData=JSON.parse(JSON.stringify(user));
+      console.log("const",this.userData.isseller)
+    })
+    if (this.userData.isseller) {
+      this.getMySales();      
+    } else {
+      this.router.navigate(['login'])
+    }
    }
 
   ngOnInit() {
-    // if (condition) {
-      
-    // }
-    this.getMySales();
+    
   }
 
   paginate(e){

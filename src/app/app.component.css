@@ -7,20 +7,17 @@ body {
 }
 
 .sidenav {
-    height: 500px;
     margin-left: 100px;
-    margin-top: 108px;
-    width: 200px;
+    margin-top: 120px;
     display: none;
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     top: -108%;
     left: -8%;
-    background-color: #111;
     /* overflow-x: hidden; */
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    padding-top: 20px;
+    -webkit-transition: 1s;
+    transition: 1s;
+    padding-top: 25px;
 }
 
 
@@ -156,4 +153,9 @@ body {
 .searchBy {
     right: 40px;
     position: relative;
+}
+
+a {
+    font-size: 14px;
+    font-weight: bold;
 }

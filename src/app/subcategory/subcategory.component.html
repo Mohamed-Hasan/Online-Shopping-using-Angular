@@ -9,7 +9,7 @@
         <div class="col-md-7">
             <a routerLink="/product"><h3>{{product?.name}}</h3></a> <!-- prod name -->
             <div>
-                <rating [ngModel]="product.rating" [float]="true" [readonly]="true"></rating> <!-- prod rating -->
+                <rating [ngModel]="product.sumOfRates/product.ratesCounter" [float]="true" [readonly]="true"></rating> <!-- prod rating -->
             </div>
                 
             <div style="overflow-wrap: break-word"> <!-- prod desc -->

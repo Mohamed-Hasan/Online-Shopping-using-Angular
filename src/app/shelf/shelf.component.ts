@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShelfService } from "./shelf.service";
+import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-shelf',
@@ -11,17 +13,25 @@ export class ShelfComponent implements OnInit {
   shelf:object[];
   currentPage=1;
   pages;
-  constructor( private ShelfService: ShelfService) { }
+  userData;
+  constructor( private ShelfService: ShelfService , private login_service:LoginService, private router: Router) { 
+    this.login_service.currentuser.subscribe(user=>{
+      this.userData=JSON.parse(JSON.stringify(user));
+      console.log("const",this.userData.isseller)
+    })
+    if (this.userData.isseller != undefined) {
+      this.getShelf();      
+    } else {
+      this.router.navigate(['login'])
+    }
+  }
 
   ngOnInit() {
-    //send to api to get all orders of a certain seller... should be array of objects
-    //subcat name to be sent to server
-    console.log("hi")
-    this.getShelf();
+    
   }
 
   getShelf(){
-    this.ShelfService.getShelf("5ab95e2bda28ff74357c2f03",this.currentPage).subscribe(res=>{console.log(res);this.shelf=res.products; this.pages=res.pages})
+    this.ShelfService.getShelf(this.userData.id,this.currentPage).subscribe(res=>{console.log(res);this.shelf=res.products; this.pages=res.pages})
   }
 
   paginate(e){
