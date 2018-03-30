@@ -1,41 +1,60 @@
 <div class="home-wrap" style="margin: auto">
-    <div class="section-title">
-        <h3 class="title">CheckOut</h3>
-    </div>
-    <div class="jumbotron text-xs-center" [hidden]="!checked">
-        <h1 class="display-3">Thank You!</h1>
-        <p class="lead"><strong>Your Order has been submitted successfully and you will be contacted soon</strong></p>
-        <hr>
-        <p class="lead">
-            <button class="primary-btn add-to-cart" routerLink="">Continue to homepage</button>
-        </p>
-    </div>
-    <div class="row" [hidden]="checked">
-      <div class="col-md-8" >
-          <div *ngFor="let product of cart" class="row product-container"> <!-- start of for loop -->
-            <div class="col-md-4">
-                <img routerLink="/product" src="data:image/png;base64,{{product?.productId?.image}}" alt=""> <!-- prod img ==> src="data:image/png;base64,{{product.image}}" --> 
-            </div>
-            <div class="col-md-4">
-                <a routerLink="/product" #name><h3>{{product.productId?.name}}</h3></a> <!-- prod name -->
-                <div>
-                    <rating [ngModel]="product?.productId?.sumOfRates/product?.productId?.ratesCounter" [float]="true" [readonly]="true"></rating> <!-- prod rating -->
-                </div>
-                <h3 class="price primary-color">{{product.productId?.price}} $</h3><br> <!-- prod price -->
-            </div>
-            <div class="col-md-4">
-                <button class="pull-right main-btn icon-btn" (click)="removeproducet(product._id)"><i class="fa fa-close"></i></button>
-                <h5 class="price">Quantity</h5><br> <!-- prod available -->
-                <span class="qty-input"><input min="1" max={{product?.productId?.amountAvailable}} (input)="totalToPay()" style="border: solid 2px orangered; width: 50%" class="qty text-center" type="number" name="quantity" (ngModel)="product?.productId?.quantity"></span>
-            </div>      
-          </div>
-      </div>
-        <div class="col-md-4" style="margin-top: 100px">
-          <h3>Total: {{Sum}} $</h3> <br><br>
-          <button class="center price primary-btn add-to-cart" (click)="checkout()">
-             <p *ngIf="logged" class="center primary-btn add-to-cart" >Checkout</p>
-             <p *ngIf="!logged" class="center primary-btn add-to-cart" >Login to checkout</p>
-            </button> 
+  <div class="section-title">
+    <h3 class="title">CheckOut</h3>
+  </div>
+  <div class="jumbotron text-xs-center" [hidden]="!checked">
+    <h1 class="display-3">Thank You!</h1>
+    <p class="lead">
+      <strong>Your Order has been submitted successfully and you will be contacted soon</strong>
+    </p>
+    <hr>
+    <p class="lead">
+      <button class="primary-btn add-to-cart" routerLink="">Continue to homepage</button>
+    </p>
+  </div>
+  <div class="row" [hidden]="checked">
+    <div class="col-md-8">
+      <div *ngFor="let product of cart" class="row product-container">
+        <!-- start of for loop -->
+        <div class="col-md-4">
+          <img routerLink="/product" src="data:image/png;base64,{{product?.productId?.image}}" alt="">
+          <!-- prod img ==> src="data:image/png;base64,{{product.image}}" -->
         </div>
+        <div class="col-md-4">
+          <a routerLink="/product" #name>
+            <h3>{{product.productId?.name}}</h3>
+          </a>
+          <!-- prod name -->
+          <div>
+            <rating [ngModel]="product?.productId?.sumOfRates/product?.productId?.ratesCounter" [float]="true" [readonly]="true"></rating>
+            <!-- prod rating -->
+          </div>
+          <h3 class="price primary-color">{{product.productId?.price}} $</h3>
+          <br>
+          <!-- prod price -->
+        </div>
+        <div class="col-md-4">
+          <button class="pull-right main-btn icon-btn" (click)="removeproducet(product?.productId?._id)">
+            <i class="fa fa-close"></i>
+          </button>
+          <h5 class="price">Quantity</h5>
+          <br>
+          <!-- prod available -->
+          <span class="qty-input">
+            <input min="1" max={{product?.productId?.amountAvailable}} (input)="totalToPay()" style="border: solid 2px orangered; width: 50%"
+              class="qty text-center" type="number" name="quantity" [(ngModel)]="product.quantity">
+          </span>
+        </div>
+      </div>
     </div>
+    <div class="col-md-4" style="margin-top: 100px">
+      <h3>Total: {{Sum}} $</h3>
+      <br>
+      <br>
+      <button class="center price primary-btn add-to-cart" (click)="checkout()">
+        <p *ngIf="logged" class="center primary-btn add-to-cart">Checkout</p>
+        <p *ngIf="!logged" class="center primary-btn add-to-cart">Login to checkout</p>
+      </button>
+    </div>
+  </div>
 </div>

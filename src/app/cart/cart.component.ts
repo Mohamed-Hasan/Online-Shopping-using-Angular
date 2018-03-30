@@ -37,29 +37,11 @@ export class CartComponent implements OnInit {
         //Get User Products From db
         var token=localStorage.getItem('token');
         this.ShowUserCart();
-
+        
    }
   
 
   ngOnInit() {
-/*
-    let prod1 = {
-      name: "iphone",
-      price: 800,
-      rating:3.5,
-      image:null,
-      quantity:1,
-      available:5,
-    }
-
-    let prod2 = {
-      name: "iphone s6",
-      price: 1000,
-      rating:4,
-      image:null,
-      quantity:3,
-      available:4,
-    }*/
     /// got to api to get the details of every product
     // this.cart.forEach(productId => {
     //   this.CartService.getProduct(productId).subscribe(res=>{
@@ -72,44 +54,54 @@ export class CartComponent implements OnInit {
     // this.Sum=this.totalToPay();
   }
 
-  // cancelOrder(prodName)
-  // {
-  //   for (let i = 0; i < this.purchases.length; i++) {
-  //     const element = this.purchases[i];
-  //     if (element.name == prodName) {
-  //       this.purchases.splice(i,1)
-  //     }
-  //     console.log(this.purchases);
-  //   }
-  //   this.Sum=this.totalToPay();
-  // }
+  /* cancelOrder(prodName)
+  {
+    for (let i = 0; i < this.purchases.length; i++) {
+      const element = this.purchases[i];
+      if (element.name == prodName) {
+        this.purchases.splice(i,1)
+      }
+      console.log(this.purchases);
+    }
+    this.Sum=this.totalToPay();
+  }*/
 
 
   totalToPay(){
     let sum=0;
+    var newCart=[];
     for (let i = 0; i < this.cart.length; i++) {
       sum += this.cart[i].productId.price*this.cart[i].quantity;
+      newCart.push({productId:this.cart[i].productId._id, quantity:this.cart[i].quantity})
     }
+    this.updateQuantity(newCart);
+    console.log(newCart);
     this.Sum=sum;
     return sum;
   }
 
-
+  updateQuantity(newCart){
+    var token=localStorage.getItem('token');
+    this.CartService.updateQuantity(token,newCart).subscribe(res=>{
+      if (res['error']) {
+        // show error
+      }
+    })
+  }
+  
   checkout(){
     //send purchases to api to save in db then show thanks message
     if (this.logged) {
        var  token=localStorage.getItem('token');
       this.CartService.makeorder(token).subscribe(res=>{
-        // if(!res.err)
+        if(!res['error'])
         { console.log('chkout',this.cart);
            console.log('Ordered'); 
-        // }else
-        // {
-          console.log('Cant make Ordered');
+        }else
+        {
+          console.log('Cant make Order');
         }
-
       });
-
       this.checked = true;
     } else {
       this.router.navigate(['login']);
@@ -121,7 +113,7 @@ export class CartComponent implements OnInit {
 
   removeproducet(proid){
     this.CartService.removeproductfrommycart(proid).subscribe((res)=>{
-       if(res)
+       if(!res.error)
        {
           console.log('product removed from your cart'); 
           this.ShowUserCart();
@@ -148,6 +140,7 @@ export class CartComponent implements OnInit {
       //  let result = res;
        this.cart=res['result'].cart;
        this.purchases=this.cart;
+       this.Sum = this.totalToPay();
      }else
      {
       console.log('Dont Show Cart');

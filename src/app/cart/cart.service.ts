@@ -58,9 +58,15 @@ removeproductfrommycart(productid)
   var body={
     usertoken:utoken
   };
-  return this.chttp.post(`https://localhost:9010/users/removefromcart/${productid}`,body);
+  return this.http.put(`https://localhost:9010/users/removefromcart/${productid}`,body).map(res=>res.json());
 }  
 
-
+updateQuantity(utoken,cart){
+  var body={
+    usertoken:utoken,
+    cart: cart
+  };
+  return this.http.put(`https://localhost:9010/users/editcart`,body).map(res=>res.json());
+}
 
 }
