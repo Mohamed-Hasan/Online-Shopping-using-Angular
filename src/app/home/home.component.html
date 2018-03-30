@@ -6,14 +6,8 @@
     </div>
     <div class="col-sm-10">
       <ngx-slideshow #carousel>
-        <li>
-          <img src="./assets/img/banner01.jpg" height="500px">
-        </li>
-        <li>
-          <img src="./assets/img/banner02.jpg" height="500px">
-        </li>
-        <li>
-          <img src="./assets/img/banner03.jpg" height="500px">
+        <li *ngFor="let prod of newArr">
+          <img src="data:image/png;base64,{{prod.image}}" height="500px">
         </li>
       </ngx-slideshow>
     </div>
@@ -43,11 +37,7 @@
           <div class="product-thumb">
             <button routerLink="/product" class="main-btn quick-view"> <!-- "/product/prod.id" -->
               <i class="fa fa-search-plus"></i> View </button> <!-- prod image -->
-            <img src="./assets/img/product01.jpg" alt=""> 
-            <!-- <img src="data:image/png;base64,iVBORw0KGgoAAA
-              ANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4
-              //8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU
-              5ErkJggg==" alt="Red dot" /> -->
+            <img src="data:image/png;base64,{{product.image}}" alt=""> 
           </div>
           <div class="product-body">
               <h2 class="product-name">
@@ -56,17 +46,9 @@
                 <!-- prod name -->
             <h3 class="product-price">{{product.price}} $</h3> <!-- prod image -->
             <!-- product price -->
-            <rating [(ngModel)]="product.rating" [float]="true" [readonly]="true"></rating>
+            <rating [(ngModel)]="product.sumOfRates/product.ratesCounter" [float]="true" [readonly]="true"></rating>
             <!-- product rating -->
             
-            <div class="product-btns">
-              <button class="primary-btn add-to-cart" (click)="addToCart(product.id)"> 
-                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                <label >{{msg}}</label>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- /Product Single -->
     </div>
     <!-- /row -->

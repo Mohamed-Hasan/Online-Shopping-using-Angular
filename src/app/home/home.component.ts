@@ -4,7 +4,6 @@ import { LoginService } from  '../login.service' ;
 import {Router} from '@angular/router';
 
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,65 +11,25 @@ import {Router} from '@angular/router';
  
 })
 export class HomeComponent implements OnInit {
-  
-  product = {
-    id: 2,
-    name: "iphone",
-    price: 800,
-    rating: 3.5,
-    image: null,
-    available: 5,
-    desc: "afefwfregergegegregergergergergergergergergergrregregregergregergergergergergergergergergre",
-  }
-
-
- 
+  products;
   msg;
-
+  newArr;
   constructor(private login_service:LoginService, private HomeService: HomeService,private route: Router) { 
      console.log('home comp');
-   
-    
+      
   }
-
-
-  product1 = {
-    id: 2,
-    name: "iphone",
-    price: 800,
-    rating: 3.5,
-    image: null,
-    available: 5,
-    desc: "afefwfregergegegregergergergergergergergergergrregregregergregergergergergergergergergergre",
-  }
-
-  product2 = {
-    id: 2,
-    name: "iphone s6",
-    price: 1000,
-    rating: 4,
-    image: null,
-    available: 5,
-    desc: "afefwfregergegegregergergergergergergergergergrregregregergregergergergergergergergergergre",
-  }
-  products = [this.product1, this.product2];
 
   getProducts(){
     this.HomeService.getProducts().subscribe(res=>{
-      console.log(res);
-      this.products = res;
+      console.log(res.result);
+      this.products = res.result;
+      this.newArr = res.result
     })
   }
-    
- 
-
-
-
+  
   ngOnInit() {
+    this.getProducts();
   }
-
-
-  //  ngDoCheck() { console.log('user from global login service',this.login_service.username);  }
 
   addToCart(proid) {
 
@@ -108,8 +67,5 @@ export class HomeComponent implements OnInit {
 
 
   }
-
-
-
 
 }

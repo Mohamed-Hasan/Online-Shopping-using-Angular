@@ -35,7 +35,7 @@ export class ProductComponent implements OnInit {
     this.route.params.subscribe(params => this.id = params['id']);
 
     this.productService.getProductDetails(this.id).subscribe(res => {
-      this.product = res;
+      this.product = res.result;
       console.log("in my constructor",this.product)
     })
     }
@@ -101,7 +101,7 @@ export class ProductComponent implements OnInit {
       console.log(res);
     })
     this.productService.getProductDetails(this.id).subscribe(res => {
-      this.product = res;
+      this.product = res.result;
     })
   }
 

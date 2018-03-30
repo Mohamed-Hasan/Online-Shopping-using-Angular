@@ -13,7 +13,7 @@ export class SubcategoryService {
    }
 
    getSubCatProducts(subCatId,page){
-     return this.http.get(`https://localhost:9010/categories/subcat/${subCatId}/${page}`).map((res)=>res.json())
+     return this.http.get(`https://localhost:9010/categories/subcat/${subCatId}/${page}`).map(res=>res.json())
    }
 
   //  return this.http.get('http://localhost:9090/home', {headers: this.headers}).map(res=>res.json());

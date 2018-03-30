@@ -13,13 +13,13 @@ import {Router} from '@angular/router';
 })
 
 export class AppComponent implements DoCheck {
-  seller=true;
+  seller;
   panelOpenState: boolean = false;
   query;
   show;
   open = false;
   logged;
-  user={name:''};
+  user;
   CatArr;
 
   constructor(private login_service:LoginService, private AppService : AppService,private route: Router) 
@@ -30,9 +30,8 @@ export class AppComponent implements DoCheck {
       var userdata=JSON.stringify(userrrr);
       console.log('user string',userdata);
       var x=JSON.parse(userdata);
-      if(x.name !=undefined)
+      if(x.name)
       {
-        
         this.show=false;
         this.logged=true;
         this.user=x;

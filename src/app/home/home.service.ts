@@ -13,7 +13,7 @@ export class HomeService {
   }
 
   getProducts(){
-    return this.http.get('http://localhost:9090/home', {headers: this.headers}).map(res=>res.json());
+    return this.http.get('https://localhost:9010/products/trend', {headers: this.headers}).map(res=>res.json());
   }
 
   

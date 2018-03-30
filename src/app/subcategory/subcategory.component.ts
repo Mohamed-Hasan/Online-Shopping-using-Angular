@@ -19,6 +19,7 @@ export class SubcategoryComponent implements OnInit {
     this.subCatId = params.get('id');
     this.subcatName = params.get('subcat');
     console.log(this.subCatId)
+    this.getProducts();
     }) 
   }
   ngOnInit() {
@@ -49,9 +50,9 @@ export class SubcategoryComponent implements OnInit {
 
   getProducts(){
     this.subcategoryService.getSubCatProducts(this.subCatId,this.currentPage).subscribe(res=>{
-      console.log("in subsc",res);
-      this.subCat=res.products;
-      this.pages = res.pages;
+      console.log("in subsc",res.result.undefined);
+      this.subCat=res.result.undefined;
+      this.pages = res.result.pages;
       // console.log(this.subCat.length)
     })
   }

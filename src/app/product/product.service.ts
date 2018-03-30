@@ -17,7 +17,7 @@ export class ProductService {
    getProductDetails(productId)
    {
     console.log(productId) 
-    return this.http.get(`https://localhost:9010/products/${productId}`).map(res =>res.json());
+    return this.http.get(`https://localhost:9010/products/get/${productId}`).map(res =>res.json());
    }
 
    SendRating(productId,rate){
