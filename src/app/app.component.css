@@ -159,3 +159,19 @@ a {
     font-size: 14px;
     font-weight: bold;
 }
+.mat-expansion-panel-header{
+    animation-name: menu;
+    animation-duration: 1s;
+}
+
+
+@keyframes menu{
+    0%{
+        width: 0px;
+        transform: rotateX(90deg) translateX(30px)
+    }
+   100%{
+        width: 200px;
+        transform: rotateX(0deg) translateX(0px)
+    }
+}
