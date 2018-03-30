@@ -49,6 +49,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { BsDropdownModule } from 'ngx-bootstrap';
 
 import { SignupService } from './signup.service';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 
 
 // Configs 
@@ -85,7 +86,8 @@ export function getAuthServiceConfigs() {
     SalesComponent,
     ShelfComponent,
     AllCategoriesComponent,
-    SearchComponent
+    SearchComponent,
+    ForgetpasswordComponent
   ],
   imports: [
     BrowserModule,

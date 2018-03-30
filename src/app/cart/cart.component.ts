@@ -96,17 +96,18 @@ export class CartComponent implements OnInit {
 
 
   checkout(){
+    console.log('chkout',this.cart[0]);
     //send purchases to api to save in db then show thanks message
     if (this.logged) {
-       var  token=localStorage.getItem('token');
-      this.CartService.makeorder(token).subscribe((res)=>{
-        if(!res.err)
-        { console.log('chkout',this.cart);
-           console.log('Ordered'); 
-        }else
-        {
-          console.log('Cant make Ordered');
-        }
+        var  token=localStorage.getItem('token');
+        this.CartService.makeorder(token).subscribe((res)=>{
+          if(res)
+          {  console.log('chkout',this.cart);
+            console.log('Ordered'); 
+          }else
+          {
+            console.log('Cant make Ordered');
+          }
 
       });
 
@@ -165,7 +166,7 @@ export class CartComponent implements OnInit {
     });
      */
 
-}
+  }
 
 
 
