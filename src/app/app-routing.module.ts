@@ -14,10 +14,12 @@ import { SalesComponent } from './sales/sales.component';
 import { SearchComponent } from './search/search.component';
 import { ShelfComponent } from './shelf/shelf.component';
 import { AllCategoriesComponent } from './all-categories/all-categories.component';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 
 const routes = [
 // userRoutes
     {path: 'login', component: LoginComponent},
+    {path: 'forgetpassword', component: ForgetpasswordComponent},
     {path : 'signup', component : SignUpComponent},
     {path : '', component : HomeComponent},
     {path : 'profile', component : ProfileComponent},

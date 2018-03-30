@@ -53,7 +53,7 @@ setduserdata(name) {
   {
     var body={email:email};
 
-    return this.http.post<any>('https://localhost:9010/auth/forgetpassword',body);
+    return this.http.post<any>('https://localhost:9010/forgetpassword',body);
 
   }
 

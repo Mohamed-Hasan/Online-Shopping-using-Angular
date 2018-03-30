@@ -90,6 +90,7 @@ export class CartComponent implements OnInit {
   }
   
   checkout(){
+    console.log('chkout',this.cart[0]);
     //send purchases to api to save in db then show thanks message
     if (this.logged) {
        var  token=localStorage.getItem('token');
@@ -160,7 +161,7 @@ export class CartComponent implements OnInit {
     });
      */
 
-}
+  }
 
 
 
