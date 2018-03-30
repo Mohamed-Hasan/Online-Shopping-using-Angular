@@ -34,14 +34,32 @@
         <!-- /Logo -->
 
         <!-- Search -->
-        <div class="header-search">
-          <form>
-            <input name="query" class="input search-input" type="text" placeholder="Enter your keyword" [(ngModel)]="query">
-            <button routerLink="/search/{{query}}" class="search-btn">
-              <i class="fa fa-search"></i>
-            </button>
+          <form class="search-group">
+              <div class="header-search btn-group" dropdown>
+
+              <input name="query" class="input search-input" type="text" placeholder="Enter your keyword" [(ngModel)]="query">
+
+              <button routerLink="/search/{{query}}" class="search-btn">
+                  <i class="fa fa-search"></i>
+                </button>
+
+                  <!-- <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle"><span>
+                    Search by ... </span>
+                  </button> -->
+
+                  <select class="searchBy" >
+                    <option *ngFor="let search of searchArr" role="menuitem" value={{search}}>{{search}}</option>
+                  </select>
+                  
+
+                  <!-- <ul *dropdownMenu class="dropdown-menu" role="menu">
+                    <li *ngFor="let search of searchArr" role="menuitem"><a>{{search}}</a></li>
+                  </ul> -->
+            
+            
+          </div>
+
           </form>
-        </div>
         <!-- /Search -->
       </div>
       <div class="pull-right">

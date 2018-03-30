@@ -18,13 +18,15 @@ export class HomeService {
 
   
   addproducttocart(utoken,pid){
-    console.log(utoken,pid);
+    console.log(utoken);
+    console.log(pid);
+    
     var body={
       usertoken:utoken,
       productId:pid
     };
     console.log('Home service');
-    return this.htttpclient.put<any>(`https://localhost:9010/user/addtocart/${pid}`,body);
+    return this.htttpclient.put<any>(`https://localhost:9010/users/addtocart/${pid}`,body);
 
   }
 

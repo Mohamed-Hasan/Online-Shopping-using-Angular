@@ -49,6 +49,14 @@
             <rating [(ngModel)]="product.sumOfRates/product.ratesCounter" [float]="true" [readonly]="true"></rating>
             <!-- product rating -->
             
+            <div class="product-btns">
+              <button class="primary-btn add-to-cart" value="{{product._id}}" (click)="addToCart($event)"> 
+                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                <label >{{msg}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- /Product Single -->
     </div>
     <!-- /row -->

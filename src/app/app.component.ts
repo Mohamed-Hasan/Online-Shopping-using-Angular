@@ -1,4 +1,3 @@
-
 import { Component, DoCheck } from '@angular/core';
 import { AppService } from './app.service';
 import { Http } from "@angular/http";
@@ -13,17 +12,20 @@ import {Router} from '@angular/router';
 })
 
 export class AppComponent implements DoCheck {
-  seller;
+ 
   panelOpenState: boolean = false;
+  seller;
   query;
   show;
   open = false;
   logged;
-  user;
+  user;//{name:''}
   CatArr;
+  searchArr = ["Any", "Category", "Subcategory", "price"];
 
   constructor(private login_service:LoginService, private AppService : AppService,private route: Router) 
   {
+    console.log('sellerrrrrr',this.seller);
       console.log("AppComponent Global Service");
       console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
       console.log(userrrr);
@@ -37,17 +39,14 @@ export class AppComponent implements DoCheck {
         this.user=x;
         // console.log('xu',this.user.isseller);
         console.log('user from app',this.user);
-        console.log(this.seller);
-        if(this.user.isseller)
+        console.log('seelllllllllllllllllll',this.seller);
+        if(this.user.isseller !=undefined)
         {
            this.seller=true;
         }
         console.log('nameeeeeeeeee from app',this.user.name);
       }
     }));
-    
-   
-
   }
   
   

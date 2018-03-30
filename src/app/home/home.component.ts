@@ -31,8 +31,9 @@ export class HomeComponent implements OnInit {
     this.getProducts();
   }
 
-  addToCart(proid) {
-
+  addToCart(e) {
+    let proid = e.target.value
+    console.log(proid)
     console.log('user from home',this.login_service.currentuser.subscribe(userrrr=>{
       console.log(userrrr);
       var userdata=JSON.stringify(userrrr);
@@ -41,12 +42,12 @@ export class HomeComponent implements OnInit {
     
       if(x.name !=undefined)
       {
-        
         var utoken=localStorage.getItem('token');
         console.log('product name',proid);
         this.HomeService.addproducttocart(utoken,proid).subscribe(res=>{
+          console.log('hom prod',res);
           if(!res.err)
-          {
+          { 
             console.log('Product added to db');
             this.msg="Product added To Your Cart";
               //product didnt add to db
