@@ -20,7 +20,6 @@ export class AddProductComponent implements OnInit {
     image: null,
     category:null,
     subcategory:null,
-    sellerId:"5ab95e2bda28ff74357c2f03",
   };
   CatArr;
   subcatArr;
@@ -34,15 +33,15 @@ export class AddProductComponent implements OnInit {
       if (this.prodId) {
         this.editable = true;
         this.AddProductService.getProduct(this.prodId).subscribe(res=>{
+          let prod = res.result;
           this.product = {
-            name: res.name,
-            price: res.price,
-            amountAvailable: res.amountAvailable,
-            description: res.description,
-            image: res.image,
+            name: prod.name,
+            price: prod.price,
+            amountAvailable: prod.amountAvailable,
+            description: prod.description,
+            image: prod.image,
             category:null,
             subcategory:null,
-            sellerId:"5ab95e2bda28ff74357c2f03",
           }
         })
       }

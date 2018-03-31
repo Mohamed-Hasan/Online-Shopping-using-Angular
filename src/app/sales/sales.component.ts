@@ -34,6 +34,7 @@ export class SalesComponent implements OnInit {
     let prevPage = this.currentPage
     switch (e.target.value) {
       case 0:
+      this.orders.length < 2
       this.currentPage<this.pages?this.currentPage +=1 : this.currentPage;
         break;
       case -1:
@@ -50,8 +51,10 @@ export class SalesComponent implements OnInit {
   }
 
   getMySales(){
-    this.salesService.getMySales(this.seller.id,this.currentPage).subscribe(res => {
+    var token = localStorage.getItem('token');
+    this.salesService.getMySales(token,this.currentPage).subscribe(res => {
       this.orders = res.products;
+      console.log(this.orders)
       this.pages = res.pages;
     });
   }

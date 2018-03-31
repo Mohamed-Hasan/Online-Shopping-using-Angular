@@ -24,13 +24,15 @@ export class OrderComponent implements OnInit {
     },
     state: "Ordered",
   }
+  id;
   constructor(private orderService: OrderService, private route: ActivatedRoute) {
     
    }
 
   ngOnInit() {
     this.route.params.subscribe(params => this.order.id = params['id']);
-    console.log(this.order.id);
+    this.id = this.order.id;
+    console.log("in init id",this.id);
 
     this.orderService.getOrderDetails(this.order.id).subscribe(res => {
       console.log(res)
@@ -39,9 +41,11 @@ export class OrderComponent implements OnInit {
   }
   onChange(event){
     this.order.state = event.target.value;
-    if(this.order.state=="Recieved")
+    console.log("on change",this.id)
+    var token = localStorage.getItem('token')
+    if(this.order.state=="delivered")
     {
-      this.orderService.deliverOrder(this.order.id)
+      this.orderService.deliverOrder(token,this.id).subscribe(res=>console.log(res))
       console.log(this.order.state);
     //send the new order status to api
     }

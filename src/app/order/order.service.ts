@@ -19,8 +19,12 @@ export class OrderService {
     return this.http.get(`https://localhost:9010/orders/${orderId}`).map(res =>res.json());
    }
 
-   deliverOrder(orderId){
-     return this.http.put(`http://localhost:9010/order/${orderId}`, {headers: this.headers}).map(res => res.json());
+   deliverOrder(token,orderId){
+    var body={
+      usertoken:token,
+      id: orderId
+    }
+     return this.http.put(`https://localhost:9010/orders/edit`, body).map(res => res.json());
    }
    
 

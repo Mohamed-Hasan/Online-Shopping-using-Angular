@@ -54,7 +54,7 @@
           <!-- /Account -->
 
           <!-- Card -->
-          <li *ngIf="logged" class="header-Card dropdown default-dropdown">
+          <li *ngIf="logged && !seller" class="header-Card dropdown default-dropdown">
             <a routerLink="/cart" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
               <div class="header-btns-icon">
                 <i class="fa fa-shopping-cart"></i>
@@ -135,7 +135,6 @@
           </li>
           <li *ngFor="let cat of catArr" class="dropdown">
             <a class="dropdown-toggle price add-to-cart" data-toggle="dropdown">{{cat.categoryName}}
-              <i class="fa fa-caret-down"></i>
             </a>
             <div class="custom-menu">
               <div class="row">

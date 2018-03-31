@@ -20,10 +20,14 @@ export class ProductService {
     return this.http.get(`https://localhost:9010/products/get/${productId}`).map(res =>res.json());
    }
 
-   SendRating(productId,rate){
+   SendRating(token,productId,rate){
      console.log("rating",rate)
      console.log("prodId",productId)
-     return this.http.post(`https://localhost:9010/products/rate/${productId}`,{ rate:rate}).map(res => res.json());
+     var body={
+      usertoken:token,
+      rate:rate
+    };
+     return this.http.post(`https://localhost:9010/products/rate/${productId}`,body).map(res => res.json());
    }
 
   

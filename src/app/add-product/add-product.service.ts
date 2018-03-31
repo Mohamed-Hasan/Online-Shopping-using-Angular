@@ -26,13 +26,12 @@ export class AddProductService{
     }
 
     getProduct(prodId){
-        return this.http.get(`https://localhost:9010/products/${prodId}`).map(res=>res.json());
+        return this.http.get(`https://localhost:9010/products/get/${prodId}`).map(res=>res.json());
     }
 
     editProduct(token,prodId, product){
         var body={
             usertoken:token,
-            productId: prodId,
             product:product
           };
         // const prod = JSON.stringify(product)
