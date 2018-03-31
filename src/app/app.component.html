@@ -109,7 +109,7 @@
                         {{cat.categoryName}}
                       </mat-panel-title>
                     </mat-expansion-panel-header>
-                    <mat-form-field *ngFor="let subcat of cat.subcategoryId" style="background-color: orange;">
+                    <mat-form-field *ngFor="let subcat of cat.subcategoryId">
                       <p class="subcat" routerLink="/subcat/{{subcat.subcatName}}/{{subcat._id}}">{{subcat.subcatName}}</p>
                     </mat-form-field>
                   </mat-expansion-panel>

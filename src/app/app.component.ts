@@ -57,10 +57,7 @@ export class AppComponent implements OnInit {
     this.show==false?this.show=true:this.show=false;
   }
 
-
-
-  logout(){
-
+logout(){
     //get token from loca storage
     localStorage.removeItem('token');
     this.logged=false;
@@ -68,8 +65,4 @@ export class AppComponent implements OnInit {
     this.login_service.setduserdata('');
     this.route.navigate(['']);
   }
-
-
 }
-
-
