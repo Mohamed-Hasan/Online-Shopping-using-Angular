@@ -12,9 +12,13 @@ export class AddProductService{
         // this.headers.append('X-ACCESS_TOKEN', localStorage.getItem('token'));
     };
 
-    addProduct(product){
-        const prod = JSON.stringify(product)
-        return this.http.post('https://localhost:9010/products/add', prod , {headers:this.headers}).map((res)=>res.json())
+    addProduct(utoken,product){
+        var body={
+            usertoken:utoken,
+            product:product
+          };
+        // const prod = JSON.stringify(product)
+        return this.http.post('https://localhost:9010/products/add', body).map((res)=>res.json())
     }
 
     getSubCategories(subcatId){
@@ -25,8 +29,13 @@ export class AddProductService{
         return this.http.get(`https://localhost:9010/products/${prodId}`).map(res=>res.json());
     }
 
-    editProduct(prodId, product){
+    editProduct(token,prodId, product){
+        var body={
+            usertoken:token,
+            productId: prodId,
+            product:product
+          };
         // const prod = JSON.stringify(product)
-        return this.http.post(`https://localhost:9010/products/edit/${prodId}`,product).map(res=>res.json());
+        return this.http.post(`https://localhost:9010/products/edit/${prodId}`,body).map(res=>res.json());
     }
 }

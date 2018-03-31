@@ -71,14 +71,10 @@ export class LoginComponent implements OnInit {
               console.log("Set Token  in Local Storage")
               console.log("User Data",res.user);
               console.log("User Email",res.user.email);
-
               localStorage.setItem('token',res.token);
-
               //set user data in login service user
               this.login_service.setduserdata(res.user);
               this.route.navigate(['']);
-
-             
             }else{
               //show error message 
               console.log("err",res);

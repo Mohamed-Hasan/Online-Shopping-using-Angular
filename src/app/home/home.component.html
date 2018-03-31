@@ -35,13 +35,13 @@
       <div *ngFor="let product of products" class="col-md-3 col-sm-6 col-xs-6">
         <div class="product product-single">
           <div class="product-thumb">
-            <button routerLink="/product" class="main-btn quick-view"> <!-- "/product/prod.id" -->
+            <button routerLink="/product/{{product._id}}" class="main-btn quick-view"> <!-- "/product/prod.id" -->
               <i class="fa fa-search-plus"></i> View </button> <!-- prod image -->
             <img src="data:image/png;base64,{{product.image}}" alt=""> 
           </div>
           <div class="product-body">
               <h2 class="product-name">
-                  <h3 class="primary-color" href="/product">{{product.name}}</h3> <!-- "/product/prod.id" -->
+                  <h3 class="primary-color" routerLink="/product/{{product._id}}">{{product.name}}</h3> <!-- "/product/prod.id" -->
               </h2>
                 <!-- prod name -->
             <h3 class="product-price">{{product.price}} $</h3> <!-- prod image -->

@@ -32,7 +32,7 @@
 
       <label for="name">Product SubCategory:</label>
       <select id="subcategory" name="subcategory" [(ngModel)]="product.subcategory" (change)="onChangesub($event)" required #subcateg>
-        <option *ngFor="let subcat of subcatArr" value="{{subcat._id}}">{{subcat.name}}</option>
+        <option *ngFor="let subcat of subcatArr" value="{{subcat._id}}">{{subcat.subcatName}}</option>
       </select>
       <div *ngIf="subcateg.errors?.required">
         Product SubCategory field can't be blank

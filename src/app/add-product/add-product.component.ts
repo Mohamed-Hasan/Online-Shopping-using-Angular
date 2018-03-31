@@ -60,15 +60,16 @@ export class AddProductComponent implements OnInit {
 
 
   submit() {
+    var token = localStorage.getItem('token')
     if(this.editable){
       console.log("update");
-      this.AddProductService.editProduct(this.prodId, this.product).subscribe(res => console.log(res));
+      this.AddProductService.editProduct(token,this.prodId, this.product).subscribe(res => console.log(res));
       this.submitted = true;
     }
     else{
       console.log("submit")
       console.log(this.product)
-      this.AddProductService.addProduct(this.product).subscribe(res => console.log(res));
+      this.AddProductService.addProduct(token,this.product).subscribe(res => console.log(res));
       this.submitted = true;
     }
     console.log(this.product);
@@ -96,11 +97,11 @@ export class AddProductComponent implements OnInit {
       // console.log(res)
       // this.subcatArr = res.subcategoryId;
       this.CatArr.forEach(cat => {
+        console.log(cat.subcategoryId)
         if (cat._id == event.target.value) {
           this.subcatArr = cat.subcategoryId;
         }
       });
-    // })
   }
 
   onChangesub(event){

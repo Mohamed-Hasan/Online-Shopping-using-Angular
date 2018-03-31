@@ -121,7 +121,7 @@
           <li>
             <a routerLink="">Home</a>
           </li>
-          <li>
+          <li *ngIf="logged">
             <a routerLink="/profile">profile</a>
           </li>
           <li *ngIf="seller">
@@ -187,8 +187,8 @@
           </div>
           <!-- /footer logo -->
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna
+          <p>
+            Souq is the first Online shopping Website in Egypt and the Middle East. We care about our customers by extending our services.
           </p>
 
           <!-- footer social -->
@@ -271,7 +271,9 @@
       <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="footer">
           <h3 class="footer-header">Stay Connected</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+            <p>
+                Souq is the first Online shopping Website in Egypt and the Middle East. We care about our customers by extending our services.
+            </p>
           <form>
             <div class="form-group">
               <input class="input" placeholder="Enter Email Address">
@@ -289,7 +291,7 @@
       <div class="col-md-8 col-md-offset-2 text-center">
         <!-- footer copyright -->
         <div>
-          Copyright &copy; M.Hassan - ITI
+          Copyright &copy; ITI
         </div>
         <!-- /footer copyright -->
       </div>
