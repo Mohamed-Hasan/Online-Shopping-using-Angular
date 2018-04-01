@@ -11,7 +11,7 @@ export class SearchService {
     }
 
     getSearchResults(searchItem,page){
-        return this.http.post(`https://localhost:9010/products/get`,searchItem).map(res=>res.json());
+        return this.http.post(`https://localhost:9010/products/get/${page}`,searchItem).map(res=>res.json());
     }
 
 

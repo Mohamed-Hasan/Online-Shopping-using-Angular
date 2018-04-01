@@ -41,6 +41,7 @@ export class SearchComponent implements OnInit {
     this.SearchService.getSearchResults(this.filters,this.currentPage).subscribe(res=>{
       this.searchResult = res.result;
       this.pages = res.pages;
+      console.log(this.pages)
     })
   }
   paginate(e){

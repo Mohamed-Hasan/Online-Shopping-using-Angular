@@ -5,10 +5,15 @@
       <button class="btn btn-warning btn-arrow-left" (click)="carousel.left()" style="margin-top:250px; position:relative; width:80px">left</button>
     </div>
     <div class="col-sm-10">
-      <ngx-slideshow #carousel>
-        <li *ngFor="let prod of newArr">
-          <img src="data:image/png;base64,{{prod.image}}" height="500px">
-        </li>
+      <ngx-slideshow #carousel style="align-content: center">
+        <!-- <li *ngFor="let prod of newArr"> -->
+          <!-- <img src="data:image/png;base64,{{prod.image}}" height="500px"> -->
+        <!-- </li> -->
+        <li><img src="../assets/images/2.jpg" alt="" style="max-width: 100%; max-height: 100%"></li>
+        <li><img src="../assets/images/3.jpg" alt="" style="max-width: 100%; max-height: 100%"></li>
+        <li><img src="../assets/images/4.jpeg" alt="" style="max-width: 100%; max-height: 100%"></li>
+        <li><img src="../assets/images/5.jpeg" alt="" style="max-width: 100%; max-height: 100%"></li>
+        <li><img src="../assets/images/6.jpg" alt="" style="max-width: 100%; max-height: 100%"></li>
       </ngx-slideshow>
     </div>
     <div class="col-sm-1">
@@ -22,17 +27,64 @@
   <!-- container -->
   <div class="container">
     <!-- row -->
-    <div class="row">
+    <div class="row" style="display: flex; justify-content: space-between; align-content: space-aroung">
       <!-- section title -->
       <div class="col-md-12">
         <div class="section-title">
-          <h2 class="title">Latest Products</h2>
+          <h2 class="title">Our Products</h2>
         </div>
       </div>
       <!-- section title -->
 
       <!-- Product Single -->
-      <div *ngFor="let product of products" class="col-md-3 col-sm-6 col-xs-6">
+      <div *ngFor="let product of ourProducts" class="col-md-3 col-sm-6 col-xs-6">
+        <div class="product product-single">
+          <div class="product-thumb">
+            <button routerLink="/product/{{product._id}}" class="main-btn quick-view"> <!-- "/product/prod.id" -->
+              <i class="fa fa-search-plus"></i> View </button> <!-- prod image -->
+            <img src="data:image/png;base64,{{product.image}}" style="max-height: 200px;" alt=""> 
+          </div>
+          <div class="product-body">
+              <h2 class="product-name">
+                  <h3 class="primary-color" routerLink="/product/{{product._id}}">{{product.name}}</h3> <!-- "/product/prod.id" -->
+              </h2>
+                <!-- prod name -->
+            <h3 class="product-price">{{product.price}} $</h3> <!-- prod image -->
+            <!-- product price -->
+            <rating [(ngModel)]="product.sumOfRates/product.ratesCounter" [float]="true" [readonly]="true"></rating>
+            <!-- product rating -->
+            
+            <div class="product-btns">
+              <button class="primary-btn add-to-cart" value="{{product._id}}" (click)="addToCart($event)"> 
+                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                <label >{{msg}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Product Single -->
+      
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <!-- section title -->
+      <div class="col-md-12">
+        <div class="section-title">
+          <h2 class="title">Trending Products</h2>
+        </div>
+      </div>
+      <!-- section title -->
+
+      <!-- Product Single -->
+      <div *ngFor="let product of products"  class="col-md-3 col-sm-6 col-xs-6">
         <div class="product product-single">
           <div class="product-thumb">
             <button routerLink="/product/{{product._id}}" class="main-btn quick-view"> <!-- "/product/prod.id" -->
@@ -58,6 +110,7 @@
         </div>
       </div>
       <!-- /Product Single -->
+      
     </div>
     <!-- /row -->
   </div>

@@ -97,7 +97,16 @@ export class ProductComponent implements OnInit {
 
   rate(){
     var token = localStorage.getItem('token')
-    console.log("hello",this.product._id)
+    this.login_service.currentuser.subscribe(user=>{
+      var userdata=JSON.parse(JSON.stringify(user));
+      console.log('user string',userdata);
+    
+      if(userdata.name ==undefined)
+      {
+        this.proute.navigate(['/login'])
+      }
+    })
+    
     this.productService.SendRating(token,this.product._id,this.userRating).subscribe(res => {
       console.log(res);
     })

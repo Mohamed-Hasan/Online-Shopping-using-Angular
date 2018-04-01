@@ -7,9 +7,7 @@ export class OrderService {
 
   headers: Headers;
   constructor(private http: Http) {
-    this.headers = new Headers();
-    // this.headers.append('Content-Type', 'application/json');
-    // this.headers.append('x_access_token',localStorage.getItem('token')); 
+    
    }
 
    getOrderDetails(orderId)

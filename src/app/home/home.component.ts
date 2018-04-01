@@ -12,11 +12,14 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   products;
+  ourProducts;
   msg;
   newArr;
+  staticImages = [];
   constructor(private login_service:LoginService, private HomeService: HomeService,private route: Router) { 
      console.log('home comp');
     this.getProducts();
+    this.getOurProducts();
   }
 
   getProducts(){
@@ -27,6 +30,13 @@ export class HomeComponent implements OnInit {
     })
   }
   
+  getOurProducts(){
+    this.HomeService.getOurProducts().subscribe(res=>{
+      console.log(res);
+      this.ourProducts = res.result;
+      // this.newArr = res.result
+    })
+  }
   ngOnInit() {
   }
 
